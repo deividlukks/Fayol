@@ -19,11 +19,15 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
+    "prisma:migrate:prod": "prisma migrate deploy",
     "prisma:studio": "prisma studio",
-    "prisma:seed": "ts-node prisma/seed.ts"
+    "prisma:seed": "ts-node prisma/seed-all.ts",
+    "prisma:seed:categories": "ts-node -r tsconfig-paths/register prisma/seeds/categories.seed.ts",
+    "prisma:seed:admin": "ts-node -r tsconfig-paths/register prisma/seeds/admin.seed.ts",
+    "prisma:reset": "prisma migrate reset --force"
   },
   "prisma": {
-    "seed": "ts-node prisma/seed.ts"
+    "seed": "ts-node prisma/seed-all.ts"
   },
   "dependencies": {
     "@fastify/compress": "7.0.3",

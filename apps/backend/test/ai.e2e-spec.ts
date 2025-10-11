@@ -1,5 +1,5 @@
-import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
+import { Test, TestingModule } from '@nestjs/testing';
 import * as request from 'supertest';
 import { AppModule } from '../src/app.module';
 
@@ -17,7 +17,7 @@ describe('AI Controller (e2e)', () => {
 
     // Login para obter token
     const loginResponse = await request(app.getHttpServer()).post('/api/v1/auth/login').send({
-      email: 'teste@fayol.com',
+      email: 'teste@fayol.app',
       password: 'Senha@123',
     });
 

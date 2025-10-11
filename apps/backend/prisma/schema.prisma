@@ -103,6 +103,7 @@ model Category {
   transactions          Transaction[]
   recurringTransactions RecurringTransaction[]
 
+  @@unique([name, type], name: "name_type")
   @@map("categories")
 }
 
@@ -119,6 +120,7 @@ model Subcategory {
   user         User?         @relation(fields: [userId], references: [id], onDelete: Cascade)
   transactions Transaction[]
 
+  @@unique([name, categoryId], name: "name_categoryId")
   @@map("subcategories")
 }
 

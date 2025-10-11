@@ -1,39 +1,47 @@
 import { PrismaClient } from '@prisma/client';
 import * as bcrypt from 'bcryptjs';
 
-const prisma = new PrismaClient();
-
 /**
- * Seed do Admin padrão do sistema
+ * Seed completo do módulo administrativo
+ * 
+ * Popula o banco com:
+ * - Admin padrão do sistema
+ * - Planos de assinatura (Free, Basic, Premium, Enterprise)
+ * - Versão inicial do sistema
+ * - Configurações do sistema
  */
-async function seedAdmin() {
+
+// ============================================
+// SEED DO ADMIN PADRÃO
+// ============================================
+async function seedAdminUser(prisma: PrismaClient) {
   console.log('🔐 Criando administrador padrão...');
-  
+
   const hashedPassword = await bcrypt.hash('admin@123', 12);
-  
+
   const admin = await prisma.admin.upsert({
-    where: { email: 'admin@fayol.com' },
+    where: { email: 'admin@fayol.app' },
     update: {},
     create: {
       name: 'Super Admin',
-      email: 'admin@fayol.com',
+      email: 'admin@fayol.app',
       password: hashedPassword,
       role: 'super_admin',
       isActive: true,
     },
   });
-  
-  console.log(`✅ Admin criado: ${admin.email}`);
-  console.log(`   Senha padrão: admin@123`);
+
+  console.log(`   ✅ Admin: ${admin.email}`);
+  console.log(`   🔑 Senha padrão: admin@123`);
   console.log(`   ⚠️  IMPORTANTE: Altere esta senha em produção!`);
 }
 
-/**
- * Seed dos Planos padrão do sistema
- */
-async function seedPlans() {
+// ============================================
+// SEED DOS PLANOS DE ASSINATURA
+// ============================================
+async function seedPlans(prisma: PrismaClient) {
   console.log('💳 Criando planos de assinatura...');
-  
+
   const plans = [
     {
       name: 'Free',
@@ -55,7 +63,7 @@ async function seedPlans() {
     {
       name: 'Basic',
       description: 'Para quem quer mais controle sobre as finanças',
-      price: 9.90,
+      price: 9.9,
       maxAccounts: 5,
       maxTransactions: 1000,
       maxCategories: 20,
@@ -72,7 +80,7 @@ async function seedPlans() {
     {
       name: 'Premium',
       description: 'Todos os recursos essenciais para gestão financeira completa',
-      price: 29.90,
+      price: 29.9,
       maxAccounts: 999,
       maxTransactions: 999999,
       maxCategories: 999,
@@ -89,7 +97,7 @@ async function seedPlans() {
     {
       name: 'Enterprise',
       description: 'Solução completa com suporte prioritário e recursos ilimitados',
-      price: 99.90,
+      price: 99.9,
       maxAccounts: 999,
       maxTransactions: 999999,
       maxCategories: 999,
@@ -104,24 +112,24 @@ async function seedPlans() {
       isActive: true,
     },
   ];
-  
+
   for (const planData of plans) {
     const plan = await prisma.plan.upsert({
       where: { name: planData.name },
       update: planData,
       create: planData,
     });
-    
-    console.log(`✅ Plano criado: ${plan.name} - R$ ${plan.price.toString()}/mês`);
+
+    console.log(`   ✅ ${plan.name} - R$ ${plan.price.toString()}/mês`);
   }
 }
 
-/**
- * Seed da Versão inicial do sistema
- */
-async function seedVersion() {
+// ============================================
+// SEED DA VERSÃO DO SISTEMA
+// ============================================
+async function seedVersion(prisma: PrismaClient) {
   console.log('🔄 Criando versão inicial do sistema...');
-  
+
   const version = await prisma.systemVersion.upsert({
     where: { version: '1.0.0' },
     update: {},
@@ -154,16 +162,16 @@ async function seedVersion() {
       isActive: true,
     },
   });
-  
-  console.log(`✅ Versão criada: ${version.version} - ${version.title}`);
+
+  console.log(`   ✅ Versão ${version.version} - ${version.title}`);
 }
 
-/**
- * Seed de Configurações do Sistema
- */
-async function seedSystemConfig() {
+// ============================================
+// SEED DAS CONFIGURAÇÕES DO SISTEMA
+// ============================================
+async function seedSystemConfig(prisma: PrismaClient) {
   console.log('⚙️  Criando configurações do sistema...');
-  
+
   const configs = [
     {
       key: 'maintenance_mode',
@@ -187,7 +195,7 @@ async function seedSystemConfig() {
         port: 587,
         secure: false,
         auth: {
-          user: 'noreply@fayol.com',
+          user: 'noreply@fayol.app',
           pass: 'change-me',
         },
       },
@@ -210,54 +218,78 @@ async function seedSystemConfig() {
       description: 'Configurações dos gateways de pagamento',
     },
   ];
-  
+
   for (const configData of configs) {
     const config = await prisma.systemConfig.upsert({
       where: { key: configData.key },
       update: { value: configData.value },
       create: configData,
     });
-    
-    console.log(`✅ Config criada: ${config.key}`);
+
+    console.log(`   ✅ ${config.key}`);
   }
 }
+
+// ============================================
+// FUNÇÃO PRINCIPAL EXPORTADA
+// ============================================
 
 /**
- * Função principal de execução dos seeds
+ * Executa todos os seeds do módulo administrativo
  */
-async function main() {
-  console.log('🌱 Iniciando seeds do módulo administrativo...\n');
-  
-  try {
-    await seedAdmin();
-    console.log('');
-    
-    await seedPlans();
-    console.log('');
-    
-    await seedVersion();
-    console.log('');
-    
-    await seedSystemConfig();
-    console.log('');
-    
-    console.log('✅ Todos os seeds foram executados com sucesso!\n');
-    console.log('📝 Próximos passos:');
-    console.log('   1. Acesse http://localhost:3001 (admin panel)');
-    console.log('   2. Login: admin@fayol.com');
-    console.log('   3. Senha: admin@123');
-    console.log('   4. ⚠️  Altere a senha padrão!\n');
-  } catch (error) {
-    console.error('❌ Erro ao executar seeds:', error);
-    throw error;
-  }
+export async function seedAdmin(prisma: PrismaClient) {
+  console.log('👑 Iniciando seed do módulo administrativo...');
+  console.log('');
+
+  await seedAdminUser(prisma);
+  console.log('');
+
+  await seedPlans(prisma);
+  console.log('');
+
+  await seedVersion(prisma);
+  console.log('');
+
+  await seedSystemConfig(prisma);
+  console.log('');
+
+  console.log('✅ Seed do módulo administrativo concluído!');
 }
 
-main()
-  .catch((e) => {
-    console.error(e);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
+// ============================================
+// PERMITIR EXECUÇÃO STANDALONE
+// ============================================
+
+/**
+ * Se executado diretamente (não importado), executa o seed
+ */
+if (require.main === module) {
+  const prisma = new PrismaClient();
+
+  async function main() {
+    console.log('🌱 Executando seed do módulo administrativo...\n');
+
+    try {
+      await seedAdmin(prisma);
+
+      console.log('');
+      console.log('📝 Próximos passos:');
+      console.log('   1. Acesse http://localhost:3001 (admin panel)');
+      console.log('   2. Login: admin@fayol.app');
+      console.log('   3. Senha: admin@123');
+      console.log('   4. ⚠️  Altere a senha padrão!\n');
+    } catch (error) {
+      console.error('❌ Erro ao executar seed:', error);
+      throw error;
+    }
+  }
+
+  main()
+    .catch((e) => {
+      console.error(e);
+      process.exit(1);
+    })
+    .finally(async () => {
+      await prisma.$disconnect();
+    });
+}

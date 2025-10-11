@@ -1,11 +1,21 @@
 import { PrismaClient } from '@prisma/client';
 
-const prisma = new PrismaClient();
+/**
+ * Seed de Categorias e Subcategorias padrão do sistema
+ * 
+ * Popula o banco com:
+ * - Categorias de Receita (4 categorias, 12 subcategorias)
+ * - Categorias de Despesa (9 categorias, 42 subcategorias)
+ * - Categorias de Investimento (4 categorias, 15 subcategorias)
+ * 
+ * Total: 17 categorias + 69 subcategorias
+ */
+export async function seedCategories(prisma: PrismaClient) {
+  console.log('📁 Criando categorias e subcategorias padrão do sistema...');
 
-async function main() {
-  console.log('🌱 Seeding database...');
-
-  // Categorias de Receita
+  // ============================================
+  // CATEGORIAS DE RECEITA
+  // ============================================
   const incomeCategories = [
     {
       name: 'Salário',
@@ -57,7 +67,9 @@ async function main() {
     },
   ];
 
-  // Categorias de Despesa
+  // ============================================
+  // CATEGORIAS DE DESPESA
+  // ============================================
   const expenseCategories = [
     {
       name: 'Alimentação',
@@ -182,7 +194,9 @@ async function main() {
     },
   ];
 
-  // Categorias de Investimento
+  // ============================================
+  // CATEGORIAS DE INVESTIMENTO
+  // ============================================
   const investmentCategories = [
     {
       name: 'Renda Fixa',
@@ -235,49 +249,73 @@ async function main() {
     },
   ];
 
-  const allCategories = [...incomeCategories, ...expenseCategories, ...investmentCategories];
+  // ============================================
+  // PROCESSAR TODAS AS CATEGORIAS
+  // ============================================
+  const allCategories = [
+    ...incomeCategories,
+    ...expenseCategories,
+    ...investmentCategories,
+  ];
+
+  let categoriesCreated = 0;
+  let subcategoriesCreated = 0;
 
   for (const categoryData of allCategories) {
     const { subcategories, ...catData } = categoryData;
 
-    const category = await prisma.category.create({
-      data: {
+    // Criar categoria
+    const category = await prisma.category.upsert({
+      where: {
+        // Usar combinação única de name + type para evitar duplicatas
+        name_type: {
+          name: catData.name,
+          type: catData.type,
+        },
+      },
+      update: {
         ...catData,
-        userId: null, // Sistema
+        userId: null,
+      },
+      create: {
+        ...catData,
+        userId: null, // null = categoria do sistema (global)
       },
     });
 
-    console.log(`✅ Created category: ${category.name}`);
+    categoriesCreated++;
+    console.log(`   ✅ ${category.name} (${category.type})`);
 
+    // Criar subcategorias
     if (subcategories && subcategories.length > 0) {
       for (const subData of subcategories) {
-        const subcategory = await prisma.subcategory.create({
-          data: {
+        await prisma.subcategory.upsert({
+          where: {
+            // Usar combinação única de name + categoryId
+            name_categoryId: {
+              name: subData.name,
+              categoryId: category.id,
+            },
+          },
+          update: {
+            ...subData,
+            userId: null,
+          },
+          create: {
             ...subData,
             categoryId: category.id,
-            userId: null, // Sistema
+            userId: null,
           },
         });
-        console.log(`   ↳ Created subcategory: ${subcategory.name}`);
+
+        subcategoriesCreated++;
+        console.log(`      ↳ ${subData.name}`);
       }
     }
   }
 
   console.log('');
-  console.log('🎉 Seeding completed successfully!');
-  console.log('');
-  console.log('📊 Summary:');
-  const categoriesCount = await prisma.category.count();
-  const subcategoriesCount = await prisma.subcategory.count();
-  console.log(`   - ${categoriesCount} categories created`);
-  console.log(`   - ${subcategoriesCount} subcategories created`);
+  console.log('✅ Categorias e subcategorias criadas com sucesso!');
+  console.log(`   📊 ${categoriesCreated} categorias`);
+  console.log(`   📋 ${subcategoriesCreated} subcategorias`);
 }
-
-main()
-  .catch((e) => {
-    console.error('❌ Error seeding database:', e);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });

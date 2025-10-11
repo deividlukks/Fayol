@@ -4,7 +4,7 @@ import { IsNotEmpty, IsString } from 'class-validator';
 export class VerifyAdminPasswordDto {
   @ApiProperty({
     description: 'Admin Fayol ID validado na etapa anterior',
-    example: 'admin@fayol.com',
+    example: 'admin@fayol.app',
   })
   @IsNotEmpty({ message: 'Fayol ID é obrigatório' })
   @IsString()
