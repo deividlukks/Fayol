@@ -1,0 +1,35 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 7
+    },
+    "auditLog": "C:\\Users\\Deivid Lucas\\Documents\\Projetos\\Fayol\\apps\\telegram-bot\\logs\\events\\.2dd21221b5970d86d99132e3cedf70672c4739f4-audit.json",
+    "files": [
+        {
+            "date": 1759595708982,
+            "name": "C:\\Users\\Deivid Lucas\\Documents\\Projetos\\Fayol\\apps\\telegram-bot\\logs\\events\\events-2025-10-04.log",
+            "hash": "876fb909c1935b228ce126d12f767302606b4eb1370128e4b0572f97921a50cc"
+        },
+        {
+            "date": 1759635445462,
+            "name": "C:\\Users\\Deivid Lucas\\Documents\\Projetos\\Fayol\\apps\\telegram-bot\\logs\\events\\events-2025-10-05.log",
+            "hash": "9da9c8be8a8be1de5c8b001b7591a5ff1fb5f453b94a4073da1e79b0317176e3"
+        },
+        {
+            "date": 1759876117730,
+            "name": "C:\\Users\\Deivid Lucas\\Documents\\Projetos\\Fayol\\apps\\telegram-bot\\logs\\events\\events-2025-10-07.log",
+            "hash": "e7d7955a12c4fad2a6a73442a9f7102f2c8c7c541f9fce1766546ad47e58946b"
+        },
+        {
+            "date": 1760005508279,
+            "name": "C:\\Users\\Deivid Lucas\\Documents\\Projetos\\Fayol\\apps\\telegram-bot\\logs\\events\\events-2025-10-09.log",
+            "hash": "1873bc138340ff5423d0cee05a0fbacbd2c2dbff4c4451cc16010fe487e322dd"
+        },
+        {
+            "date": 1760131834889,
+            "name": "C:\\Users\\Deivid Lucas\\Documents\\Projetos\\Fayol\\apps\\telegram-bot\\logs\\events\\events-2025-10-10.log",
+            "hash": "576c46cb5452952e748dd28acc3869b21d0764114c605970fd5d3b8360d478ae"
+        }
+    ],
+    "hashType": "sha256"
+}

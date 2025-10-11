@@ -1,0 +1,425 @@
+2025-10-04T00:00:01.601034Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-04T00:00:01.601070Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T00:00:01.803067Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T00:02:05.493816Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-04T00:02:05.493856Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-04T00:02:23.895603Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\ai"), AnchoredSystemPathBuf("apps\\backend\\src\\ai\\ai.service.ts"), AnchoredSystemPathBuf("apps\\backend\\src\\ai\\ai.service.ts.tmp.5664.1759536143791")}
+2025-10-04T00:02:23.895641Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T00:02:54.398540Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\ai\\ai.controller.ts"), AnchoredSystemPathBuf("apps\\backend\\src\\ai"), AnchoredSystemPathBuf("apps\\backend\\src\\ai\\ai.controller.ts.tmp.5664.1759536174332")}
+2025-10-04T00:02:54.398584Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T00:02:55.993956Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\ai\\ai.controller.ts.tmp.5664.1759536175992")}
+2025-10-04T00:02:55.993987Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T00:02:56.097819Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\ai\\ai.controller.ts"), AnchoredSystemPathBuf("apps\\backend\\src\\ai\\ai.controller.ts.tmp.5664.1759536175992"), AnchoredSystemPathBuf("apps\\backend\\src\\ai")}
+2025-10-04T00:02:56.097927Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T00:02:56.098031Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T00:02:57.997220Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\export\\export.controller.ts"), AnchoredSystemPathBuf("apps\\backend\\src\\export\\export.controller.ts.tmp.5664.1759536177920"), AnchoredSystemPathBuf("apps\\backend\\src\\export")}
+2025-10-04T00:02:57.997253Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T00:02:59.901182Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\export\\export.controller.ts"), AnchoredSystemPathBuf("apps\\backend\\src\\export\\export.controller.ts.tmp.5664.1759536179831"), AnchoredSystemPathBuf("apps\\backend\\src\\export")}
+2025-10-04T00:02:59.901213Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T00:04:15.100260Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("READY.md.tmp.5664.1759536255014"), AnchoredSystemPathBuf("READY.md"), AnchoredSystemPathBuf("")}
+2025-10-04T00:04:15.100291Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T00:04:48.300179Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-04T00:04:48.300201Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-04T00:04:48.694059Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-04T00:04:48.694077Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-04T00:05:04.397682Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-04T00:05:04.397702Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-04T00:05:04.805814Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-04T00:05:04.805829Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-04T00:05:51.595773Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-04T00:05:51.595799Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-04T00:08:04.206251Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-04T00:08:04.206288Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-04T00:08:17.401299Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src"), AnchoredSystemPathBuf("apps"), AnchoredSystemPathBuf("apps\\telegram-bot")}
+2025-10-04T00:08:17.401325Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }, WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T00:08:17.401397Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T00:08:25.501165Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot"), AnchoredSystemPathBuf("apps\\telegram-bot\\package.json.tmp.5664.1759536505415"), AnchoredSystemPathBuf("apps\\telegram-bot\\package.json")}
+2025-10-04T00:08:25.501213Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T00:08:31.602246Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\tsconfig.json.tmp.5664.1759536511521"), AnchoredSystemPathBuf("apps\\telegram-bot"), AnchoredSystemPathBuf("apps\\telegram-bot\\tsconfig.json")}
+2025-10-04T00:08:31.602290Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T00:08:36.300581Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot"), AnchoredSystemPathBuf("apps\\telegram-bot\\.env.example.tmp.5664.1759536516195"), AnchoredSystemPathBuf("apps\\telegram-bot\\.env.example")}
+2025-10-04T00:08:36.300603Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T00:08:42.291955Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\config\\index.ts.tmp.5664.1759536522265"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\config"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\config\\index.ts")}
+2025-10-04T00:08:42.291978Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T00:08:42.402285Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src")}
+2025-10-04T00:08:42.402307Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T00:08:58.291429Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\services\\api.service.ts"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\services\\api.service.ts.tmp.5664.1759536538285"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\services")}
+2025-10-04T00:08:58.291453Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T00:08:58.395857Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\services")}
+2025-10-04T00:08:58.395879Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T00:09:05.902465Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\services\\session.service.ts"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\services"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\services\\session.service.ts.tmp.5664.1759536545839")}
+2025-10-04T00:09:05.902499Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T00:09:20.599976Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\utils"), AnchoredSystemPathBuf("apps\\telegram-bot\\src"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\utils\\parser.ts.tmp.5664.1759536560499"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\utils\\parser.ts")}
+2025-10-04T00:09:20.600007Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T00:09:49.301658Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\auth.commands.ts.tmp.5664.1759536589275"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\auth.commands.ts")}
+2025-10-04T00:09:49.301709Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T00:09:49.397089Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src")}
+2025-10-04T00:09:49.397116Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T00:10:29.592923Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\transaction.commands.ts.tmp.5664.1759536629579"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\transaction.commands.ts")}
+2025-10-04T00:10:29.592947Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T00:10:29.693838Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands")}
+2025-10-04T00:10:29.693858Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T00:11:05.992494Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\query.commands.ts"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\query.commands.ts.tmp.5664.1759536665895"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands")}
+2025-10-04T00:11:05.992526Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T00:11:29.194751Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\category.commands.ts.tmp.5664.1759536689194")}
+2025-10-04T00:11:29.194767Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T00:11:29.291367Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\category.commands.ts"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\category.commands.ts.tmp.5664.1759536689194")}
+2025-10-04T00:11:29.291396Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T00:19:27.500068Z  WARN build:build_inner: turborepo_repository::package_graph::builder: Unable to calculate transitive closures: Workspace 'apps/telegram-bot' not found in lockfile
+2025-10-04T00:19:27.568096Z  WARN daemon_server: turborepo_lib::commands::daemon: daemon already running
+2025-10-04T00:19:29.007245Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-04T00:19:29.007276Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T00:19:34.417210Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-04T00:19:34.417235Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T00:19:34.571510Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T00:26:38.616178Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-04T00:26:38.616220Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T00:26:38.616306Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T00:26:43.806831Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-04T00:26:43.806863Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T00:26:44.009816Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T00:30:09.301580Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-04T00:30:09.301625Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-04T00:30:09.412548Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-04T00:30:09.412570Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-04T00:30:09.507897Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-04T00:30:09.507916Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-04T04:55:54.347268Z  WARN daemon_server: turborepo_lib::commands::daemon: daemon already running
+2025-10-04T04:55:56.811697Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-04T04:55:56.811782Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T04:56:02.702149Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-04T04:56:02.702198Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T04:56:02.921458Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T04:57:13.799176Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("docs"), AnchoredSystemPathBuf("docs\\TELEGRAM_BOT.md"), AnchoredSystemPathBuf("docs\\TELEGRAM_BOT.md.tmp.5664.1759553833770")}
+2025-10-04T04:57:13.799246Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T04:57:21.901684Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\.env.tmp.5664.1759553841883"), AnchoredSystemPathBuf("apps\\telegram-bot")}
+2025-10-04T04:57:21.901710Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T04:57:31.394998Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot")}
+2025-10-04T04:57:31.395018Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T04:57:31.524465Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T04:57:47.095941Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\transaction.commands.ts.tmp.5664.1759553867018"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\transaction.commands.ts")}
+2025-10-04T04:57:47.095967Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T04:59:17.302844Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(""), AnchoredSystemPathBuf("TELEGRAM_BOT_READY.md.tmp.5664.1759553957289"), AnchoredSystemPathBuf("TELEGRAM_BOT_READY.md")}
+2025-10-04T04:59:17.302876Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T05:00:38.798408Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("FAYOL_COMPLETE.md"), AnchoredSystemPathBuf(""), AnchoredSystemPathBuf("FAYOL_COMPLETE.md.tmp.5664.1759554038717")}
+2025-10-04T05:00:38.798447Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T05:06:22.969192Z  WARN daemon_server: turborepo_lib::commands::daemon: daemon already running
+2025-10-04T05:06:24.701529Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-04T05:06:24.701572Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T05:06:30.094892Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-04T05:06:30.094913Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T05:06:30.261996Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T05:15:52.197253Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-04T05:15:52.197299Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-04T05:16:44.296462Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\auth.commands.ts"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\auth.commands.ts.tmp.5664.1759555004213")}
+2025-10-04T05:16:44.296488Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:17:43.298816Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\account.commands.ts"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\account.commands.ts.tmp.5664.1759555063223")}
+2025-10-04T05:17:43.298905Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:18:00.604824Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\services"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\services\\api.service.ts.tmp.5664.1759555080576"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\services\\api.service.ts")}
+2025-10-04T05:18:00.604871Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:18:27.697298Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\menu.commands.ts.tmp.5664.1759555107685"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\menu.commands.ts"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands")}
+2025-10-04T05:18:27.697325Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:18:27.798091Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands")}
+2025-10-04T05:18:27.798121Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:18:27.798211Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T05:18:58.007958Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\index.ts"), AnchoredSystemPathBuf("apps\\telegram-bot\\src"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\index.ts.tmp.5664.1759555137983")}
+2025-10-04T05:18:58.007992Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:19:31.496978Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\help.commands.ts"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\help.commands.ts.tmp.5664.1759555171470")}
+2025-10-04T05:19:31.497006Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:21:12.093420Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("ENHANCED_BOT.md"), AnchoredSystemPathBuf(""), AnchoredSystemPathBuf("ENHANCED_BOT.md.tmp.5664.1759555272076")}
+2025-10-04T05:21:12.093454Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T05:23:13.590469Z  WARN daemon_server: turborepo_lib::commands::daemon: daemon already running
+2025-10-04T05:23:15.128723Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-04T05:23:15.128765Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T05:23:20.217906Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-04T05:23:20.217928Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T05:23:20.454488Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T05:30:45.522430Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-04T05:30:45.522471Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-04T05:32:43.920697Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("STATUS_ATUAL.md.tmp.5664.1759555963912")}
+2025-10-04T05:32:43.920729Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T05:32:44.030373Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("STATUS_ATUAL.md.tmp.5664.1759555963912"), AnchoredSystemPathBuf(""), AnchoredSystemPathBuf("STATUS_ATUAL.md")}
+2025-10-04T05:32:44.030400Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T05:34:23.986954Z  WARN daemon_server: turborepo_lib::commands::daemon: daemon already running
+2025-10-04T05:34:25.531165Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-04T05:34:25.531228Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T05:34:30.622724Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-04T05:34:30.622754Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T05:34:30.835583Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T05:39:22.728553Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("Novo(a) Documento de Texto.txt"), AnchoredSystemPathBuf("")}
+2025-10-04T05:39:22.728586Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T05:39:26.524663Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(""), AnchoredSystemPathBuf("Erros.txt"), AnchoredSystemPathBuf("Novo(a) Documento de Texto.txt")}
+2025-10-04T05:39:26.524755Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T05:39:33.420333Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("Erros.txt")}
+2025-10-04T05:39:33.420361Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T05:41:04.826727Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-04T05:41:04.826753Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-04T05:41:29.621269Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(""), AnchoredSystemPathBuf("_tmp_8352_0c6fc67acfac9e3c0c9e7173a6af22fc")}
+2025-10-04T05:41:29.621286Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T05:41:37.126780Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("pnpm-lock.yaml"), AnchoredSystemPathBuf("pnpm-lock.yaml.1440968113"), AnchoredSystemPathBuf("")}
+2025-10-04T05:41:37.126819Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T05:41:40.621781Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend"), AnchoredSystemPathBuf("apps\\backend\\package.json.2308980506"), AnchoredSystemPathBuf("apps\\backend\\package.json")}
+2025-10-04T05:41:40.621822Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T05:41:40.730477Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-04T05:41:40.730504Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T05:41:40.730584Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T05:42:01.818806Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\common\\logger"), AnchoredSystemPathBuf("apps\\backend\\src\\common\\logger\\logger.service.ts.tmp.5664.1759556521814"), AnchoredSystemPathBuf("apps\\backend\\src\\common")}
+2025-10-04T05:42:01.818850Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T05:42:01.931615Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\common\\logger"), AnchoredSystemPathBuf("apps\\backend\\src\\common\\logger\\logger.service.ts"), AnchoredSystemPathBuf("apps\\backend\\src\\common\\logger\\logger.service.ts.tmp.5664.1759556521814")}
+2025-10-04T05:42:01.931645Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T05:42:01.931732Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T05:42:11.316547Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\common\\logger\\logger.module.ts.tmp.5664.1759556531274"), AnchoredSystemPathBuf("apps\\backend\\src\\common\\logger\\logger.module.ts"), AnchoredSystemPathBuf("apps\\backend\\src\\common\\logger")}
+2025-10-04T05:42:11.316583Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T05:42:25.822976Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\common\\interceptors"), AnchoredSystemPathBuf("apps\\backend\\src\\common\\interceptors\\logging.interceptor.ts.tmp.5664.1759556545715"), AnchoredSystemPathBuf("apps\\backend\\src\\common"), AnchoredSystemPathBuf("apps\\backend\\src\\common\\interceptors\\logging.interceptor.ts")}
+2025-10-04T05:42:25.823006Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T05:42:41.018912Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\common\\filters\\all-exceptions.filter.ts"), AnchoredSystemPathBuf("apps\\backend\\src\\common\\filters"), AnchoredSystemPathBuf("apps\\backend\\src\\common"), AnchoredSystemPathBuf("apps\\backend\\src\\common\\filters\\all-exceptions.filter.ts.tmp.5664.1759556561012")}
+2025-10-04T05:42:41.018940Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T05:43:04.722391Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src"), AnchoredSystemPathBuf("apps\\backend\\src\\app.module.ts"), AnchoredSystemPathBuf("apps\\backend\\src\\app.module.ts.tmp.5664.1759556584681")}
+2025-10-04T05:43:04.722428Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T05:43:25.225651Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\app.module.ts.tmp.5664.1759556605184"), AnchoredSystemPathBuf("apps\\backend\\src\\app.module.ts"), AnchoredSystemPathBuf("apps\\backend\\src")}
+2025-10-04T05:43:25.225700Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T05:43:47.817959Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-04T05:43:47.818002Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T05:43:47.818101Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T05:43:59.023570Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(""), AnchoredSystemPathBuf("_tmp_18472_f8f996836dd0cc6e54c66594fa19bd44")}
+2025-10-04T05:43:59.023602Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T05:44:07.421350Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("pnpm-lock.yaml.1505761324"), AnchoredSystemPathBuf(""), AnchoredSystemPathBuf("pnpm-lock.yaml")}
+2025-10-04T05:44:07.421381Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T05:44:08.023449Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\package.json"), AnchoredSystemPathBuf("apps\\telegram-bot\\package.json.3994590756"), AnchoredSystemPathBuf("apps\\telegram-bot")}
+2025-10-04T05:44:08.024453Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:44:31.730646Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\utils\\logger.ts.tmp.5664.1759556671693"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\utils"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\utils\\logger.ts")}
+2025-10-04T05:44:31.730677Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:45:28.330201Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\transaction.commands.ts"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\transaction.commands.ts.tmp.5664.1759556728288"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands")}
+2025-10-04T05:45:28.330234Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:47:05.126702Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-04T05:47:05.126728Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-04T05:48:04.819269Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\auth.commands.ts.tmp.5664.1759556884808")}
+2025-10-04T05:48:04.819292Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:48:04.930154Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\auth.commands.ts.tmp.5664.1759556884808"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\auth.commands.ts")}
+2025-10-04T05:48:04.930186Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:48:04.930235Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T05:48:05.716621Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\auth.commands.ts"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\auth.commands.ts.tmp.5664.1759556885689"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands")}
+2025-10-04T05:48:05.716654Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:48:07.016372Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\auth.commands.ts"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\auth.commands.ts.tmp.5664.1759556886948"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands")}
+2025-10-04T05:48:07.016395Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:48:08.220832Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\auth.commands.ts.tmp.5664.1759556888187"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\auth.commands.ts")}
+2025-10-04T05:48:08.220860Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:48:09.528654Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\auth.commands.ts"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\auth.commands.ts.tmp.5664.1759556889439"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands")}
+2025-10-04T05:48:09.528687Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:48:11.815165Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\auth.commands.ts.tmp.5664.1759556891814")}
+2025-10-04T05:48:11.815196Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:48:11.919527Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\auth.commands.ts"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\auth.commands.ts.tmp.5664.1759556891814")}
+2025-10-04T05:48:11.919550Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:48:11.919591Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T05:48:13.227459Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\auth.commands.ts"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\auth.commands.ts.tmp.5664.1759556893191"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands")}
+2025-10-04T05:48:13.227486Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:48:14.716623Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\auth.commands.ts.tmp.5664.1759556894712")}
+2025-10-04T05:48:14.716647Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:48:14.819827Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\auth.commands.ts"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\auth.commands.ts.tmp.5664.1759556894712")}
+2025-10-04T05:48:14.819863Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:48:14.819926Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T05:48:16.217030Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\auth.commands.ts.tmp.5664.1759556896124"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\auth.commands.ts"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands")}
+2025-10-04T05:48:16.217056Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:48:18.023493Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\auth.commands.ts"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\auth.commands.ts.tmp.5664.1759556897998")}
+2025-10-04T05:48:18.023521Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:48:47.621408Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\account.commands.ts.tmp.5664.1759556927583"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\account.commands.ts")}
+2025-10-04T05:48:47.621444Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:48:48.718507Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\account.commands.ts"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\account.commands.ts.tmp.5664.1759556928683")}
+2025-10-04T05:48:48.718538Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:48:49.922977Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\account.commands.ts"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\account.commands.ts.tmp.5664.1759556929880")}
+2025-10-04T05:48:49.923019Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:48:52.725686Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\account.commands.ts.tmp.5664.1759556932636"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\account.commands.ts"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands")}
+2025-10-04T05:48:52.725823Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:48:54.126280Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\account.commands.ts.tmp.5664.1759556934014"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\account.commands.ts")}
+2025-10-04T05:48:54.126347Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:48:55.622925Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\account.commands.ts.tmp.5664.1759556935546"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\account.commands.ts")}
+2025-10-04T05:48:55.622952Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:48:57.516268Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\account.commands.ts.tmp.5664.1759556937495"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\account.commands.ts")}
+2025-10-04T05:48:57.516303Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:48:57.621320Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands")}
+2025-10-04T05:48:57.621346Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:48:57.621399Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T05:48:59.116946Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\account.commands.ts.tmp.5664.1759556939034"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\account.commands.ts")}
+2025-10-04T05:48:59.116971Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:49:22.125589Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\account.commands.ts"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\account.commands.ts.tmp.5664.1759556962094")}
+2025-10-04T05:49:22.125640Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:49:51.622951Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\account.commands.ts"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\account.commands.ts.tmp.5664.1759556991553")}
+2025-10-04T05:49:51.622978Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:49:52.720568Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\account.commands.ts"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\account.commands.ts.tmp.5664.1759556992642")}
+2025-10-04T05:49:52.720588Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:49:53.818525Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\account.commands.ts.tmp.5664.1759556993790"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\account.commands.ts"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands")}
+2025-10-04T05:49:53.818548Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:49:55.020873Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\account.commands.ts"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\account.commands.ts.tmp.5664.1759556994961")}
+2025-10-04T05:49:55.020910Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:50:25.327176Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\query.commands.ts"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\query.commands.ts.tmp.5664.1759557025220"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands")}
+2025-10-04T05:50:25.327223Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:50:26.230734Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\query.commands.ts"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\query.commands.ts.tmp.5664.1759557026191")}
+2025-10-04T05:50:26.230759Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:50:27.216540Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\query.commands.ts"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\query.commands.ts.tmp.5664.1759557027172"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands")}
+2025-10-04T05:50:27.216567Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:50:28.621782Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\query.commands.ts"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\query.commands.ts.tmp.5664.1759557028516")}
+2025-10-04T05:50:28.621825Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:50:30.025742Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\query.commands.ts.tmp.5664.1759557029924"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\query.commands.ts")}
+2025-10-04T05:50:30.025796Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:50:32.430956Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\query.commands.ts.tmp.5664.1759557032371"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\query.commands.ts")}
+2025-10-04T05:50:32.430991Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:50:33.830767Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\query.commands.ts"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\query.commands.ts.tmp.5664.1759557033777")}
+2025-10-04T05:50:33.830802Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:50:35.323402Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\query.commands.ts"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\query.commands.ts.tmp.5664.1759557035253"), AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands")}
+2025-10-04T05:50:35.323447Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:50:45.121594Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot")}
+2025-10-04T05:50:45.121630Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T05:50:45.124328Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T10:23:20.218207Z  WARN daemon_server: turborepo_lib::commands::daemon: daemon already running
+2025-10-04T10:23:23.706892Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-04T10:23:23.707313Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T10:23:30.704509Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-04T10:23:30.704552Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T10:23:30.871342Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T11:21:54.562555Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-04T11:21:54.562651Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T11:21:59.949037Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-04T11:21:59.949084Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T11:22:00.193110Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T11:26:26.755446Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-04T11:26:26.755495Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-04T11:26:26.848286Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-04T11:26:26.848307Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-04T11:26:27.446267Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-04T11:26:27.446291Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-04T11:26:27.556826Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-04T11:26:27.556850Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-04T11:26:28.458130Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-04T11:26:28.458151Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-04T11:26:48.751477Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(""), AnchoredSystemPathBuf("_tmp_18448_2da586bb11f4d37e3d5b44a226f67c36")}
+2025-10-04T11:26:48.751511Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T11:33:29.771718Z  WARN daemon_server: turborepo_lib::commands::daemon: daemon already running
+2025-10-04T11:33:31.687038Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-04T11:33:31.687095Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T11:33:38.789810Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-04T11:33:38.789854Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T11:33:38.971818Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T12:00:52.799937Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("docs\\CORREÇÕES_NECESSÁRIAS.md")}
+2025-10-04T12:00:52.801921Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T12:00:53.893488Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("docs")}
+2025-10-04T12:00:53.894195Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T12:01:10.382614Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\src\\commands\\transaction.commands.ts")}
+2025-10-04T12:01:10.382660Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-04T12:01:33.363816Z  WARN daemon_server: turborepo_lib::commands::daemon: daemon already running
+2025-10-04T12:01:35.383166Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-04T12:01:35.383201Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T12:01:42.892971Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-04T12:01:42.893006Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T12:01:43.180469Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T12:02:13.582328Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("docs\\CORREÇÕES_IMPLEMENTADAS.md")}
+2025-10-04T12:02:13.582353Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T12:02:13.694857Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("docs\\CORREÇÕES_IMPLEMENTADAS.md")}
+2025-10-04T12:02:13.694881Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T12:02:13.997218Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("docs")}
+2025-10-04T12:02:13.997238Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T12:03:11.387809Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("docs\\STATUS_ATUALIZADO_v0.2.1.md")}
+2025-10-04T12:03:11.387850Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T12:03:14.493922Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("docs")}
+2025-10-04T12:03:14.493942Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T12:03:54.696496Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("docs\\README.md")}
+2025-10-04T12:03:54.696517Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T12:03:55.695333Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("docs")}
+2025-10-04T12:03:55.695353Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T12:09:08.795959Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\common\\logger\\logger.service.ts")}
+2025-10-04T12:09:08.796009Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T12:09:15.487375Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\common\\logger\\logger.module.ts")}
+2025-10-04T12:09:15.487400Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T12:09:26.390393Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\common\\interceptors\\http-logging.interceptor.ts"), AnchoredSystemPathBuf("apps\\backend\\src\\common\\interceptors")}
+2025-10-04T12:09:26.390418Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T12:09:35.686989Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\app.module.ts")}
+2025-10-04T12:09:35.687029Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T12:10:54.889452Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("docs\\guides")}
+2025-10-04T12:10:54.889479Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T12:10:55.798849Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("docs")}
+2025-10-04T12:10:55.798875Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T12:11:10.989975Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("docs\\guides\\backend")}
+2025-10-04T12:11:10.990004Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T12:11:11.886304Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("docs\\guides")}
+2025-10-04T12:11:11.886326Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T12:11:47.085352Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("docs\\guides\\backend\\logging-guide.md")}
+2025-10-04T12:11:47.085382Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T12:11:47.186167Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("docs\\guides\\backend\\logging-guide.md")}
+2025-10-04T12:11:47.186192Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T12:11:48.187237Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("docs\\guides\\backend")}
+2025-10-04T12:11:48.187269Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T12:12:44.389225Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-04T12:12:44.389242Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-04T12:13:21.085036Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".gitignore")}
+2025-10-04T12:13:21.085065Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T15:15:44.693046Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\common\\interceptors\\logging.interceptor.ts")}
+2025-10-04T15:15:44.693120Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T15:16:03.382657Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\modules"), AnchoredSystemPathBuf("apps\\backend\\src")}
+2025-10-04T15:16:03.382725Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T15:16:03.382810Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T15:16:07.385177Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\modules"), AnchoredSystemPathBuf("apps\\backend\\src\\modules\\auth")}
+2025-10-04T15:16:07.385355Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T15:16:07.409718Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T15:16:14.995613Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\modules"), AnchoredSystemPathBuf("apps\\backend\\src\\modules\\users")}
+2025-10-04T15:16:14.995733Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T15:16:14.995819Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T15:16:19.484451Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\modules\\accounts"), AnchoredSystemPathBuf("apps\\backend\\src\\modules")}
+2025-10-04T15:16:19.484480Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T15:16:19.484588Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T15:16:27.492202Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\modules\\categories")}
+2025-10-04T15:16:27.492287Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T15:16:27.523260Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T15:16:27.588969Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\modules")}
+2025-10-04T15:16:27.589001Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T15:16:27.589184Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T15:16:32.583482Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\modules"), AnchoredSystemPathBuf("apps\\backend\\src\\modules\\transactions")}
+2025-10-04T15:16:32.583508Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T15:16:32.583600Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T15:16:41.489553Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\modules\\dashboard"), AnchoredSystemPathBuf("apps\\backend\\src\\modules")}
+2025-10-04T15:16:41.489597Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T15:16:41.489685Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T15:16:47.791467Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\modules"), AnchoredSystemPathBuf("apps\\backend\\src\\modules\\reports")}
+2025-10-04T15:16:47.791490Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T15:16:47.791546Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T15:16:57.197256Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\modules\\ai"), AnchoredSystemPathBuf("apps\\backend\\src\\modules")}
+2025-10-04T15:16:57.197340Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T15:16:57.197428Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T15:17:03.583600Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\modules"), AnchoredSystemPathBuf("apps\\backend\\src\\modules\\export")}
+2025-10-04T15:17:03.583616Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T15:17:03.583660Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T15:17:21.181944Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\modules\\auth"), AnchoredSystemPathBuf("apps\\backend\\src\\modules\\auth\\auth.module.ts")}
+2025-10-04T15:17:21.181976Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T15:17:28.390614Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\modules\\users\\users.module.ts"), AnchoredSystemPathBuf("apps\\backend\\src\\modules\\users")}
+2025-10-04T15:17:28.390640Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T15:17:45.183426Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\modules\\accounts"), AnchoredSystemPathBuf("apps\\backend\\src\\modules\\accounts\\accounts.module.ts")}
+2025-10-04T15:17:45.183448Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T15:17:50.490051Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\modules\\categories\\categories.module.ts"), AnchoredSystemPathBuf("apps\\backend\\src\\modules\\categories")}
+2025-10-04T15:17:50.490077Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T15:18:08.794483Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\modules\\transactions"), AnchoredSystemPathBuf("apps\\backend\\src\\modules\\transactions\\transactions.module.ts")}
+2025-10-04T15:18:08.794522Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T15:18:14.284712Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\modules\\dashboard"), AnchoredSystemPathBuf("apps\\backend\\src\\modules\\dashboard\\dashboard.module.ts")}
+2025-10-04T15:18:14.284728Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T15:18:35.186641Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\modules\\reports\\reports.module.ts"), AnchoredSystemPathBuf("apps\\backend\\src\\modules\\reports")}
+2025-10-04T15:18:35.186659Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T15:18:40.885181Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\modules\\ai\\ai.module.ts")}
+2025-10-04T15:18:40.885211Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T15:18:40.986727Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\modules\\ai")}
+2025-10-04T15:18:40.986771Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T15:18:40.986872Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T15:19:04.289198Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\modules\\export\\export.module.ts")}
+2025-10-04T15:19:04.289228Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T15:19:04.392169Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\modules\\export")}
+2025-10-04T15:19:04.392200Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T15:19:04.392282Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T15:19:11.483752Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\logs\\.780cf74c81a13d6e5e3423100a02e3f2eadedb9a-audit.json"), AnchoredSystemPathBuf("apps\\backend\\logs\\.32624035d868a6c4a8b2f6789ce974247aed7ee4-audit.json"), AnchoredSystemPathBuf("apps\\backend\\logs")}
+2025-10-04T15:19:11.483781Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T15:19:12.583964Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\logs"), AnchoredSystemPathBuf("apps\\backend\\logs\\error-2025-10-04.log"), AnchoredSystemPathBuf("apps\\backend\\logs\\combined-2025-10-04.log")}
+2025-10-04T15:19:12.583997Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-04T15:19:12.591842Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-04T15:20:10.596273Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("docs\\development")}
+2025-10-04T15:20:10.596303Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T15:20:10.995061Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("docs")}
+2025-10-04T15:20:10.995084Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T15:20:30.499838Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("docs\\development\\resolucao-erros-compilacao.md")}
+2025-10-04T15:20:30.499872Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-04T15:20:30.690179Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("docs\\development")}
+2025-10-04T15:20:30.690201Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))

@@ -1,0 +1,112 @@
+import { z } from 'zod';
+export declare const transactionTypeEnum: z.ZodEnum<["INCOME", "EXPENSE", "TRANSFER"]>;
+export type TransactionType = z.infer<typeof transactionTypeEnum>;
+export declare const createTransactionSchema: z.ZodObject<{
+    accountId: z.ZodString;
+    categoryId: z.ZodString;
+    type: z.ZodEnum<["INCOME", "EXPENSE", "TRANSFER"]>;
+    amount: z.ZodNumber;
+    description: z.ZodString;
+    effectiveDate: z.ZodDate;
+    dueDate: z.ZodOptional<z.ZodDate>;
+    isPaid: z.ZodDefault<z.ZodBoolean>;
+    notes: z.ZodOptional<z.ZodString>;
+    tags: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
+    transferAccountId: z.ZodOptional<z.ZodString>;
+}, "strip", z.ZodTypeAny, {
+    type: "INCOME" | "EXPENSE" | "TRANSFER";
+    description: string;
+    amount: number;
+    accountId: string;
+    categoryId: string;
+    effectiveDate: Date;
+    isPaid: boolean;
+    dueDate?: Date | undefined;
+    notes?: string | undefined;
+    tags?: string[] | undefined;
+    transferAccountId?: string | undefined;
+}, {
+    type: "INCOME" | "EXPENSE" | "TRANSFER";
+    description: string;
+    amount: number;
+    accountId: string;
+    categoryId: string;
+    effectiveDate: Date;
+    dueDate?: Date | undefined;
+    isPaid?: boolean | undefined;
+    notes?: string | undefined;
+    tags?: string[] | undefined;
+    transferAccountId?: string | undefined;
+}>;
+export type CreateTransactionDto = z.infer<typeof createTransactionSchema>;
+export declare const updateTransactionSchema: z.ZodObject<{
+    accountId: z.ZodOptional<z.ZodString>;
+    categoryId: z.ZodOptional<z.ZodString>;
+    type: z.ZodOptional<z.ZodEnum<["INCOME", "EXPENSE", "TRANSFER"]>>;
+    amount: z.ZodOptional<z.ZodNumber>;
+    description: z.ZodOptional<z.ZodString>;
+    effectiveDate: z.ZodOptional<z.ZodDate>;
+    dueDate: z.ZodOptional<z.ZodOptional<z.ZodDate>>;
+    isPaid: z.ZodOptional<z.ZodDefault<z.ZodBoolean>>;
+    notes: z.ZodOptional<z.ZodOptional<z.ZodString>>;
+    tags: z.ZodOptional<z.ZodOptional<z.ZodArray<z.ZodString, "many">>>;
+    transferAccountId: z.ZodOptional<z.ZodOptional<z.ZodString>>;
+}, "strip", z.ZodTypeAny, {
+    type?: "INCOME" | "EXPENSE" | "TRANSFER" | undefined;
+    description?: string | undefined;
+    amount?: number | undefined;
+    accountId?: string | undefined;
+    categoryId?: string | undefined;
+    effectiveDate?: Date | undefined;
+    dueDate?: Date | undefined;
+    isPaid?: boolean | undefined;
+    notes?: string | undefined;
+    tags?: string[] | undefined;
+    transferAccountId?: string | undefined;
+}, {
+    type?: "INCOME" | "EXPENSE" | "TRANSFER" | undefined;
+    description?: string | undefined;
+    amount?: number | undefined;
+    accountId?: string | undefined;
+    categoryId?: string | undefined;
+    effectiveDate?: Date | undefined;
+    dueDate?: Date | undefined;
+    isPaid?: boolean | undefined;
+    notes?: string | undefined;
+    tags?: string[] | undefined;
+    transferAccountId?: string | undefined;
+}>;
+export type UpdateTransactionDto = z.infer<typeof updateTransactionSchema>;
+export declare const transactionFilterSchema: z.ZodObject<{
+    accountId: z.ZodOptional<z.ZodString>;
+    categoryId: z.ZodOptional<z.ZodString>;
+    type: z.ZodOptional<z.ZodEnum<["INCOME", "EXPENSE", "TRANSFER"]>>;
+    startDate: z.ZodOptional<z.ZodDate>;
+    endDate: z.ZodOptional<z.ZodDate>;
+    minAmount: z.ZodOptional<z.ZodNumber>;
+    maxAmount: z.ZodOptional<z.ZodNumber>;
+    isPaid: z.ZodOptional<z.ZodBoolean>;
+    search: z.ZodOptional<z.ZodString>;
+}, "strip", z.ZodTypeAny, {
+    type?: "INCOME" | "EXPENSE" | "TRANSFER" | undefined;
+    accountId?: string | undefined;
+    categoryId?: string | undefined;
+    isPaid?: boolean | undefined;
+    startDate?: Date | undefined;
+    endDate?: Date | undefined;
+    minAmount?: number | undefined;
+    maxAmount?: number | undefined;
+    search?: string | undefined;
+}, {
+    type?: "INCOME" | "EXPENSE" | "TRANSFER" | undefined;
+    accountId?: string | undefined;
+    categoryId?: string | undefined;
+    isPaid?: boolean | undefined;
+    startDate?: Date | undefined;
+    endDate?: Date | undefined;
+    minAmount?: number | undefined;
+    maxAmount?: number | undefined;
+    search?: string | undefined;
+}>;
+export type TransactionFilterDto = z.infer<typeof transactionFilterSchema>;
+//# sourceMappingURL=transaction.schema.d.ts.map

@@ -1,0 +1,17 @@
+{
+  "name": "@fayol/shared-types",
+  "version": "0.1.0",
+  "description": "Shared TypeScript types for Fayol project",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "keywords": ["fayol", "types", "typescript"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
+}

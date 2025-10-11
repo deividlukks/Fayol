@@ -1,0 +1,366 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// MODELOS DE USUÁRIOS E AUTENTICAÇÃO
+// ============================================
+
+model User {
+  id              String    @id @default(uuid())
+  name            String
+  email           String    @unique
+  phone           String    @unique
+  cpf             String?   @unique // Opcional
+  password        String
+  investorProfile String    @default("moderate") // conservative, moderate, aggressive
+  isActive        Boolean   @default(true)
+
+  // 2FA (Two-Factor Authentication)
+  twoFactorEnabled Boolean @default(false)
+  twoFactorSecret  String? // Secret TOTP para autenticação
+
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  deletedAt       DateTime?
+
+  // Relação com plano de assinatura
+  subscriptionId String?       @unique
+  subscription   Subscription? @relation(fields: [subscriptionId], references: [id])
+
+  accounts              Account[]
+  categories            Category[]
+  subcategories         Subcategory[]
+  transactions          Transaction[]
+  recurringTransactions RecurringTransaction[]
+
+  @@map("users")
+}
+
+model Admin {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  phone     String?  @unique
+  cpf       String?  @unique
+  password  String
+  role      String   @default("admin") // admin, super_admin
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  auditLogs AuditLog[]
+
+  @@map("admins")
+}
+
+// ============================================
+// MODELOS FINANCEIROS DO USUÁRIO
+// ============================================
+
+model Account {
+  id             String   @id @default(uuid())
+  userId         String
+  name           String
+  type           String // checking, savings, wallet, credit_card
+  initialBalance Decimal  @default(0) @db.Decimal(10, 2)
+  currency       String   @default("BRL")
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  user                  User                   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  transactions          Transaction[]
+  recurringTransactions RecurringTransaction[]
+
+  @@map("accounts")
+}
+
+model Category {
+  id        String   @id @default(uuid())
+  name      String
+  type      String // income, expense, investment
+  userId    String? // null = sistema (padrão), preenchido = personalizada
+  parentId  String? // Para hierarquia multinível
+  icon      String?
+  color     String?
+  isSystem  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user                  User?                  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  parent                Category?              @relation("CategoryHierarchy", fields: [parentId], references: [id], onDelete: Cascade)
+  children              Category[]             @relation("CategoryHierarchy")
+  subcategories         Subcategory[]
+  transactions          Transaction[]
+  recurringTransactions RecurringTransaction[]
+
+  @@map("categories")
+}
+
+model Subcategory {
+  id         String   @id @default(uuid())
+  categoryId String
+  name       String
+  userId     String? // null = sistema (padrão), preenchido = personalizada
+  isSystem   Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  category     Category      @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  user         User?         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  transactions Transaction[]
+
+  @@map("subcategories")
+}
+
+model Transaction {
+  id                String    @id @default(uuid())
+  code              String    @unique // auto-incrementado "000001"
+  userId            String
+  accountId         String
+  movementType      String // income, expense
+  launchType        String // income, expense, investment, transfer
+  categoryId        String
+  subcategoryId     String?
+  amount            Decimal   @db.Decimal(10, 2)
+  description       String?
+  dueDate           DateTime?
+  receiptDate       DateTime?
+  effectiveDate     DateTime?
+  isRecurring       Boolean   @default(false)
+  recurrencePeriod  String? // daily, weekly, monthly, yearly
+  isPaused          Boolean   @default(false)
+  transferId        String? // ID da transação de transferência relacionada
+  transferAccountId String? // ID da conta de destino/origem (para transferências)
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  account     Account      @relation(fields: [accountId], references: [id], onDelete: Restrict)
+  category    Category     @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  subcategory Subcategory? @relation(fields: [subcategoryId], references: [id], onDelete: SetNull)
+
+  @@map("transactions")
+}
+
+model RecurringTransaction {
+  id          String   @id @default(uuid())
+  userId      String
+  accountId   String
+  categoryId  String
+  type        String // INCOME, EXPENSE
+  amount      Decimal  @db.Decimal(10, 2)
+  description String
+  frequency   String // DAILY, WEEKLY, BIWEEKLY, MONTHLY, QUARTERLY, YEARLY
+  startDate   DateTime
+  endDate     DateTime?
+  nextDate    DateTime
+  isActive    Boolean  @default(true)
+  notes       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  account  Account  @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  category Category @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+
+  @@map("recurring_transactions")
+}
+
+// ============================================
+// MODELOS DE PLANOS E ASSINATURAS
+// ============================================
+
+model Plan {
+  id          String  @id @default(uuid())
+  name        String  @unique // "Free", "Basic", "Premium", "Enterprise"
+  description String?
+  price       Decimal @db.Decimal(10, 2)
+
+  // Limites do plano
+  maxAccounts        Int     @default(5)
+  maxTransactions    Int     @default(1000) // Por mês
+  maxCategories      Int     @default(20)
+  hasInvestments     Boolean @default(false)
+  hasTrading         Boolean @default(false)
+  hasAI              Boolean @default(false)
+  hasOpenBanking     Boolean @default(false)
+  hasPrioritySupport Boolean @default(false)
+
+  // Recurso de IA
+  aiRequestsPerMonth Int @default(0)
+
+  billingPeriod String @default("monthly") // monthly, yearly
+  trialDays     Int    @default(0)
+
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  subscriptions Subscription[]
+
+  @@map("plans")
+}
+
+model Subscription {
+  id     String @id @default(uuid())
+  planId String
+
+  status       String    @default("active") // active, canceled, expired, trial
+  startDate    DateTime  @default(now())
+  endDate      DateTime?
+  trialEndDate DateTime?
+
+  // Pagamento
+  paymentMethod   String? // credit_card, boleto, pix
+  lastPaymentDate DateTime?
+  nextBillingDate DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  plan     Plan      @relation(fields: [planId], references: [id])
+  user     User?
+  payments Payment[]
+  invoices Invoice[]
+
+  @@map("subscriptions")
+}
+
+// ============================================
+// MODELOS DE PAGAMENTOS E COBRANÇAS
+// ============================================
+
+model Payment {
+  id             String  @id @default(uuid())
+  subscriptionId String
+  invoiceId      String?
+
+  amount   Decimal @db.Decimal(10, 2)
+  currency String  @default("BRL")
+
+  status String @default("pending") // pending, processing, paid, failed, refunded
+  method String // credit_card, boleto, pix
+
+  // Informações do gateway de pagamento
+  gatewayId       String? // ID no gateway (Stripe, PagSeguro, etc)
+  gatewayResponse Json?
+
+  paidAt     DateTime?
+  refundedAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  subscription Subscription @relation(fields: [subscriptionId], references: [id])
+  invoice      Invoice?     @relation(fields: [invoiceId], references: [id])
+
+  @@map("payments")
+}
+
+model Invoice {
+  id             String @id @default(uuid())
+  subscriptionId String
+  invoiceNumber  String @unique // INV-2024-0001
+
+  amount      Decimal @db.Decimal(10, 2)
+  tax         Decimal @default(0) @db.Decimal(10, 2)
+  totalAmount Decimal @db.Decimal(10, 2)
+
+  status String @default("pending") // pending, paid, overdue, canceled
+
+  dueDate  DateTime
+  paidDate DateTime?
+
+  // PDF da fatura
+  pdfUrl String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  subscription Subscription @relation(fields: [subscriptionId], references: [id])
+  payments     Payment[]
+
+  @@map("invoices")
+}
+
+// ============================================
+// MODELOS DE SISTEMA
+// ============================================
+
+model SystemVersion {
+  id          String   @id @default(uuid())
+  version     String   @unique // "1.0.0", "1.1.0"
+  releaseDate DateTime @default(now())
+
+  // Tipo de release
+  type String // major, minor, patch
+
+  // Descrição da versão
+  title       String
+  description String?
+
+  // Notas de release
+  features Json? // Array de features
+  bugFixes Json? // Array de bug fixes
+  breaking Json? // Array de breaking changes
+
+  // Status
+  isCurrent Boolean @default(false)
+  isActive  Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("system_versions")
+}
+
+model AuditLog {
+  id      String  @id @default(uuid())
+  adminId String?
+
+  // Informações da ação
+  action   String // CREATE, UPDATE, DELETE, LOGIN, LOGOUT
+  entity   String // User, Plan, Subscription, etc
+  entityId String?
+
+  // Detalhes
+  oldValue Json?
+  newValue Json?
+
+  // IP e User Agent
+  ipAddress String?
+  userAgent String?
+
+  createdAt DateTime @default(now())
+
+  admin Admin? @relation(fields: [adminId], references: [id])
+
+  @@map("audit_logs")
+}
+
+// ============================================
+// MODELOS DE CONFIGURAÇÃO DO SISTEMA
+// ============================================
+
+model SystemConfig {
+  id    String @id @default(uuid())
+  key   String @unique
+  value Json
+
+  description String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("system_configs")
+}

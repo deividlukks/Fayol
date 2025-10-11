@@ -1,0 +1,647 @@
+2025-10-10T00:12:39.952822Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T00:12:39.952933Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T00:12:40.343843Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T00:12:40.343875Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T00:21:05.045125Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T00:21:05.045291Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T00:22:20.747048Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".claude\\settings.local.json"), AnchoredSystemPathBuf(".claude\\settings.local.json.tmp.18712.1760055740660"), AnchoredSystemPathBuf(".claude")}
+2025-10-10T00:22:20.748097Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T00:22:26.739067Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T00:22:26.739107Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T00:22:27.346458Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T00:22:27.346478Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T00:22:29.339817Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log")}
+2025-10-10T00:22:29.340937Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T01:01:32.816116Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-10T01:01:32.819745Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-10T01:01:33.407583Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T01:01:42.639774Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-10T01:01:42.639812Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-10T01:01:45.314099Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T01:04:57.359683Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T01:04:57.361634Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T01:04:57.446133Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T01:04:57.446168Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T01:04:57.851997Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T01:04:57.852023Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T01:04:58.040511Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T01:04:58.040534Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T01:04:58.149152Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T01:04:58.149169Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T01:04:58.241967Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T01:04:58.241991Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T01:04:58.349385Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T01:04:58.349428Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T01:04:58.944603Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T01:04:58.944622Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T01:15:36.349374Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("docs\\status"), AnchoredSystemPathBuf("docs\\status\\STATUS_ATUAL_2025-10-09.md"), AnchoredSystemPathBuf("docs\\status\\STATUS_ATUAL_2025-10-09.md.tmp.35564.1760058936310")}
+2025-10-10T01:15:36.351122Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T01:16:07.651432Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T01:16:07.651472Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T01:16:07.744713Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T01:16:07.744781Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T01:16:07.838122Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T01:16:07.838144Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T01:16:07.946502Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T01:16:07.946527Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T01:16:08.040627Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T01:16:08.040654Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T01:18:52.441963Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\package.json.tmp.35564.1760059132371"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\package.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot")}
+2025-10-10T01:18:52.442425Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T01:19:05.246884Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\jest.config.js"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\jest.config.js.tmp.35564.1760059145168")}
+2025-10-10T01:19:05.246949Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T01:19:14.738682Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\src\\__tests__"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\src")}
+2025-10-10T01:19:14.738709Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T01:19:14.811487Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T01:19:26.452116Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\src\\__tests__"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\src\\__tests__\\setup.ts"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\src\\__tests__\\setup.ts.tmp.35564.1760059166410")}
+2025-10-10T01:19:26.452160Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T01:19:52.339827Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\src\\__tests__\\services"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\src\\__tests__\\services\\redis.service.spec.ts"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\src\\__tests__\\services\\redis.service.spec.ts.tmp.35564.1760059192305")}
+2025-10-10T01:19:52.339849Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T01:19:52.521464Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\src\\__tests__")}
+2025-10-10T01:19:52.521479Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T01:19:52.521548Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T01:20:41.449907Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\src\\__tests__\\services\\session.service.spec.ts"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\src\\__tests__\\services\\session.service.spec.ts.tmp.35564.1760059241344"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\src\\__tests__\\services")}
+2025-10-10T01:20:41.449939Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T01:21:23.837971Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\src\\__tests__\\providers")}
+2025-10-10T01:21:23.837998Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T01:21:24.053940Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\src\\__tests__\\providers\\provider.factory.spec.ts.tmp.35564.1760059283836"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\src\\__tests__\\providers\\provider.factory.spec.ts"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\src\\__tests__"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\src\\__tests__\\providers")}
+2025-10-10T01:21:24.053955Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T01:21:24.053977Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T01:21:49.142006Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("_tmp_35472_2b243a07fc19261c95a2a04a31d52ecb"), AnchoredSystemPathBuf("")}
+2025-10-10T01:21:49.142030Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T01:21:56.361546Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("pnpm-lock.yaml"), AnchoredSystemPathBuf(""), AnchoredSystemPathBuf("pnpm-lock.yaml.35262669")}
+2025-10-10T01:21:56.361577Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T01:22:47.143335Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\jest.config.js.tmp.35564.1760059367140")}
+2025-10-10T01:22:47.143407Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T01:22:47.351856Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\jest.config.js.tmp.35564.1760059367140"), AnchoredSystemPathBuf("apps\\whatsapp-bot"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\jest.config.js")}
+2025-10-10T01:22:47.351886Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T01:22:47.351971Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T01:23:31.445124Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\src\\types"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\src\\types\\session.types.ts"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\src\\types\\session.types.ts.tmp.35564.1760059411419")}
+2025-10-10T01:23:31.445180Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T01:23:45.044055Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\src\\services\\session.service.ts.tmp.35564.1760059424987"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\src\\services"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\src\\services\\session.service.ts")}
+2025-10-10T01:23:45.044084Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T01:23:58.543281Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\src\\__tests__\\services\\session.service.spec.ts"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\src\\__tests__\\services"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\src\\__tests__\\services\\session.service.spec.ts.tmp.35564.1760059438483")}
+2025-10-10T01:23:58.543308Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T01:24:28.053239Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\src\\types"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\src\\types\\config.types.ts.tmp.35564.1760059468002"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\src\\types\\config.types.ts")}
+2025-10-10T01:24:28.053269Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T01:26:19.542128Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("docs\\status"), AnchoredSystemPathBuf("docs\\status\\IMPLEMENTACOES-2025-10-09.md"), AnchoredSystemPathBuf("docs\\status\\IMPLEMENTACOES-2025-10-09.md.tmp.35564.1760059579457")}
+2025-10-10T01:26:19.542178Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T01:28:39.240319Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("docs\\status"), AnchoredSystemPathBuf("docs\\status\\RESUMO_EXECUTIVO_2025-10-09.md"), AnchoredSystemPathBuf("docs\\status\\RESUMO_EXECUTIVO_2025-10-09.md.tmp.35564.1760059719213")}
+2025-10-10T01:28:39.240354Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T01:29:25.237328Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T01:29:25.237355Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T01:29:25.341715Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T01:29:25.341747Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T01:29:26.442375Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T01:29:26.442396Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T01:33:54.550280Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\src\\providers\\baileys\\baileys.provider.ts"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\src\\providers\\baileys"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\src\\providers\\baileys\\baileys.provider.ts.tmp.35564.1760060034498")}
+2025-10-10T01:33:54.550338Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T01:33:54.848760Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log")}
+2025-10-10T01:33:54.848786Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T01:33:54.922098Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T01:34:26.648881Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(""), AnchoredSystemPathBuf("_tmp_15644_118967cbb22a94cc678b120ff6329fef")}
+2025-10-10T01:34:26.648918Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T01:34:35.839314Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("pnpm-lock.yaml.2642423273"), AnchoredSystemPathBuf("pnpm-lock.yaml"), AnchoredSystemPathBuf("")}
+2025-10-10T01:34:35.839352Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T01:34:37.641119Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\package.json.1214979982")}
+2025-10-10T01:34:37.641153Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-10T01:34:37.885899Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\package.json.1214979982"), AnchoredSystemPathBuf("apps\\backend\\package.json"), AnchoredSystemPathBuf("apps\\backend")}
+2025-10-10T01:34:37.885930Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-10T01:34:37.886040Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T01:35:08.447307Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\main.ts.tmp.35564.1760060108346"), AnchoredSystemPathBuf("apps\\backend\\src\\main.ts"), AnchoredSystemPathBuf("apps\\backend\\src")}
+2025-10-10T01:35:08.447340Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-10T01:35:26.648190Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\src\\main.ts"), AnchoredSystemPathBuf("apps\\backend\\src\\main.ts.tmp.35564.1760060126565"), AnchoredSystemPathBuf("apps\\backend\\src")}
+2025-10-10T01:35:26.648278Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-10T01:36:12.343305Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\admin-panel"), AnchoredSystemPathBuf("apps")}
+2025-10-10T01:36:12.343380Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }, WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T01:36:12.343471Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T01:36:29.638249Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\admin-panel\\package.json"), AnchoredSystemPathBuf("apps\\admin-panel"), AnchoredSystemPathBuf("apps\\admin-panel\\package.json.tmp.35564.1760060189600")}
+2025-10-10T01:36:29.638322Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T01:36:44.537572Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\admin-panel\\tsconfig.json.tmp.35564.1760060204531"), AnchoredSystemPathBuf("apps\\admin-panel"), AnchoredSystemPathBuf("apps\\admin-panel\\tsconfig.json")}
+2025-10-10T01:36:44.537591Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T01:36:59.437470Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\admin-panel"), AnchoredSystemPathBuf("apps\\admin-panel\\next.config.js"), AnchoredSystemPathBuf("apps\\admin-panel\\next.config.js.tmp.35564.1760060219407")}
+2025-10-10T01:36:59.437494Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T01:37:17.039634Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\admin-panel"), AnchoredSystemPathBuf("apps\\admin-panel\\tailwind.config.ts"), AnchoredSystemPathBuf("apps\\admin-panel\\tailwind.config.ts.tmp.35564.1760060237011")}
+2025-10-10T01:37:17.039668Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T01:37:30.741274Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\admin-panel\\postcss.config.js.tmp.35564.1760060250739")}
+2025-10-10T01:37:30.741304Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T01:37:30.839001Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\admin-panel"), AnchoredSystemPathBuf("apps\\admin-panel\\postcss.config.js"), AnchoredSystemPathBuf("apps\\admin-panel\\postcss.config.js.tmp.35564.1760060250739")}
+2025-10-10T01:37:30.839043Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T01:37:46.639349Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\admin-panel\\src\\components"), AnchoredSystemPathBuf("apps\\admin-panel"), AnchoredSystemPathBuf("apps\\admin-panel\\src"), AnchoredSystemPathBuf("apps\\admin-panel\\src\\app"), AnchoredSystemPathBuf("apps\\admin-panel\\src\\lib")}
+2025-10-10T01:37:46.639385Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T01:37:46.751935Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\admin-panel\\public"), AnchoredSystemPathBuf("apps\\admin-panel\\src"), AnchoredSystemPathBuf("apps\\admin-panel"), AnchoredSystemPathBuf("apps\\admin-panel\\src\\store")}
+2025-10-10T01:37:46.751967Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T01:38:08.239699Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\admin-panel\\src\\app\\globals.css.tmp.35564.1760060288144"), AnchoredSystemPathBuf("apps\\admin-panel\\src\\app"), AnchoredSystemPathBuf("apps\\admin-panel\\src\\app\\globals.css")}
+2025-10-10T01:38:08.239750Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T01:38:23.843172Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\admin-panel\\src\\app\\layout.tsx"), AnchoredSystemPathBuf("apps\\admin-panel\\src\\app"), AnchoredSystemPathBuf("apps\\admin-panel\\src\\app\\layout.tsx.tmp.35564.1760060303783")}
+2025-10-10T01:38:23.843199Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T01:39:40.745277Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(""), AnchoredSystemPathBuf("PROXIMOS_PASSOS.md"), AnchoredSystemPathBuf("PROXIMOS_PASSOS.md.tmp.35564.1760060380727")}
+2025-10-10T01:39:40.745309Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T01:40:27.849558Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T01:40:27.849590Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T01:40:28.137300Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T01:40:28.137323Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T01:45:35.938553Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T01:45:35.938616Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T01:45:36.643145Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T01:45:36.643169Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T01:46:16.939697Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("docs\\ERROS.MD")}
+2025-10-10T01:46:16.939754Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T01:46:17.539631Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("docs")}
+2025-10-10T01:46:17.539680Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T01:46:20.450471Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("docs\\ERROS.MD")}
+2025-10-10T01:46:20.450496Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T01:46:52.843982Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("docs\\ERROS.mdf"), AnchoredSystemPathBuf("docs\\ERROS.MD"), AnchoredSystemPathBuf("docs")}
+2025-10-10T01:46:52.844015Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T01:46:57.043330Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("docs"), AnchoredSystemPathBuf("docs\\ERROS.md"), AnchoredSystemPathBuf("docs\\ERROS.mdf")}
+2025-10-10T01:46:57.043368Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T01:47:35.342502Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(""), AnchoredSystemPathBuf("_tmp_36516_2839f00641fc01c9d553dc687f1f24b2")}
+2025-10-10T01:47:35.342546Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T01:47:39.737445Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("pnpm-lock.yaml"), AnchoredSystemPathBuf("pnpm-lock.yaml.2440819027"), AnchoredSystemPathBuf("")}
+2025-10-10T01:47:39.737479Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T01:47:39.843835Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend"), AnchoredSystemPathBuf("apps\\backend\\package.json"), AnchoredSystemPathBuf("apps\\backend\\package.json.1135448780")}
+2025-10-10T01:47:39.843864Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-10T01:47:41.340868Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(""), AnchoredSystemPathBuf("_tmp_17084_144deba9bd881908199e5a864257a6c7")}
+2025-10-10T01:47:41.341053Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T01:48:01.548814Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\admin-panel\\package.json"), AnchoredSystemPathBuf("apps\\admin-panel\\package.json.tmp.35564.1760060881460"), AnchoredSystemPathBuf("apps\\admin-panel")}
+2025-10-10T01:48:01.548851Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T01:48:17.637119Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("_tmp_37196_46204ff09ec492872d8ac058ce3f7143")}
+2025-10-10T01:48:17.637145Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T01:48:17.746728Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T01:48:17.746754Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T01:48:30.843715Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("pnpm-lock.yaml.157530149"), AnchoredSystemPathBuf(""), AnchoredSystemPathBuf("pnpm-lock.yaml")}
+2025-10-10T01:48:30.843755Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T01:48:33.751531Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("pnpm-lock.yaml.1382436576"), AnchoredSystemPathBuf(""), AnchoredSystemPathBuf("pnpm-lock.yaml")}
+2025-10-10T01:48:33.752614Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T01:48:34.244395Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\package.json.2862175765")}
+2025-10-10T01:48:34.244425Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-10T01:48:34.492809Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\package.json"), AnchoredSystemPathBuf("apps\\backend\\package.json.2862175765"), AnchoredSystemPathBuf("apps\\backend")}
+2025-10-10T01:48:34.492837Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-10T01:48:34.492983Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T01:49:43.351730Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".claude\\settings.local.json.tmp.35564.1760060983297"), AnchoredSystemPathBuf(".claude"), AnchoredSystemPathBuf(".claude\\settings.local.json")}
+2025-10-10T01:49:43.351759Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T01:49:46.454545Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-10T01:49:46.454570Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-10T01:49:46.539307Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T01:49:56.337949Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-10T01:49:56.338003Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-10T01:49:58.490949Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T01:50:31.641882Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-10T01:50:31.641927Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-10T01:50:31.814029Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T01:50:41.546508Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-10T01:50:41.546550Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-10T01:50:44.612629Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T01:53:21.847282Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T01:53:21.847316Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T01:53:22.747084Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T01:53:22.747105Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T01:53:23.443773Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T01:53:23.443797Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T02:06:10.039276Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(""), AnchoredSystemPathBuf("_tmp_32364_6b7aa8b8b26509657cbf03f0472df659")}
+2025-10-10T02:06:10.039378Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T02:06:19.468387Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(""), AnchoredSystemPathBuf("pnpm-lock.yaml.3977723033"), AnchoredSystemPathBuf("pnpm-lock.yaml")}
+2025-10-10T02:06:19.468422Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T02:06:19.641554Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\package.json.3347352733"), AnchoredSystemPathBuf("apps\\backend\\package.json"), AnchoredSystemPathBuf("apps\\backend")}
+2025-10-10T02:06:19.641581Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-10T02:06:23.546736Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("_tmp_35892_3e4732c67ab1884eed66c0ce549d2144")}
+2025-10-10T02:06:23.546775Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T02:06:23.651040Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("_tmp_35892_3e4732c67ab1884eed66c0ce549d2144"), AnchoredSystemPathBuf("")}
+2025-10-10T02:06:23.651066Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T02:06:23.744557Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("_tmp_35892_3e4732c67ab1884eed66c0ce549d2144")}
+2025-10-10T02:06:23.744607Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T02:06:23.843536Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T02:06:23.843614Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T02:06:36.640655Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(""), AnchoredSystemPathBuf("pnpm-lock.yaml"), AnchoredSystemPathBuf("pnpm-lock.yaml.4262935683")}
+2025-10-10T02:06:36.640691Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T02:06:39.338235Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\package.json"), AnchoredSystemPathBuf("apps\\backend\\package.json.2236491681"), AnchoredSystemPathBuf("apps\\backend")}
+2025-10-10T02:06:39.338271Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-10T02:06:39.545178Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:06:51.751023Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-10T02:06:51.751061Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-10T02:06:51.827271Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:07:46.646360Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("docs\\ERROS.md.tmp.35564.1760062066559"), AnchoredSystemPathBuf("docs\\ERROS.md"), AnchoredSystemPathBuf("docs")}
+2025-10-10T02:07:46.646391Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T02:08:02.348460Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T02:08:02.348495Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T02:08:03.244287Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T02:08:03.244320Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T02:08:08.739188Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log")}
+2025-10-10T02:08:08.739216Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:08:11.422548Z  WARN daemon_server: turborepo_lib::commands::daemon: daemon already running
+2025-10-10T02:08:23.740346Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.1")}
+2025-10-10T02:08:23.740644Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:08:25.452743Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.1"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json")}
+2025-10-10T02:08:25.452776Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:08:25.535747Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:08:26.946346Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-10T02:08:26.946384Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-10T02:08:32.352502Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.2"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json")}
+2025-10-10T02:08:32.352543Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:08:32.418061Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:08:34.644580Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.2")}
+2025-10-10T02:08:34.644654Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:08:34.664828Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:08:35.842307Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.3")}
+2025-10-10T02:08:35.842338Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:08:35.933493Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:08:39.149149Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.3")}
+2025-10-10T02:08:39.149168Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:08:39.202774Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:08:39.339872Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.4")}
+2025-10-10T02:08:39.339895Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:08:39.462747Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:08:43.751523Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.5")}
+2025-10-10T02:08:43.751559Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:08:43.808124Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:08:44.543494Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.4")}
+2025-10-10T02:08:44.543515Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:08:44.630722Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:08:47.247329Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json")}
+2025-10-10T02:08:47.247356Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:08:47.370884Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:08:47.371118Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.6"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json")}
+2025-10-10T02:08:47.371141Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:08:47.371251Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:08:50.541474Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.5")}
+2025-10-10T02:08:50.541500Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:08:50.605755Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:08:52.838988Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json")}
+2025-10-10T02:08:52.839014Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:08:52.955488Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:08:52.955636Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.7")}
+2025-10-10T02:08:52.955648Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:08:52.955682Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:08:56.651463Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log")}
+2025-10-10T02:08:56.651507Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:08:56.755914Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:08:58.241417Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.6"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors")}
+2025-10-10T02:08:58.241447Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:08:58.279000Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:08:58.943894Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.8"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json")}
+2025-10-10T02:08:58.943922Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:08:59.016356Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:09:05.141600Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.9"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json")}
+2025-10-10T02:09:05.141640Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:09:05.189612Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:09:06.251387Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.7"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json")}
+2025-10-10T02:09:06.251405Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:09:06.252231Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:09:11.139175Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.10")}
+2025-10-10T02:09:11.139229Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:09:11.223355Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:09:13.941139Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.8"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json")}
+2025-10-10T02:09:13.941187Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:09:14.008378Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:09:16.743240Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.11")}
+2025-10-10T02:09:16.743284Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:09:16.809816Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:09:21.651549Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.9"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors")}
+2025-10-10T02:09:21.651588Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:09:21.701190Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:09:22.549693Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.12"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json")}
+2025-10-10T02:09:22.549715Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:09:22.568660Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:09:28.043904Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.13"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs")}
+2025-10-10T02:09:28.043929Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:09:28.067586Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:09:28.838903Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.10"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json")}
+2025-10-10T02:09:28.838993Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:09:28.874631Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:09:34.240568Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.14"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json")}
+2025-10-10T02:09:34.240624Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:09:34.326188Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:09:36.643994Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.11"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs")}
+2025-10-10T02:09:36.644049Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:09:36.768633Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:09:40.143994Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.15")}
+2025-10-10T02:09:40.144056Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:09:40.264204Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:09:44.646710Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.12"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors")}
+2025-10-10T02:09:44.646727Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:09:44.730480Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:09:45.750182Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.16"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json")}
+2025-10-10T02:09:45.750216Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:09:45.809442Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:09:52.046297Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.17"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json")}
+2025-10-10T02:09:52.046346Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:09:52.101743Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:09:52.551047Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.13")}
+2025-10-10T02:09:52.551071Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:09:52.583247Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:09:56.938606Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.18"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json")}
+2025-10-10T02:09:56.938633Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:09:56.976339Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:09:59.950549Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.14"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json")}
+2025-10-10T02:09:59.950590Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:10:00.111379Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:10:04.140014Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.19")}
+2025-10-10T02:10:04.140047Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:10:04.203553Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:10:08.839945Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.15")}
+2025-10-10T02:10:08.839991Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:10:08.926792Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:10:10.550389Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.20")}
+2025-10-10T02:10:10.550423Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:10:10.565591Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:10:17.149678Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.21"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json")}
+2025-10-10T02:10:17.149714Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:10:17.230433Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:10:17.352559Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.16"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json")}
+2025-10-10T02:10:17.352578Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:10:17.421826Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:10:23.848359Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.22"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json")}
+2025-10-10T02:10:23.848390Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:10:23.944287Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:10:25.753096Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.17")}
+2025-10-10T02:10:25.753116Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:10:25.808150Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:10:30.945440Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.23"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json")}
+2025-10-10T02:10:30.945476Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:10:31.014385Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:10:34.946452Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.18")}
+2025-10-10T02:10:34.946508Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:10:35.017023Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:10:37.939732Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.24")}
+2025-10-10T02:10:37.939763Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:10:37.991009Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:10:45.239769Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.19"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs")}
+2025-10-10T02:10:45.239802Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:10:45.418428Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:10:45.418780Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.25")}
+2025-10-10T02:10:45.418811Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:10:45.418898Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:10:52.739422Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.26"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json")}
+2025-10-10T02:10:52.739479Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:10:52.843840Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:10:55.547650Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.20")}
+2025-10-10T02:10:55.547678Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:10:55.636072Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:11:02.654755Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.27")}
+2025-10-10T02:11:02.654804Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:11:02.704105Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:11:20.840520Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.3"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.1"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.5"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.3"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.2"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.6"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.2"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.4"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.1"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.4"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.5"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.7")}
+2025-10-10T02:11:20.840612Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:11:20.953659Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:14:12.842665Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors")}
+2025-10-10T02:14:12.842700Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:14:12.889570Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:14:17.043634Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-10T02:14:17.043686Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-10T02:14:17.181951Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:14:24.747480Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.28")}
+2025-10-10T02:14:24.747520Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:14:24.844246Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:14:26.345817Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.21"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs")}
+2025-10-10T02:14:26.345846Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:14:26.459760Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:14:27.949136Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-10T02:14:27.949169Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-10T02:14:30.623499Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:14:31.152733Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.29"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json")}
+2025-10-10T02:14:31.152765Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:14:31.271365Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:14:33.654029Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.22")}
+2025-10-10T02:14:33.654057Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:14:33.723906Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:14:34.853357Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.30")}
+2025-10-10T02:14:34.853383Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:14:34.871821Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:14:37.747519Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.23"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors")}
+2025-10-10T02:14:37.747548Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:14:37.852614Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:14:37.947266Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json")}
+2025-10-10T02:14:37.947285Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:14:38.050812Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:14:38.050942Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.31")}
+2025-10-10T02:14:38.050950Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:14:38.050975Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:14:41.839148Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.32"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs")}
+2025-10-10T02:14:41.839245Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:14:41.942702Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:14:42.844228Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.24"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json")}
+2025-10-10T02:14:42.844266Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:14:42.879975Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:14:45.149551Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.33")}
+2025-10-10T02:14:45.149585Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:14:45.216627Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:14:47.141615Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.25"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json")}
+2025-10-10T02:14:47.141641Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:14:47.187907Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:14:48.451080Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.34")}
+2025-10-10T02:14:48.451103Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:14:48.535084Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:14:51.453698Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.27")}
+2025-10-10T02:14:51.453807Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:14:51.588022Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:14:52.946599Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.26"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json")}
+2025-10-10T02:14:52.946656Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:14:52.997327Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:14:53.351691Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.35"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json")}
+2025-10-10T02:14:53.351711Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:14:53.437604Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:14:56.951716Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.36")}
+2025-10-10T02:14:56.951741Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:14:56.967768Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:14:57.548931Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.27"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors")}
+2025-10-10T02:14:57.548984Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:14:57.623183Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:15:00.740533Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.37")}
+2025-10-10T02:15:00.740558Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:15:00.807407Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:15:02.649729Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.28")}
+2025-10-10T02:15:02.649760Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:15:02.741314Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:15:04.651165Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.38"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json")}
+2025-10-10T02:15:04.651188Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:15:04.736939Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:15:07.351909Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.29"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors")}
+2025-10-10T02:15:07.351950Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:15:07.379845Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:15:07.839112Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.39"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json")}
+2025-10-10T02:15:07.839137Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:15:07.969644Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:15:12.551097Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.40"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json")}
+2025-10-10T02:15:12.551124Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:15:12.574817Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:15:13.152144Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.30")}
+2025-10-10T02:15:13.152168Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:15:13.169449Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:15:16.253378Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.41")}
+2025-10-10T02:15:16.253398Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:15:16.294450Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:15:17.741157Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.31")}
+2025-10-10T02:15:17.741248Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:15:17.786690Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:15:19.738564Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.42"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json")}
+2025-10-10T02:15:19.738596Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:15:20.039058Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:15:23.440937Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.32")}
+2025-10-10T02:15:23.440976Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:15:23.517405Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:15:24.243506Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.43"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json")}
+2025-10-10T02:15:24.243537Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:15:24.319646Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:15:28.648786Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.44"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json")}
+2025-10-10T02:15:28.648821Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:15:28.713153Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:15:29.045635Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.33")}
+2025-10-10T02:15:29.045663Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:15:29.068721Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:15:33.847465Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.45")}
+2025-10-10T02:15:33.847503Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:15:33.978282Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:15:35.841090Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.34")}
+2025-10-10T02:15:35.841116Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:15:35.892195Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:15:37.753025Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.46")}
+2025-10-10T02:15:37.753050Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:15:37.853216Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:15:41.451823Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.35"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors")}
+2025-10-10T02:15:41.451859Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:15:41.528616Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:15:42.850292Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.47")}
+2025-10-10T02:15:42.850336Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:15:42.947687Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:15:47.045388Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.48")}
+2025-10-10T02:15:47.045426Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:15:47.139195Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:15:47.251150Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.36"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs")}
+2025-10-10T02:15:47.251178Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:15:47.305676Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:15:52.248792Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.49"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json")}
+2025-10-10T02:15:52.248824Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:15:52.251432Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:15:53.451518Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.37"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json")}
+2025-10-10T02:15:53.451540Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:15:53.559462Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:15:56.642278Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.50")}
+2025-10-10T02:15:56.642312Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:15:56.771283Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:15:59.344588Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.38"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors")}
+2025-10-10T02:15:59.344669Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:15:59.437996Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:16:02.350249Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.51")}
+2025-10-10T02:16:02.350298Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:16:02.468221Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:16:07.245560Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.39"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.52")}
+2025-10-10T02:16:07.246029Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:16:07.499695Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:16:13.339096Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.53")}
+2025-10-10T02:16:13.339121Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:16:13.402264Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:16:15.348166Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.40"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors")}
+2025-10-10T02:16:15.348193Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:16:15.408037Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:16:19.742984Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.54")}
+2025-10-10T02:16:19.743013Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:16:19.996201Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:16:33.448823Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.22"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.21"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.24"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.28"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.29"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.30"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.31"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.32"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.33"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.34"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.23"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.25"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-09.log.20")}
+2025-10-10T02:16:33.448980Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:16:33.589956Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:41:18.945300Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("docs\\ERROS.md")}
+2025-10-10T02:41:18.945340Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T02:41:41.643810Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("_tmp_16096_4c04903b65ca32b69bd0e2670477b956"), AnchoredSystemPathBuf("")}
+2025-10-10T02:41:41.643834Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T02:42:05.650275Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\admin-panel")}
+2025-10-10T02:42:05.650999Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/admin-panel"), path: AnchoredSystemPathBuf("apps\\admin-panel") }}))
+2025-10-10T02:42:25.741574Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\admin-panel\\src\\app\\page.tsx"), AnchoredSystemPathBuf("apps\\admin-panel\\src\\app"), AnchoredSystemPathBuf("apps\\admin-panel\\src\\app\\page.tsx.tmp.35564.1760064145700")}
+2025-10-10T02:42:25.741620Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/admin-panel"), path: AnchoredSystemPathBuf("apps\\admin-panel") }}))
+2025-10-10T02:42:42.850175Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".claude\\settings.local.json"), AnchoredSystemPathBuf(".claude\\settings.local.json.tmp.35564.1760064162790"), AnchoredSystemPathBuf(".claude")}
+2025-10-10T02:42:42.850206Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T02:42:47.049924Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\admin-panel\\next-env.d.ts"), AnchoredSystemPathBuf("apps\\admin-panel")}
+2025-10-10T02:42:47.050022Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/admin-panel"), path: AnchoredSystemPathBuf("apps\\admin-panel") }}))
+2025-10-10T02:42:47.541136Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\admin-panel")}
+2025-10-10T02:42:47.541169Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/admin-panel"), path: AnchoredSystemPathBuf("apps\\admin-panel") }}))
+2025-10-10T02:42:47.616268Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:44:12.852285Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs")}
+2025-10-10T02:44:12.852319Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T02:44:12.984526Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:44:15.503290Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("docs"), AnchoredSystemPathBuf("docs\\ERROS.md"), AnchoredSystemPathBuf("docs\\ERROS.md.tmp.35564.1760064255250")}
+2025-10-10T02:44:15.503336Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T02:44:20.753442Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-10T02:44:20.753486Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-10T02:44:21.128137Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:44:35.257512Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T02:44:35.257570Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T02:44:35.343013Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T02:44:35.343036Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T02:44:35.548962Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T02:44:35.548983Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T02:44:37.040826Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-10T02:44:37.040868Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-10T02:44:40.684948Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T02:48:18.547200Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("docs\\COMO-ACESSAR.md"), AnchoredSystemPathBuf("docs"), AnchoredSystemPathBuf("docs\\COMO-ACESSAR.md.tmp.35564.1760064498513")}
+2025-10-10T02:48:18.547420Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T02:49:30.039095Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("README.md.tmp.35564.1760064570023"), AnchoredSystemPathBuf(""), AnchoredSystemPathBuf("README.md")}
+2025-10-10T02:49:30.039142Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T02:49:41.750017Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(""), AnchoredSystemPathBuf("README.md"), AnchoredSystemPathBuf("README.md.tmp.35564.1760064581666")}
+2025-10-10T02:49:41.750059Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T02:50:12.649733Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T02:50:12.649781Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T02:50:12.745240Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T02:50:12.745338Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T02:50:13.447436Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T02:50:13.447471Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T03:00:00.450272Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-10.log"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\.bdd37cc7432a00038f0ad795d93782c01bd65281-audit.json"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-09.log.54")}
+2025-10-10T03:00:00.450755Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T03:00:00.610738Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T06:35:31.966991Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\logs\\.32624035d868a6c4a8b2f6789ce974247aed7ee4-audit.json"), AnchoredSystemPathBuf("apps\\backend\\logs\\.780cf74c81a13d6e5e3423100a02e3f2eadedb9a-audit.json")}
+2025-10-10T06:35:31.969920Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-10T06:35:35.355375Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\logs\\error-2025-10-10.log"), AnchoredSystemPathBuf("apps\\backend\\logs\\combined-2025-10-10.log"), AnchoredSystemPathBuf("apps\\backend\\logs")}
+2025-10-10T06:35:35.355606Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-10T06:35:35.419943Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T06:36:50.644653Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-10.log"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\.8a698f96ca276d78165fab2c18788210cff7053a-audit.json")}
+2025-10-10T06:36:50.645044Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T06:36:50.716848Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T06:36:52.640691Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\errors\\error-2025-10-10.log")}
+2025-10-10T06:36:52.640723Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T06:36:52.781426Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T06:37:44.142672Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("docs\\ERROS.md")}
+2025-10-10T06:37:44.142707Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T06:38:22.354104Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".claude\\settings.local.json"), AnchoredSystemPathBuf(".claude"), AnchoredSystemPathBuf(".claude\\settings.local.json.tmp.35564.1760078302324"), AnchoredSystemPathBuf(".claude\\settings.local.json.tmp.35564.1760078302291")}
+2025-10-10T06:38:22.354133Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T06:39:05.553169Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot"), AnchoredSystemPathBuf("apps\\whatsapp-bot\\.env.tmp.35564.1760078345464")}
+2025-10-10T06:39:05.553206Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T06:39:05.597069Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T22:26:58.897222Z  WARN daemon_server: turborepo_lib::commands::daemon: daemon already running
+2025-10-10T22:27:03.784796Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\whatsapp-bot\\logs\\whatsapp-bot-2025-10-10.log")}
+2025-10-10T22:27:03.787406Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/whatsapp-bot"), path: AnchoredSystemPathBuf("apps\\whatsapp-bot") }}))
+2025-10-10T22:27:04.966396Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\logs\\errors\\.9827b80ddc4d7273d42e3e71db5212ba01d4da1e-audit.json")}
+2025-10-10T22:27:04.966439Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-10T22:27:05.929103Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\telegram-bot\\logs\\errors"), AnchoredSystemPathBuf("apps\\telegram-bot\\logs\\errors\\error-2025-10-10.log")}
+2025-10-10T22:27:05.929142Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/telegram-bot"), path: AnchoredSystemPathBuf("apps\\telegram-bot") }}))
+2025-10-10T22:27:05.929203Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T22:27:06.064209Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-10T22:27:06.064240Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-10T22:27:23.163606Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-10T22:27:23.163667Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-10T22:27:24.849359Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T22:33:13.982104Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("scripts\\health-check.js"), AnchoredSystemPathBuf("scripts"), AnchoredSystemPathBuf(""), AnchoredSystemPathBuf("scripts\\health-check.js.tmp.35564.1760135593920")}
+2025-10-10T22:33:13.985543Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T22:33:14.556743Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("scripts"), AnchoredSystemPathBuf("scripts\\cleanup.js"), AnchoredSystemPathBuf("scripts\\cleanup.js.tmp.35564.1760135594530")}
+2025-10-10T22:33:14.556770Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T22:33:32.856997Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(""), AnchoredSystemPathBuf("package.json"), AnchoredSystemPathBuf("package.json.tmp.35564.1760135612798")}
+2025-10-10T22:33:32.857027Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(All)
+2025-10-10T22:34:48.860950Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T22:34:48.860973Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T22:34:53.861817Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T22:34:53.861849Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T22:34:54.253197Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T22:34:54.253240Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T22:36:14.452681Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T22:36:14.452718Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T22:36:14.564334Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T22:36:14.564351Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T22:36:14.752369Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("")}
+2025-10-10T22:36:14.752433Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({}))
+2025-10-10T22:36:46.763006Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(""), AnchoredSystemPathBuf(".eslintrc.js.tmp.35564.1760135806696"), AnchoredSystemPathBuf(".eslintrc.js")}
+2025-10-10T22:36:46.763070Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-10-10T22:37:32.365005Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend\\test\\ai.e2e-spec.ts.tmp.35564.1760135852282"), AnchoredSystemPathBuf("apps\\backend\\test"), AnchoredSystemPathBuf("apps\\backend\\test\\ai.e2e-spec.ts")}
+2025-10-10T22:37:32.365058Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-10T22:38:06.857602Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-10T22:38:06.857637Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-10T22:38:06.949391Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-10-10T22:38:15.853169Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("apps\\backend")}
+2025-10-10T22:38:15.853207Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("@fayol/backend"), path: AnchoredSystemPathBuf("apps\\backend") }}))
+2025-10-10T22:38:18.107313Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun

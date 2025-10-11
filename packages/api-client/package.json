@@ -1,0 +1,22 @@
+{
+  "name": "@fayol/api-client",
+  "version": "0.1.0",
+  "description": "API client for Fayol backend",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "keywords": ["fayol", "api", "client"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@fayol/shared-types": "workspace:*",
+    "axios": "^1.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.5",
+    "typescript": "^5.3.3"
+  }
+}
