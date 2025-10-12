@@ -1,0 +1,89 @@
+# Dependências
+node_modules
+.pnpm-store
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# Saídas de build
+dist
+.next
+.turbo
+build
+coverage
+out
+
+# Logs
+*.log
+logs
+*.log.*
+
+# Arquivos temporários
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Arquivos de ambiente
+.env
+.env.*
+!.env.example
+!.env.production.example
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# IDEs
+.vscode
+.idea
+*.sublime-project
+*.sublime-workspace
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# CI/CD
+.github
+.gitlab-ci.yml
+
+# Documentação
+*.md
+!README.md
+docs
+
+# Testes
+*.test.js
+*.test.ts
+*.spec.js
+*.spec.ts
+test
+tests
+__tests__
+coverage
+
+# Scripts de desenvolvimento
+scripts/*.sh
+scripts/*.js
+
+# Arquivos do Prisma (mantemos apenas o schema)
+apps/backend/prisma/migrations
+apps/backend/prisma/*.db
+apps/backend/prisma/*.db-journal
+
+# Sessões e dados temporários do WhatsApp Bot
+apps/whatsapp-bot/sessions
+apps/whatsapp-bot/logs
+
+# Telegram Bot
+apps/telegram-bot/logs
+apps/telegram-bot/sessions
+
+# Mobile App (se existir)
+apps/mobile-app/android/app/build
+apps/mobile-app/ios/Pods
+apps/mobile-app/.expo

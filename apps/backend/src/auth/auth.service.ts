@@ -261,9 +261,8 @@ export class AuthService {
     const payload = {
       fayolId,
       type: 'step',
-      exp: Math.floor(Date.now() / 1000) + 300, // 5 minutos
     };
-    return this.jwtService.sign(payload);
+    return this.jwtService.sign(payload, { expiresIn: '5m' });
   }
 
   async validateUser(userId: string) {

@@ -1,10 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  transpilePackages: ['@fayol/api-client', '@fayol/shared-types', '@fayol/shared-utils'],
-  env: {
-    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api/v1',
-  },
-}
+  // Adiciona a configuração de saída 'standalone'
+  // Isto cria uma pasta '.next/standalone' com todas as dependências necessárias,
+  // ideal para implementações em Docker.
+  output: 'standalone',
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

@@ -134,7 +134,7 @@ export class WebhookServer {
       const provider = await ProviderFactory.getProvider(
         session.userId,
         phone,
-        session.tier === 'premium' ? 'PREMIUM' : 'FREE'
+        session.tier as any
       );
 
       // Processa mensagem de forma assíncrona

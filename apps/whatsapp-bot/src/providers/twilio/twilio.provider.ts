@@ -238,7 +238,7 @@ export class TwilioProvider implements IWhatsAppProvider {
         throw new Error('[Twilio] Mensagem não contém mídia');
       }
 
-      const media = await this.client.messages(messageId).media(0).fetch();
+      const media = await this.client.messages(messageId).media('0').fetch();
 
       // Twilio fornece URI, precisamos fazer o download
       const response = await fetch(`https://api.twilio.com${media.uri}`, {

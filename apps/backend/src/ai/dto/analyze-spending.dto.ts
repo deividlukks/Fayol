@@ -1,91 +1,134 @@
-import { IsArray, IsOptional, ValidateNested } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { Type } from 'class-transformer';
 
 export class TransactionDto {
-  @ApiProperty({
-    description: 'ID da transação',
-    example: '123e4567-e89b-12d3-a456-426614174000',
-  })
+  @ApiProperty()
   id: string;
 
-  @ApiProperty({
-    description: 'Descrição da transação',
-    example: 'Compra no supermercado Extra',
-  })
+  @ApiProperty()
+  date: Date;
+
+  @ApiProperty()
   description: string;
 
-  @ApiProperty({
-    description: 'Valor da transação (positivo para receita, negativo para despesa)',
-    example: -150.5,
-  })
+  @ApiProperty()
   amount: number;
 
-  @ApiProperty({
-    description: 'Data da transação (ISO 8601)',
-    example: '2025-10-01T10:30:00Z',
-  })
-  date: string;
+  @ApiProperty({ enum: ['income', 'expense'] })
+  movementType: 'income' | 'expense';
 
-  @ApiProperty({
-    description: 'Categoria da transação',
-    example: 'Alimentação',
-    required: false,
-  })
+  @ApiProperty({ required: false })
   category?: string;
 
-  @ApiProperty({
-    description: 'Subcategoria da transação',
-    example: 'Supermercado',
-    required: false,
-  })
+  @ApiProperty({ required: false })
   subcategory?: string;
 }
 
-export class AnalyzeSpendingDto {
-  @ApiProperty({
-    description: 'Lista de transações para análise',
-    type: [TransactionDto],
-  })
-  @IsArray()
-  @ValidateNested({ each: true })
-  @Type(() => TransactionDto)
-  transactions: TransactionDto[];
-}
-
-export interface SpendingSummary {
+export class SpendingSummary {
+  @ApiProperty({ description: 'Rendimento total no período.' })
   totalIncome: number;
+
+  @ApiProperty({ description: 'Despesa total no período.' })
   totalExpenses: number;
+
+  @ApiProperty({ description: 'Balanço (rendimento - despesas).' })
   balance: number;
-  savingsRate: number;
+
+  @ApiProperty({ description: 'Taxa de poupança percentual.' })
+  savingsRate: string;
+
+  @ApiProperty({ description: 'Número total de transações.' })
   transactionCount: number;
+
+  @ApiProperty({ description: 'Valor médio das transações de despesa.' }) // ✅ CORREÇÃO: Adicionado o novo campo.
   averageTransaction: number;
 }
 
-export interface CategoryBreakdown {
-  totals: Record<string, number>;
-  averages: Record<string, number>;
-  percentages: Record<string, number>;
-  counts: Record<string, number>;
-}
-
-export interface SpendingPattern {
+export class CategorySpending {
+  @ApiProperty({ description: 'Nome da categoria.' })
   category: string;
-  pattern: string;
-  description: string;
+
+  @ApiProperty({ description: 'Valor total gasto na categoria.' })
+  total: number;
+
+  @ApiProperty({ description: 'Percentagem do total de despesas.' })
+  percentage: number;
 }
 
-export interface TrendAnalysis {
-  direction: 'increasing' | 'decreasing' | 'stable';
-  percentageChange: number;
-  description: string;
+export class SpendingHistory {
+  @ApiProperty({ description: 'Data da transação (formato AAAA-MM-DD).' })
+  date: string;
+
+  @ApiProperty({ description: 'Valor da transação.' })
+  amount: number;
+
+  @ApiProperty({ description: 'Tipo de transação (income/expense).', enum: ['income', 'expense']})
+  type: 'income' | 'expense';
 }
 
-export interface SpendingAnalysisResponse {
+export class SpendingAnalysis {
+  @ApiProperty({ description: 'ID do utilizador.' })
+  userId: string;
+
+  @ApiProperty({ description: 'Data e hora em que a análise foi gerada.' })
+  generatedAt: Date;
+
+  @ApiProperty({ type: SpendingSummary })
   summary: SpendingSummary;
-  categoryBreakdown: CategoryBreakdown;
-  insights: string[];
-  patterns: SpendingPattern[];
-  trends: TrendAnalysis;
-  healthScore: number;
+
+  @ApiProperty({ type: [CategorySpending] })
+  categorySpending: CategorySpending[];
+
+  @ApiProperty({ type: [SpendingHistory] })
+  spendingHistory: SpendingHistory[];
+}
+
+export class Anomaly {
+    @ApiProperty()
+    transactionId: string;
+    @ApiProperty()
+    reason: string;
+    @ApiProperty()
+    severity: 'low' | 'medium' | 'high';
+}
+
+export class Recommendation {
+    @ApiProperty()
+    recommendationId: string;
+    @ApiProperty()
+    title: string;
+    @ApiProperty()
+    description: string;
+    @ApiProperty()
+    priority: 'low' | 'medium' | 'high';
+}
+
+export class SpendingPrediction {
+    @ApiProperty()
+    date: string;
+    @ApiProperty()
+    predictedExpenses: number;
+    @ApiProperty()
+    predictedIncome: number;
+}
+
+export class FuturePrediction {
+    @ApiProperty()
+    userId: string;
+    @ApiProperty()
+    days: number;
+    @ApiProperty({type: [SpendingPrediction]})
+    predictions: SpendingPrediction[];
+    @ApiProperty()
+    totalPredictedExpenses: number;
+    @ApiProperty()
+    totalPredictedIncome: number;
+}
+
+
+export class CategorySuggestion {
+    @ApiProperty()
+    suggestedCategory: string;
+
+    @ApiProperty()
+    confidence: number;
 }

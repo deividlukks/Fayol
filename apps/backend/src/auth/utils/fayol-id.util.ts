@@ -55,7 +55,7 @@ export class FayolIdUtil {
 
     // ID inválido
     return {
-      type: null,
+      type: FayolIdType.EMAIL, // Tipo padrão para IDs inválidos
       value: normalized,
       isValid: false,
     };

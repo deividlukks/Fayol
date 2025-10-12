@@ -1,9 +1,25 @@
 # ================================
-# MULTI-STAGE BUILD
+# MULTI-STAGE BUILD - WhatsApp Bot
 # ================================
 
 # ================================
-# Stage 1: Builder
+# Stage 1: Dependencies
+# ================================
+FROM node:20-alpine AS deps
+
+WORKDIR /app
+
+# Instala pnpm
+RUN npm install -g pnpm
+
+# Copia arquivos de dependências
+COPY package.json pnpm-lock.yaml* ./
+
+# Instala todas as dependências
+RUN pnpm install --frozen-lockfile
+
+# ================================
+# Stage 2: Builder
 # ================================
 FROM node:20-alpine AS builder
 
@@ -15,11 +31,8 @@ WORKDIR /app
 # Instala pnpm
 RUN npm install -g pnpm
 
-# Copia arquivos de dependências
-COPY package.json pnpm-lock.yaml ./
-
-# Instala dependências
-RUN pnpm install --frozen-lockfile --prod=false
+# Copia node_modules do estágio anterior
+COPY --from=deps /app/node_modules ./node_modules
 
 # Copia código fonte
 COPY . .
@@ -27,15 +40,14 @@ COPY . .
 # Build TypeScript
 RUN pnpm build
 
-# Remove dev dependencies
-RUN pnpm prune --prod
-
 # ================================
-# Stage 2: Production
+# Stage 3: Production Runtime
 # ================================
 FROM node:20-alpine
 
 WORKDIR /app
+
+ENV NODE_ENV=production
 
 # Instala pnpm
 RUN npm install -g pnpm
@@ -44,20 +56,23 @@ RUN npm install -g pnpm
 RUN addgroup -g 1001 -S nodejs && \
     adduser -S nodejs -u 1001
 
-# Copia node_modules e build do stage anterior
-COPY --from=builder --chown=nodejs:nodejs /app/node_modules ./node_modules
+# Copia arquivos de configuração
+COPY package.json pnpm-lock.yaml* ./
+
+# Instala apenas dependências de produção
+RUN pnpm install --prod --frozen-lockfile
+
+# Copia build do estágio anterior
 COPY --from=builder --chown=nodejs:nodejs /app/dist ./dist
-COPY --from=builder --chown=nodejs:nodejs /app/package.json ./
 
 # Cria diretórios necessários
 RUN mkdir -p sessions logs && \
-    chown -R nodejs:nodejs sessions logs
+    chown -R nodejs:nodejs /app
 
 # Muda para usuário não-root
 USER nodejs
 
 # Variáveis de ambiente padrão
-ENV NODE_ENV=production
 ENV SERVER_PORT=3002
 ENV LOG_LEVEL=info
 

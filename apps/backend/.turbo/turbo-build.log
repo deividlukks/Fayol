@@ -1,8 +1,0 @@
-
-> @fayol/backend@0.1.0 prebuild C:\Users\Deivid Lucas\Documents\Projetos\Fayol\apps\backend
-> rimraf dist
-
-
-> @fayol/backend@0.1.0 build C:\Users\Deivid Lucas\Documents\Projetos\Fayol\apps\backend
-> nest build
-

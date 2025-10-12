@@ -367,7 +367,7 @@ export class BaileysProvider implements IWhatsAppProvider {
       const jid = phone.replace('whatsapp:', '').replace(/\D/g, '') + '@s.whatsapp.net';
       const results = await this.sock.onWhatsApp(jid);
       const result = results && results.length > 0 ? results[0] : null;
-      return result?.exists || false;
+      return !!result?.exists;
     } catch (error) {
       logger.error('[Baileys] ❌ Erro ao verificar número:', error);
       return false;
