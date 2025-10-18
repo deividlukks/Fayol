@@ -124,6 +124,25 @@ export class ApiService {
     return response.data;
   }
 
+  async updateTransaction(token: string, transactionId: string, data: {
+    amount?: number;
+    description?: string;
+    categoryId?: string;
+    subcategoryId?: string;
+  }) {
+    const response = await this.client.patch(`/transactions/${transactionId}`, data, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    return response.data;
+  }
+
+  async deleteTransaction(token: string, transactionId: string) {
+    const response = await this.client.delete(`/transactions/${transactionId}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    return response.data;
+  }
+
   // Dashboard
   async getBalance(token: string) {
     const response = await this.client.get('/dashboard/balance', {
@@ -162,6 +181,52 @@ export class ApiService {
       { description },
       { headers: { Authorization: `Bearer ${token}` } }
     );
+    return response.data;
+  }
+
+  // Budgets
+  async getBudgetStatus(token: string) {
+    const response = await this.client.get('/budgets/status', {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    return response.data;
+  }
+
+  async createBudget(token: string, data: {
+    name: string;
+    amount: number;
+    period: string;
+    categoryId?: string;
+    startDate: string;
+    endDate?: string;
+    alertThreshold?: number;
+    isActive?: boolean;
+  }) {
+    const response = await this.client.post('/budgets', data, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    return response.data;
+  }
+
+  async getUnreadAlerts(token: string) {
+    const response = await this.client.get('/budgets/alerts/unread', {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    return response.data;
+  }
+
+  async markAlertAsRead(token: string, alertId: string) {
+    const response = await this.client.patch(`/budgets/alerts/${alertId}/read`, {}, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    return response.data;
+  }
+
+  // Charts
+  async getChart(token: string, type: 'spending-by-category' | 'monthly-comparison' | 'balance-evolution') {
+    const response = await this.client.get(`/charts/${type}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
     return response.data;
   }
 }

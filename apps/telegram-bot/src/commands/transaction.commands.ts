@@ -77,6 +77,234 @@ export async function cancelCommand(ctx: Context) {
   await ctx.reply('✅ Operação cancelada.');
 }
 
+export async function editarCommand(ctx: Context) {
+  if (!await requireAuth(ctx)) return;
+
+  const telegramId = ctx.from!.id;
+  const session = await sessionService.getSession(telegramId);
+
+  loggers.command('/editar', ctx.from);
+
+  try {
+    await ctx.reply('⏳ Buscando transações recentes...');
+
+    // Buscar últimas 10 transações
+    loggers.apiRequest('GET', '/transactions', { userId: telegramId, limit: 10 });
+    const result = await apiService.getTransactions(session!.accessToken, {
+      limit: 10,
+      offset: 0,
+    });
+
+    if (!result.data || result.data.length === 0) {
+      await ctx.reply(
+        '📝 Você não tem transações para editar.\n\n' +
+          'Use /addreceita ou /adddespesa para criar uma transação.',
+        { parse_mode: 'Markdown' }
+      );
+      return;
+    }
+
+    let message = '✏️ *Editar Transação*\n\n';
+    message += 'Selecione uma transação para editar:\n\n';
+
+    result.data.forEach((t: any, index: number) => {
+      const icon = t.movementType === 'income' ? '💰' : '💳';
+      const sign = t.movementType === 'income' ? '+' : '-';
+
+      message += `${index + 1}. ${icon} ${sign}${formatCurrency(t.amount)}\n`;
+      message += `   ${t.description || 'Sem descrição'}\n`;
+      message += `   #${t.code}\n\n`;
+    });
+
+    message += 'Digite o número da transação que deseja editar:';
+
+    await sessionService.saveUserState(telegramId, {
+      step: 'awaiting_transaction_select',
+      transactions: result.data,
+    });
+
+    await ctx.reply(message, { parse_mode: 'Markdown' });
+  } catch (error: any) {
+    loggers.apiError('GET', '/transactions', error, { userId: telegramId });
+    const errorMessage = error.response?.data?.message || 'Erro ao buscar transações';
+    await ctx.reply(`❌ ${errorMessage}`);
+  }
+}
+
+export async function handleEditTransactionFlow(ctx: Context) {
+  const telegramId = ctx.from?.id;
+  if (!telegramId || !ctx.message || !('text' in ctx.message)) return;
+
+  const state = await sessionService.getUserState(telegramId);
+  if (!state || !state.step?.startsWith('awaiting_transaction_')) return;
+
+  const text = ctx.message.text;
+  const session = await sessionService.getSession(telegramId);
+
+  if (!session) {
+    await sessionService.clearUserState(telegramId);
+    await ctx.reply('❌ Sessão expirada. Faça login novamente com /login');
+    return;
+  }
+
+  try {
+    if (state.step === 'awaiting_transaction_select') {
+      const index = parseInt(text) - 1;
+
+      if (isNaN(index) || index < 0 || index >= state.transactions.length) {
+        await ctx.reply('❌ Número inválido. Tente novamente.');
+        return;
+      }
+
+      const transaction = state.transactions[index];
+
+      const icon = transaction.movementType === 'income' ? '💰' : '💳';
+      const sign = transaction.movementType === 'income' ? '+' : '-';
+
+      let message = `${icon} *Transação Selecionada*\n\n`;
+      message += `*Valor:* ${sign}${formatCurrency(transaction.amount)}\n`;
+      message += `*Descrição:* ${transaction.description || 'Sem descrição'}\n`;
+      message += `*Categoria:* ${transaction.category.name}\n`;
+      message += `*Conta:* ${transaction.account.name}\n`;
+      message += `*Código:* #${transaction.code}\n\n`;
+      message += 'O que deseja editar?\n\n';
+      message += '1️⃣ Valor\n';
+      message += '2️⃣ Descrição\n';
+      message += '3️⃣ Excluir transação\n';
+      message += '4️⃣ Cancelar\n\n';
+      message += 'Digite o número:';
+
+      await sessionService.saveUserState(telegramId, {
+        ...state,
+        step: 'awaiting_edit_option',
+        selectedTransaction: transaction,
+      });
+
+      await ctx.reply(message, { parse_mode: 'Markdown' });
+    } else if (state.step === 'awaiting_edit_option') {
+      if (text === '1') {
+        await sessionService.saveUserState(telegramId, {
+          ...state,
+          step: 'awaiting_new_amount',
+        });
+
+        await ctx.reply(
+          '💵 Digite o novo valor:\n\n' +
+            'Exemplo: 150 ou 150.00',
+          { parse_mode: 'Markdown' }
+        );
+      } else if (text === '2') {
+        await sessionService.saveUserState(telegramId, {
+          ...state,
+          step: 'awaiting_new_description',
+        });
+
+        await ctx.reply(
+          '📝 Digite a nova descrição:',
+          { parse_mode: 'Markdown' }
+        );
+      } else if (text === '3') {
+        // Excluir transação
+        const transaction = state.selectedTransaction;
+
+        try {
+          await apiService.deleteTransaction(session.accessToken, transaction.id);
+
+          await sessionService.clearUserState(telegramId);
+
+          await ctx.reply(
+            '✅ *Transação Excluída!*\n\n' +
+              `A transação #${transaction.code} foi removida com sucesso.`,
+            { parse_mode: 'Markdown' }
+          );
+        } catch (error: any) {
+          loggers.apiError('DELETE', `/transactions/${transaction.id}`, error, {
+            userId: telegramId,
+          });
+
+          await sessionService.clearUserState(telegramId);
+
+          const errorMessage = error.response?.data?.message || 'Erro ao excluir transação';
+          await ctx.reply(`❌ ${errorMessage}`);
+        }
+      } else if (text === '4') {
+        await sessionService.clearUserState(telegramId);
+        await ctx.reply('✅ Operação cancelada.');
+      } else {
+        await ctx.reply('❌ Opção inválida. Digite 1, 2, 3 ou 4.');
+      }
+    } else if (state.step === 'awaiting_new_amount') {
+      const amount = parseFloat(text.replace(',', '.').replace(/[^\d.]/g, ''));
+
+      if (isNaN(amount) || amount <= 0) {
+        await ctx.reply('❌ Valor inválido. Digite um número maior que zero.');
+        return;
+      }
+
+      const transaction = state.selectedTransaction;
+
+      try {
+        await apiService.updateTransaction(session.accessToken, transaction.id, {
+          amount,
+        });
+
+        await sessionService.clearUserState(telegramId);
+
+        await ctx.reply(
+          '✅ *Transação Atualizada!*\n\n' +
+            `Novo valor: ${formatCurrency(amount)}\n` +
+            `Código: #${transaction.code}`,
+          { parse_mode: 'Markdown' }
+        );
+      } catch (error: any) {
+        loggers.apiError('PATCH', `/transactions/${transaction.id}`, error, {
+          userId: telegramId,
+        });
+
+        await sessionService.clearUserState(telegramId);
+
+        const errorMessage = error.response?.data?.message || 'Erro ao atualizar transação';
+        await ctx.reply(`❌ ${errorMessage}`);
+      }
+    } else if (state.step === 'awaiting_new_description') {
+      const description = text;
+      const transaction = state.selectedTransaction;
+
+      try {
+        await apiService.updateTransaction(session.accessToken, transaction.id, {
+          description,
+        });
+
+        await sessionService.clearUserState(telegramId);
+
+        await ctx.reply(
+          '✅ *Transação Atualizada!*\n\n' +
+            `Nova descrição: ${description}\n` +
+            `Código: #${transaction.code}`,
+          { parse_mode: 'Markdown' }
+        );
+      } catch (error: any) {
+        loggers.apiError('PATCH', `/transactions/${transaction.id}`, error, {
+          userId: telegramId,
+        });
+
+        await sessionService.clearUserState(telegramId);
+
+        const errorMessage = error.response?.data?.message || 'Erro ao atualizar transação';
+        await ctx.reply(`❌ ${errorMessage}`);
+      }
+    }
+  } catch (error: any) {
+    loggers.error('Erro no fluxo de edição de transação', error, {
+      userId: telegramId,
+      state,
+    });
+
+    await sessionService.clearUserState(telegramId);
+    await ctx.reply('❌ Erro inesperado. Tente novamente com /editar');
+  }
+}
+
 export async function handleTransactionFlow(ctx: Context) {
   const telegramId = ctx.from?.id;
   if (!telegramId || !ctx.message || !('text' in ctx.message)) return;

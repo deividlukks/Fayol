@@ -30,12 +30,24 @@ import {
   addReceitaCommand,
   addDespesaCommand,
   cancelCommand,
+  editarCommand,
   handleTransactionFlow,
+  handleEditTransactionFlow,
 } from './commands/transaction.commands';
 
 import { saldoCommand, extratoCommand, relatorioCommand } from './commands/query.commands';
 import { categoriasCommand } from './commands/category.commands';
 import { ajudaCommand } from './commands/help.commands';
+import {
+  orcamentosCommand,
+  novoOrcamentoCommand,
+  alertasCommand,
+  handleBudgetFlow,
+} from './commands/budget.commands';
+import {
+  graficosCommand,
+  handleChartFlow,
+} from './commands/charts.commands';
 
 import {
   contasCommand,
@@ -68,12 +80,17 @@ bot.command('menu', menuCommand);
 bot.command('contas', contasCommand);
 bot.command('addreceita', addReceitaCommand);
 bot.command('adddespesa', addDespesaCommand);
+bot.command('editar', editarCommand);
 bot.command('cancelar', cancelCommand);
 bot.command('saldo', saldoCommand);
 bot.command('extrato', extratoCommand);
 bot.command('relatorio', relatorioCommand);
 bot.command('categorias', categoriasCommand);
 bot.command('ajuda', ajudaCommand);
+bot.command('orcamentos', orcamentosCommand);
+bot.command('novoorcamento', novoOrcamentoCommand);
+bot.command('alertas', alertasCommand);
+bot.command('graficos', graficosCommand);
 
 // Callback query handlers
 
@@ -179,6 +196,24 @@ bot.on(message('text'), async (ctx) => {
     state.step === 'awaiting_account_selection'
   ) {
     await handleTransactionFlow(ctx);
+    return;
+  }
+
+  // Handle budget flow
+  if (state.step?.startsWith('awaiting_budget_')) {
+    await handleBudgetFlow(ctx);
+    return;
+  }
+
+  // Handle edit transaction flow
+  if (state.step?.startsWith('awaiting_transaction_') || state.step === 'awaiting_new_amount' || state.step === 'awaiting_new_description' || state.step === 'awaiting_edit_option') {
+    await handleEditTransactionFlow(ctx);
+    return;
+  }
+
+  // Handle chart flow
+  if (state.step === 'awaiting_chart_selection') {
+    await handleChartFlow(ctx);
     return;
   }
 });

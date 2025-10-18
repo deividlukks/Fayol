@@ -5,6 +5,7 @@ import {
   BadRequestException,
 } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
+import { BudgetsService } from '../budgets/budgets.service';
 import { CreateTransactionDto } from './dto/create-transaction.dto';
 import { UpdateTransactionDto } from './dto/update-transaction.dto';
 import { FilterTransactionDto } from './dto/filter-transaction.dto';
@@ -12,7 +13,10 @@ import { TransferDto } from './dto/transfer.dto';
 
 @Injectable()
 export class TransactionsService {
-  constructor(private prisma: PrismaService) {}
+  constructor(
+    private prisma: PrismaService,
+    private budgetsService: BudgetsService,
+  ) {}
 
   async create(userId: string, createTransactionDto: CreateTransactionDto) {
     const { accountId, categoryId, subcategoryId, ...data } = createTransactionDto;
@@ -44,7 +48,7 @@ export class TransactionsService {
       ? String(Number(lastTransaction.code) + 1).padStart(6, '0')
       : '000001';
 
-    return this.prisma.transaction.create({
+    const transaction = await this.prisma.transaction.create({
       data: {
         ...data,
         code: nextCode,
@@ -59,6 +63,15 @@ export class TransactionsService {
         subcategory: true,
       },
     });
+
+    // Verificar orçamentos após criar despesa
+    if (data.movementType === 'expense') {
+      await this.budgetsService.checkBudgetLimits(userId, categoryId).catch(err => {
+        console.error('Erro ao verificar limites de orçamento:', err);
+      });
+    }
+
+    return transaction;
   }
 
   async findAll(userId: string, filters?: FilterTransactionDto) {

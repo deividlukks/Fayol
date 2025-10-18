@@ -46,4 +46,31 @@ export class ExportController {
       message: 'Use o conteúdo para fazer download do backup',
     };
   }
+
+  @Get('pdf')
+  @ApiOperation({ summary: 'Exportar relatório mensal para HTML/PDF' })
+  @ApiQuery({ name: 'year', required: false })
+  @ApiQuery({ name: 'month', required: false })
+  async exportPdf(
+    @CurrentUser() user: any,
+    @Query('year') year?: number,
+    @Query('month') month?: number,
+  ) {
+    const now = new Date();
+    const targetYear = year || now.getFullYear();
+    const targetMonth = month || now.getMonth() + 1;
+
+    const { filename, content, mimeType } = await this.exportService.exportToPDF(
+      user.id,
+      targetYear,
+      targetMonth,
+    );
+
+    return {
+      filename,
+      content,
+      mimeType,
+      message: 'Relatório em HTML. Pode ser convertido para PDF com ferramentas online.',
+    };
+  }
 }

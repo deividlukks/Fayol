@@ -1,6 +1,6 @@
 # ✅ Refatoração dos Seeds - Resumo Executivo
 
-**Data:** 11/10/2025  
+**Data:** 11/10/2025
 **Status:** ✅ CONCLUÍDO
 
 ---
@@ -243,6 +243,6 @@ A refatoração dos seeds foi concluída com sucesso! O sistema agora é:
 
 ---
 
-**Responsável:** Claude AI  
-**Data:** 11/10/2025  
+**Responsável:** Deivid Lucas
+**Data:** 11/10/2025
 **Status:** ✅ CONCLUÍDO

@@ -17,6 +17,9 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { ReportsModule } from './reports/reports.module';
 import { AiModule } from './ai/ai.module';
 import { ExportModule } from './export/export.module';
+import { BudgetsModule } from './budgets/budgets.module';
+import { ChartsModule } from './charts/charts.module';
+import { NotificationsModule } from './notifications/notifications.module';
 
 // Interceptors
 import { HttpLoggingInterceptor } from './common/interceptors/http-logging.interceptor';
@@ -49,6 +52,9 @@ import { CorrelationIdMiddleware } from './common/middleware/correlation-id.midd
     ReportsModule,
     AiModule,
     ExportModule,
+    BudgetsModule,
+    ChartsModule,
+    NotificationsModule,
   ],
   providers: [
     // Interceptor global de logging
