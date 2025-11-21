@@ -1,0 +1,17 @@
+{
+  "name": "@fayol/shared-types",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "license": "MIT",
+  "author": "Deivid Lucas",
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "type-check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "eslint": "^9.39.1"
+  }
+}

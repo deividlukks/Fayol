@@ -1,0 +1,94 @@
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: fayol_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: fayol_dev
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - fayol_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: fayol_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - fayol_network
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # MongoDB for Logs/Analytics (Opcional - Futuro)
+  mongodb:
+    image: mongo:7
+    container_name: fayol_mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: fayol_logs
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - fayol_network
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # pgAdmin (Interface visual para o Banco - Opcional)
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: fayol_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@fayol.app
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    networks:
+      - fayol_network
+    depends_on:
+      - postgres
+
+  # Redis Commander (Interface visual para o Redis - Opcional)
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: fayol_redis_commander
+    environment:
+      - REDIS_HOSTS=default:redis:6379
+    ports:
+      - "8081:8081"
+    networks:
+      - fayol_network
+    depends_on:
+      - redis
+
+volumes:
+  postgres_data:
+  redis_data:
+  mongodb_data:
+
+networks:
+  fayol_network:
+    driver: bridge
