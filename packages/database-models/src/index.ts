@@ -1,6 +1,9 @@
 import { PrismaClient } from '@prisma/client';
 
-// Evita múltiplas instâncias do Prisma em desenvolvimento (Hot Reload)
+// Exporta tudo do cliente gerado (Tipos: User, Account, etc.)
+export * from '@prisma/client';
+
+// Exporta uma instância global (opcional, útil para scripts isolados)
 const globalForPrisma = global as unknown as { prisma: PrismaClient };
 
 export const prisma =
@@ -10,5 +13,3 @@ export const prisma =
   });
 
 if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;
-
-export * from '@prisma/client';

@@ -1,8 +1,10 @@
 import { z } from 'zod';
 import { REGEX, LIMITS, ERROR_MESSAGES } from '@fayol/shared-constants';
 
+// Login: Ajustado para aceitar e-mail ou telefone (string simples)
 export const loginSchema = z.object({
-  email: z.string().email(ERROR_MESSAGES.INVALID_EMAIL),
+  // Removemos .email() para permitir que o usuário envie o telefone neste campo
+  email: z.string().min(1, ERROR_MESSAGES.REQUIRED_FIELD), 
   password: z.string().min(1, ERROR_MESSAGES.REQUIRED_FIELD),
 });
 

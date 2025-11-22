@@ -1,29 +1,23 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { APP_CONFIG } from '@fayol/shared-constants';
-import { Logger, ValidationPipe } from '@nestjs/common';
+import { Logger } from '@nestjs/common';
 import { AllExceptionsFilter } from './common/filters/all-exceptions.filter';
 import { ResponseInterceptor } from './common/interceptors/response.interceptor';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-// import { patchNestJsSwagger } from 'nestjs-zod'; <--- REMOVIDO
+import { ZodValidationPipe } from 'nestjs-zod'; // <--- Importante: Usar o pipe do Zod
 
 async function bootstrap() {
   const logger = new Logger('Bootstrap');
   
-  // patchNestJsSwagger(); <--- REMOVIDO
-
   const app = await NestFactory.create(AppModule);
   
   // Configurações Globais
   app.enableCors();
   app.setGlobalPrefix('api');
 
-  // Validação automática (integrada com nestjs-zod através do createZodDto nos DTOs)
-  app.useGlobalPipes(new ValidationPipe({
-    transform: true,
-    whitelist: true,
-    forbidNonWhitelisted: true,
-  }));
+  // CORREÇÃO: Substituímos ValidationPipe (class-validator) por ZodValidationPipe
+  app.useGlobalPipes(new ZodValidationPipe());
 
   // Filtros e Interceptors
   app.useGlobalFilters(new AllExceptionsFilter());

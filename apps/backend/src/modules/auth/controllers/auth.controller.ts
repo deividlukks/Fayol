@@ -14,12 +14,11 @@ export class AuthController {
 
   @Post('check')
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Verifica se um usuário existe (para fluxo de bots)' })
+  @ApiOperation({ summary: 'Verifica se um usuário existe e retorna metadados básicos' })
   @ApiBody({ schema: { type: 'object', properties: { identifier: { type: 'string', example: 'user@email.com' } } } })
-  @ApiResponse({ status: 200, description: 'Retorna se o usuário existe (true/false).' })
+  @ApiResponse({ status: 200, description: 'Retorna { exists: boolean, name?: string }.' })
   async check(@Body('identifier') identifier: string) {
-    const exists = await this.authService.checkUserExistence(identifier);
-    return { exists };
+    return this.authService.checkUserExistence(identifier);
   }
 
   @Post('login')

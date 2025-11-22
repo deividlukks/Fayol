@@ -20,5 +20,7 @@
     "noFallthroughCasesInSwitch": false,
     "noEmit": false,
     "allowImportingTsExtensions": false
-  }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "test", "**/*.spec.ts"]
 }

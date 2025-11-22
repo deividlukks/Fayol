@@ -2,7 +2,7 @@ import { Injectable, NotFoundException, ConflictException } from '@nestjs/common
 import { PrismaService } from '../../../prisma/prisma.service';
 import { User } from '@fayol/database-models';
 import * as bcrypt from 'bcrypt';
-import { RegisterDto } from '../../auth/dto/auth.dto'; // Ou create-user.dto se tiver separado
+import { RegisterDto } from '../../auth/dto/auth.dto';
 import { UpdateUserDto } from '../dto/users.dto';
 
 @Injectable()
@@ -12,10 +12,7 @@ export class UsersService {
   async create(data: RegisterDto): Promise<User> {
     const existingUser = await this.prisma.user.findFirst({
       where: { 
-        OR: [
-          { email: data.email },
-          // Se o cadastro permitisse telefone, validaríamos aqui também
-        ]
+        email: { equals: data.email, mode: 'insensitive' }
       },
     });
 
@@ -49,22 +46,24 @@ export class UsersService {
   }
 
   async findByEmail(email: string): Promise<User | null> {
-    return this.prisma.user.findUnique({
-      where: { email },
+    return this.prisma.user.findFirst({
+      where: { email: { equals: email, mode: 'insensitive' } },
     });
   }
 
-  // NOVO: Método genérico para login via Bot (E-mail, Telefone, etc.)
+  // CORREÇÃO: Busca robusta por E-mail (case insensitive) ou Telefone (limpo)
   async findByIdentifier(identifier: string): Promise<User | null> {
-    // Tenta limpar caracteres se parecer um telefone
-    const cleanIdentifier = identifier.replace(/\D/g, ''); 
-    
+    // Remove tudo que não é número para tentar buscar por telefone
+    const cleanPhone = identifier.replace(/\D/g, ''); 
+    const isPotentialPhone = cleanPhone.length >= 10; // Minimo DDD + 8 digitos
+
     return this.prisma.user.findFirst({
       where: {
         OR: [
-          { email: identifier }, // Busca exata por e-mail
-          // Se tiver números suficientes, tenta buscar por telefone
-          ...(cleanIdentifier.length >= 10 ? [{ phoneNumber: identifier }] : [])
+          // Busca por E-mail ignorando maiúsculas/minúsculas
+          { email: { equals: identifier, mode: 'insensitive' } },
+          // Busca por telefone apenas se parecer um telefone
+          ...(isPotentialPhone ? [{ phoneNumber: cleanPhone }] : [])
         ],
       },
     });

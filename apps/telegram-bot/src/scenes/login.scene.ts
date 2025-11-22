@@ -3,65 +3,99 @@ import { ApiService } from '../services/api.service';
 
 const apiService = new ApiService();
 
-// WizardScene: Uma série de passos sequenciais
 export const loginWizard = new Scenes.WizardScene(
-  'login-wizard', // ID da cena
+  'login-wizard',
   
-  // PASSO 1: Solicita o ID
+  // PASSO 1: Solicita ID
   async (ctx: any) => {
-    await ctx.reply('👋 Olá! Parece que você não está logado.\n\nPor favor, informe seu **Fayol ID** (E-mail ou Telefone) para continuarmos.', { parse_mode: 'Markdown' });
+    if (ctx.callbackQuery) {
+      await ctx.answerCbQuery();
+      await ctx.reply('🔄 Reiniciando...');
+    }
+    await ctx.reply('👋 Olá! Bem-vindo ao Fayol.\n\nPara entrar, digite seu **E-mail** ou **Celular**:', { parse_mode: 'Markdown' });
     return ctx.wizard.next();
   },
 
-  // PASSO 2: Valida ID e Pede Senha
+  // PASSO 2: Valida ID
   async (ctx: any) => {
-    const identifier = ctx.message.text;
-    
-    // Salva o ID na sessão da cena para usar depois
-    ctx.wizard.state.identifier = identifier;
-
-    await ctx.reply('🔍 Verificando cadastro...');
-    const exists = await apiService.checkUser(identifier);
-
-    if (!exists) {
-      await ctx.reply(`❌ Não encontrei nenhum usuário com o ID "${identifier}".`);
-      await ctx.reply('Deseja tentar novamente ou criar uma conta?', Markup.inlineKeyboard([
-        Markup.button.callback('Tentar Novamente', 'retry_login'),
-        Markup.button.url('Criar Conta (Web)', 'https://fayol.app/register') // URL fictícia do frontend
-      ]));
-      return ctx.scene.leave();
+    // Trata clique em "Tentar Novamente"
+    if (ctx.callbackQuery && ctx.callbackQuery.data === 'retry_login') {
+      await ctx.answerCbQuery();
+      return ctx.wizard.selectStep(0);
     }
 
-    await ctx.reply('✅ Usuário encontrado!\n\nAgora, digite sua **senha**:');
-    return ctx.wizard.next();
+    if (!ctx.message || !ctx.message.text) {
+        return ctx.reply('Por favor, envie um texto.');
+    }
+
+    const identifier = ctx.message.text.trim();
+    await ctx.reply('🔍 Verificando...');
+
+    try {
+      // checkUser agora lança erro se o backend estiver offline
+      const exists = await apiService.checkUser(identifier);
+
+      if (!exists) {
+        await ctx.reply(`❌ Usuário "${identifier}" não encontrado no sistema.`, {
+          ...Markup.inlineKeyboard([
+            [Markup.button.callback('🔄 Tentar Novamente', 'retry_login')],
+            [Markup.button.url('📝 Criar Conta', 'https://fayol.app/register')]
+          ])
+        });
+        return; // Permanece na cena esperando ação
+      }
+
+      // Se chegou aqui, o usuário existe
+      ctx.wizard.state.identifier = identifier;
+      await ctx.reply('✅ Encontrado! Digite sua **senha**:');
+      return ctx.wizard.next();
+
+    } catch (error: any) {
+      // Mensagem amigável se o backend estiver fora do ar
+      const errorMsg = error.message === 'Backend offline' 
+        ? '🔌 O servidor do Fayol parece estar offline ou inacessível.\nVerifique o terminal do backend.'
+        : '⚠️ Erro técnico ao verificar usuário. Tente novamente.';
+      
+      await ctx.reply(errorMsg, Markup.inlineKeyboard([
+        Markup.button.callback('🔄 Tentar Novamente', 'retry_login')
+      ]));
+      return;
+    }
   },
 
-  // PASSO 3: Valida Senha e Loga
+  // PASSO 3: Login
   async (ctx: any) => {
-    const password = ctx.message.text;
+    if (ctx.callbackQuery && ctx.callbackQuery.data === 'retry_login') {
+        await ctx.answerCbQuery();
+        return ctx.scene.reenter();
+    }
+
+    const password = ctx.message?.text;
     const identifier = ctx.wizard.state.identifier;
 
-    await ctx.reply('🔐 Validando credenciais...');
+    if (!password) return ctx.reply('Por favor, digite sua senha.');
+
+    await ctx.reply('🔐 Autenticando...');
     const result = await apiService.login(identifier, password);
 
     if (result && result.access_token) {
-      // Salva na sessão global do bot
       ctx.session.token = result.access_token;
       ctx.session.user = result.user;
       
-      await ctx.reply(`🎉 **Login realizado com sucesso!**\nBem-vindo(a), ${result.user.name}.`, { parse_mode: 'Markdown' });
-      await ctx.reply('Dica: Envie gastos rápidos como "Uber 25.90" a qualquer momento.');
+      await ctx.reply(`🎉 **Olá, ${result.user.name}!**`, { parse_mode: 'Markdown' });
+      await ctx.reply('Estou pronto! Envie "Almoço 20.00" para lançar uma despesa.');
       return ctx.scene.leave();
     } else {
-      await ctx.reply('🚫 Senha incorreta. Vamos tentar do início?');
-      // Opcional: Poderia dar retry apenas na senha, mas por segurança reiniciamos
-      return ctx.scene.reenter(); 
+      await ctx.reply('🚫 Senha incorreta.', Markup.inlineKeyboard([
+        Markup.button.callback('🔄 Tentar Novamente', 'retry_login')
+      ]));
+      return;
     }
   }
 );
 
-// Ação do botão "Tentar Novamente"
-loginWizard.action('retry_login', (ctx: any) => {
-  ctx.answerCbQuery();
+loginWizard.action('retry_login', async (ctx: any) => {
+  await ctx.answerCbQuery();
+  try { await ctx.deleteMessage(); } catch(e) {} 
   return ctx.scene.reenter();
 });

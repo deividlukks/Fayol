@@ -1,10 +1,11 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
   provider = "postgresql"
-  // url removida: A configuração agora fica em prisma.config.ts (Prisma 7)
+  url      = env("DATABASE_URL")
 }
 
 // ==========================================
@@ -99,7 +100,7 @@ model Account {
   color            String?
   icon             String?
   isArchived       Boolean     @default(false)
-  bankConnectionId String? // ID para Open Banking (Pluggy/Belvo)
+  bankConnectionId String?     // ID para Open Banking (Pluggy/Belvo)
   createdAt        DateTime    @default(now())
   updatedAt        DateTime    @updatedAt
 
@@ -113,7 +114,7 @@ model Account {
 
 model Category {
   id              String     @id @default(uuid())
-  userId          String? // Opcional: se null, é categoria padrão do sistema
+  userId          String?    // Opcional: se null, é categoria padrão do sistema
   name            String
   type            LaunchType
   icon            String?
@@ -123,9 +124,9 @@ model Category {
   createdAt       DateTime   @default(now())
   updatedAt       DateTime   @updatedAt
 
-  user         User?         @relation(fields: [userId], references: [id], onDelete: Cascade)
-  parent       Category?     @relation("SubCategories", fields: [parentId], references: [id])
-  children     Category[]    @relation("SubCategories")
+  user         User?       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  parent       Category?   @relation("SubCategories", fields: [parentId], references: [id])
+  children     Category[]  @relation("SubCategories")
   transactions Transaction[]
   budgets      Budget[]
 
@@ -143,7 +144,7 @@ model Transaction {
   type          LaunchType
   isPaid        Boolean    @default(true)
   recurrence    Recurrence @default(NONE)
-  recurrenceId  String? // ID para agrupar recorrências
+  recurrenceId  String?    // ID para agrupar recorrências
   tags          String[]
   notes         String?
   attachmentUrl String?
@@ -153,7 +154,7 @@ model Transaction {
   user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   account  Account   @relation(fields: [accountId], references: [id], onDelete: Cascade)
   category Category? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
-  trade    Trade? // Relacionamento opcional com Trade
+  trade    Trade?    // Relacionamento opcional com Trade
 
   @@index([userId, date])
   @@map("transactions")
@@ -162,12 +163,12 @@ model Transaction {
 model Budget {
   id              String   @id @default(uuid())
   userId          String
-  categoryId      String? // Se null, é orçamento global
+  categoryId      String?  // Se null, é orçamento global
   name            String
   amount          Decimal  @db.Decimal(15, 2)
   startDate       DateTime
   endDate         DateTime
-  notifyThreshold Int? // Porcentagem para notificar (ex: 80)
+  notifyThreshold Int?     // Porcentagem para notificar (ex: 80)
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 
@@ -182,11 +183,11 @@ model Investment {
   userId       String
   accountId    String
   name         String
-  ticker       String? // Código (PETR4)
+  ticker       String?  // Código (PETR4)
   quantity     Decimal  @db.Decimal(15, 8) // 8 casas decimais para crypto
   averagePrice Decimal  @db.Decimal(15, 2)
   currentPrice Decimal? @db.Decimal(15, 2)
-  type         String // Ações, FIIs, Crypto, etc.
+  type         String   // Ações, FIIs, Crypto, etc.
   purchaseDate DateTime
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
@@ -217,7 +218,7 @@ model Trade {
   id            String    @id @default(uuid())
   userId        String
   accountId     String
-  investmentId  String? // Opcional: pois na primeira compra o investimento é criado junto
+  investmentId  String?   // Opcional: pois na primeira compra o investimento é criado junto
   transactionId String?   @unique // Link 1:1 com o financeiro
   
   ticker        String    // Ex: PETR4

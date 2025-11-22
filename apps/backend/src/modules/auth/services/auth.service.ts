@@ -12,7 +12,6 @@ export class AuthService {
   ) {}
 
   async validateUser(identifier: string, pass: string): Promise<any> {
-    // Busca flexível (E-mail ou Telefone)
     const user = await this.usersService.findByIdentifier(identifier);
     
     if (user && (await bcrypt.compare(pass, user.passwordHash))) {
@@ -24,15 +23,22 @@ export class AuthService {
     return null;
   }
 
-  // NOVO: Apenas checa se o usuário existe (para o Wizard do Bot)
-  async checkUserExistence(identifier: string): Promise<boolean> {
+  // ATUALIZADO: Agora retorna o nome completo para o novo layout de login
+  async checkUserExistence(identifier: string) {
     const user = await this.usersService.findByIdentifier(identifier);
-    return !!user;
+    
+    if (!user) {
+      return { exists: false };
+    }
+
+    return { 
+      exists: true,
+      name: user.name, // <--- Alterado de user.name.split(' ')[0] para user.name
+      email: user.email
+    };
   }
 
   async login(loginDto: LoginDto) {
-    // O DTO espera 'email', mas na prática pode vir um telefone se a validação permitir.
-    // Aqui tratamos como 'identifier'.
     const identifier = (loginDto as any).identifier || loginDto.email;
     
     const user = await this.validateUser(identifier, loginDto.password);

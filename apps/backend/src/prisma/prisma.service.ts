@@ -8,13 +8,18 @@ export class PrismaService extends PrismaClient implements OnModuleInit, OnModul
   private readonly logger = new Logger(PrismaService.name);
 
   constructor() {
-    // Configuração do Driver Adapter (Obrigatório no Prisma 7)
     const connectionString = process.env.DATABASE_URL;
+    
+    if (!connectionString) {
+      // Isso vai aparecer no terminal do backend se o .env estiver errado
+      throw new Error('❌ FATAL: DATABASE_URL não definida! Verifique seu arquivo .env');
+    }
+
     const pool = new Pool({ connectionString });
     const adapter = new PrismaPg(pool);
 
     super({
-      adapter, // <--- Passamos o adaptador aqui
+      adapter,
       log: process.env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error'],
     });
   }
@@ -22,9 +27,9 @@ export class PrismaService extends PrismaClient implements OnModuleInit, OnModul
   async onModuleInit() {
     try {
       await this.$connect();
-      this.logger.log('Database connected successfully');
+      this.logger.log('✅ Banco de dados conectado com sucesso');
     } catch (error) {
-      this.logger.error('Database connection failed', error);
+      this.logger.error('❌ Falha ao conectar no banco de dados', error);
       throw error;
     }
   }

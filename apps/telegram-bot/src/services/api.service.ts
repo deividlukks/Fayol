@@ -3,7 +3,8 @@ import * as dotenv from 'dotenv';
 
 dotenv.config();
 
-const BASE_URL = process.env.API_BASE_URL || 'http://localhost:3333/api';
+// Força IPv4 (127.0.0.1) para evitar problemas de DNS em localhost
+const BASE_URL = process.env.API_BASE_URL || 'http://127.0.0.1:3333/api';
 
 export class ApiService {
   private api: AxiosInstance;
@@ -11,32 +12,44 @@ export class ApiService {
   constructor() {
     this.api = axios.create({
       baseURL: BASE_URL,
-      timeout: 10000, // Aumentei um pouco o timeout para garantir
+      timeout: 5000,
     });
   }
 
-  // NOVO: Verifica existência do usuário
+  // Verifica existência do usuário
   async checkUser(identifier: string): Promise<boolean> {
     try {
+      console.log(`📡 [Bot] Consultando usuário: "${identifier}" em ${BASE_URL}/auth/check...`);
       const response = await this.api.post('/auth/check', { identifier });
-      return response.data.exists;
+      console.log(`✅ [Bot] Resposta da API:`, JSON.stringify(response.data, null, 2));
+      
+      // CORREÇÃO: Acessa response.data.data.exists devido ao Interceptor do NestJS
+      const payload = response.data;
+      if (payload.data && typeof payload.data.exists === 'boolean') {
+        return payload.data.exists;
+      }
+      return !!payload.exists;
     } catch (error: any) {
-      console.error('Erro ao verificar usuário:', error.message);
-      return false;
+      if (error.code === 'ECONNREFUSED') {
+        console.error(`❌ [Bot] Erro de Conexão: O Backend está offline ou inacessível em ${BASE_URL}`);
+        throw new Error('Backend offline');
+      }
+      console.error('❌ [Bot] Erro na API:', error.response?.data || error.message);
+      throw error; 
     }
   }
 
   // Autentica
   async login(identifier: string, password: string) {
     try {
-      // Enviamos no campo 'email' para satisfazer o DTO padrão, mas pode ser telefone
       const response = await this.api.post('/auth/login', { 
         email: identifier, 
         password 
       });
-      return response.data; // { access_token, user, ... }
+      // CORREÇÃO: Desembrulha a resposta do interceptor para retornar { access_token, user }
+      return response.data.data || response.data;
     } catch (error: any) {
-      console.error('Erro no login:', error.response?.data || error.message);
+      console.error('❌ [Bot] Erro no login:', error.response?.data || error.message);
       return null;
     }
   }
@@ -58,30 +71,52 @@ export class ApiService {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      return response.data;
+      return response.data.data || response.data;
     } catch (error: any) {
-      console.error('Erro ao criar transação:', error.response?.data || error.message);
+      console.error('Erro ao criar transação:', error.message);
       throw new Error(error.response?.data?.message || 'Falha ao criar transação');
     }
   }
 
-  // Helper privado
+  // Busca Resumo Financeiro
+  async getDashboardSummary(token: string) {
+    try {
+      const response = await this.api.get('/reports/summary', {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      return response.data.data || response.data;
+    } catch (error: any) {
+      console.error('Erro ao buscar resumo:', error.message);
+      throw new Error('Não foi possível buscar o saldo.');
+    }
+  }
+
+  // Busca últimas transações
+  async getLastTransactions(token: string, limit: number = 5) {
+    try {
+      const response = await this.api.get('/transactions', {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const transactions = Array.isArray(response.data) ? response.data : response.data.data;
+      return transactions.slice(0, limit);
+    } catch (error: any) {
+      console.error('Erro ao buscar extrato:', error.message);
+      throw new Error('Não foi possível buscar o extrato.');
+    }
+  }
+
   private async getFirstAccountId(token: string): Promise<string> {
     try {
       const response = await this.api.get('/accounts', {
         headers: { Authorization: `Bearer ${token}` },
       });
-      
-      // Trata caso venha envelopado em 'data' ou direto
       const accounts = Array.isArray(response.data) ? response.data : response.data.data;
-      
       if (!accounts || accounts.length === 0) {
-        throw new Error('Nenhuma conta encontrada. Crie uma conta no sistema primeiro.');
+        throw new Error('Nenhuma conta encontrada.');
       }
-      
       return accounts[0].id;
     } catch (error: any) {
-        console.error('Erro ao buscar contas:', error.message);
+        console.error('Erro contas:', error.message);
         throw error;
     }
   }
