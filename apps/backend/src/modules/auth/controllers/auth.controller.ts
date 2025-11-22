@@ -1,8 +1,8 @@
 import { Controller, Post, Body, HttpCode, HttpStatus } from '@nestjs/common';
-import { AuthService } from '../services/auth.service'; // Import ajustado
-import { UsersService } from '../../users/services/users.service'; // Import ajustado
+import { AuthService } from '../services/auth.service';
+import { UsersService } from '../../users/services/users.service';
 import { LoginDto, RegisterDto } from '../dto/auth.dto';
-import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger';
 
 @ApiTags('Auth')
 @Controller('auth')
@@ -11,6 +11,16 @@ export class AuthController {
     private authService: AuthService,
     private usersService: UsersService,
   ) {}
+
+  @Post('check')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Verifica se um usuário existe (para fluxo de bots)' })
+  @ApiBody({ schema: { type: 'object', properties: { identifier: { type: 'string', example: 'user@email.com' } } } })
+  @ApiResponse({ status: 200, description: 'Retorna se o usuário existe (true/false).' })
+  async check(@Body('identifier') identifier: string) {
+    const exists = await this.authService.checkUserExistence(identifier);
+    return { exists };
+  }
 
   @Post('login')
   @HttpCode(HttpStatus.OK)

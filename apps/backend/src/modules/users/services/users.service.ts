@@ -2,7 +2,7 @@ import { Injectable, NotFoundException, ConflictException } from '@nestjs/common
 import { PrismaService } from '../../../prisma/prisma.service';
 import { User } from '@fayol/database-models';
 import * as bcrypt from 'bcrypt';
-import { RegisterDto } from '../../auth/dto/auth.dto'; // Importando DTO do Auth ou local se preferir
+import { RegisterDto } from '../../auth/dto/auth.dto'; // Ou create-user.dto se tiver separado
 import { UpdateUserDto } from '../dto/users.dto';
 
 @Injectable()
@@ -10,12 +10,17 @@ export class UsersService {
   constructor(private prisma: PrismaService) {}
 
   async create(data: RegisterDto): Promise<User> {
-    const existingUser = await this.prisma.user.findUnique({
-      where: { email: data.email },
+    const existingUser = await this.prisma.user.findFirst({
+      where: { 
+        OR: [
+          { email: data.email },
+          // Se o cadastro permitisse telefone, validaríamos aqui também
+        ]
+      },
     });
 
     if (existingUser) {
-      throw new ConflictException('Este e-mail já está em uso.');
+      throw new ConflictException('Usuário já cadastrado com este e-mail.');
     }
 
     const salt = await bcrypt.genSalt();
@@ -46,6 +51,22 @@ export class UsersService {
   async findByEmail(email: string): Promise<User | null> {
     return this.prisma.user.findUnique({
       where: { email },
+    });
+  }
+
+  // NOVO: Método genérico para login via Bot (E-mail, Telefone, etc.)
+  async findByIdentifier(identifier: string): Promise<User | null> {
+    // Tenta limpar caracteres se parecer um telefone
+    const cleanIdentifier = identifier.replace(/\D/g, ''); 
+    
+    return this.prisma.user.findFirst({
+      where: {
+        OR: [
+          { email: identifier }, // Busca exata por e-mail
+          // Se tiver números suficientes, tenta buscar por telefone
+          ...(cleanIdentifier.length >= 10 ? [{ phoneNumber: identifier }] : [])
+        ],
+      },
     });
   }
 

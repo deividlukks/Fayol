@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  // url removida: A configuração agora fica em prisma.config.ts (Prisma 7)
 }
 
 // ==========================================
@@ -149,11 +149,11 @@ model Transaction {
   attachmentUrl String?
   createdAt     DateTime   @default(now())
   updatedAt     DateTime   @updatedAt
-  trade        Trade?
 
   user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   account  Account   @relation(fields: [accountId], references: [id], onDelete: Cascade)
   category Category? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  trade    Trade? // Relacionamento opcional com Trade
 
   @@index([userId, date])
   @@map("transactions")
@@ -191,10 +191,9 @@ model Investment {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
-  trades       Trade[]
-
   user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   account Account @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  trades  Trade[]
 
   @@map("investments")
 }
@@ -218,7 +217,7 @@ model Trade {
   id            String    @id @default(uuid())
   userId        String
   accountId     String
-  investmentId  String?   // Opcional: pois na primeira compra o investimento é criado junto
+  investmentId  String? // Opcional: pois na primeira compra o investimento é criado junto
   transactionId String?   @unique // Link 1:1 com o financeiro
   
   ticker        String    // Ex: PETR4

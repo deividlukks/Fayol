@@ -1,5 +1,5 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { UsersService } from '../../users/services/users.service'; // Import ajustado (sobe 2 niveis)
+import { UsersService } from '../../users/services/users.service';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { LoginDto } from '../dto/auth.dto';
@@ -11,8 +11,9 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async validateUser(email: string, pass: string): Promise<any> {
-    const user = await this.usersService.findByEmail(email);
+  async validateUser(identifier: string, pass: string): Promise<any> {
+    // Busca flexível (E-mail ou Telefone)
+    const user = await this.usersService.findByIdentifier(identifier);
     
     if (user && (await bcrypt.compare(pass, user.passwordHash))) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -23,11 +24,21 @@ export class AuthService {
     return null;
   }
 
+  // NOVO: Apenas checa se o usuário existe (para o Wizard do Bot)
+  async checkUserExistence(identifier: string): Promise<boolean> {
+    const user = await this.usersService.findByIdentifier(identifier);
+    return !!user;
+  }
+
   async login(loginDto: LoginDto) {
-    const user = await this.validateUser(loginDto.email, loginDto.password);
+    // O DTO espera 'email', mas na prática pode vir um telefone se a validação permitir.
+    // Aqui tratamos como 'identifier'.
+    const identifier = (loginDto as any).identifier || loginDto.email;
+    
+    const user = await this.validateUser(identifier, loginDto.password);
     
     if (!user) {
-      throw new UnauthorizedException('E-mail ou senha incorretos.');
+      throw new UnauthorizedException('Credenciais incorretas.');
     }
 
     const payload = { 
