@@ -65,10 +65,10 @@ export default function LoginPage() {
 
       if (exists) {
         setUserData({ name, email });
-        
+
         // Inicia animação de transição
         setIsAnimating(true);
-        
+
         // Simula tempo de processamento visual
         setTimeout(() => {
           setIsAnimating(false);
@@ -96,7 +96,7 @@ export default function LoginPage() {
         ...data,
         email: userData?.email || data.email,
       });
-      
+
       // Sucesso! Ativa o cadeado verde
       setIsUnlocked(true);
 
@@ -108,7 +108,6 @@ export default function LoginPage() {
       setTimeout(() => {
         router.push('/dashboard');
       }, 1000);
-
     } catch (err) {
       const axiosError = err as AxiosError<{ message: string }>;
       const msg = axiosError.response?.data?.message || 'Senha incorreta.';
@@ -135,15 +134,15 @@ export default function LoginPage() {
 
     return (
       <div className="flex w-full flex-col items-center animate-in fade-in duration-300">
-        
         {/* Ícone Principal (Muda conforme etapa) */}
-        <div 
+        <div
           className={`mb-6 flex h-24 w-24 items-center justify-center rounded-[2rem] shadow-inner transition-all duration-500 
-            ${step === 1 
-              ? 'bg-blue-50' // Etapa 1: Fundo Azul Claro
-              : isUnlocked 
-                ? 'bg-emerald-50 scale-110' // Etapa 2 (Sucesso): Fundo Verde Claro + Zoom
-                : 'bg-red-50' // Etapa 2 (Aguardando): Fundo Vermelho Claro
+            ${
+              step === 1
+                ? 'bg-blue-50' // Etapa 1: Fundo Azul Claro
+                : isUnlocked
+                  ? 'bg-emerald-50 scale-110' // Etapa 2 (Sucesso): Fundo Verde Claro + Zoom
+                  : 'bg-red-50' // Etapa 2 (Aguardando): Fundo Vermelho Claro
             }`}
         >
           {step === 1 ? (
@@ -164,16 +163,20 @@ export default function LoginPage() {
             <div className="flex flex-col items-center gap-1 animate-in fade-in w-full">
               {/* Botão de voltar pequeno no topo do nome */}
               <div className="flex items-center gap-2 bg-slate-100 rounded-full px-3 py-1 mb-2 max-w-full">
-                <button 
-                  onClick={handleBack} 
+                <button
+                  onClick={handleBack}
                   className="hover:bg-white rounded-full p-0.5 transition-colors"
                   type="button"
                 >
-                    <ChevronLeft className="h-4 w-4 text-slate-500" />
+                  <ChevronLeft className="h-4 w-4 text-slate-500" />
                 </button>
-                <span className="text-xs text-slate-500 truncate max-w-[200px]">{userData?.email}</span>
+                <span className="text-xs text-slate-500 truncate max-w-[200px]">
+                  {userData?.email}
+                </span>
               </div>
-              <span className="text-xl font-bold text-slate-800 text-center break-words w-full px-2">{userData?.name}</span>
+              <span className="text-xl font-bold text-slate-800 text-center break-words w-full px-2">
+                {userData?.name}
+              </span>
             </div>
           )}
         </h1>
@@ -184,7 +187,9 @@ export default function LoginPage() {
         >
           <div className="space-y-2">
             {/* INPUT: Identificação (Passo 1) */}
-            <div className={step === 2 ? 'hidden' : 'block animate-in fade-in slide-in-from-right-4'}>
+            <div
+              className={step === 2 ? 'hidden' : 'block animate-in fade-in slide-in-from-right-4'}
+            >
               <input
                 id="email"
                 type="text"
@@ -229,10 +234,13 @@ export default function LoginPage() {
                   <p className="mt-2 text-xs text-red-500 text-center">{errors.password.message}</p>
                 )}
 
-                 <div className="mt-3 flex justify-start">
-                    <a href="#" className="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">
-                        Esqueci minha senha
-                    </a>
+                <div className="mt-3 flex justify-start">
+                  <a
+                    href="#"
+                    className="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors"
+                  >
+                    Esqueci minha senha
+                  </a>
                 </div>
               </div>
             )}
@@ -265,21 +273,21 @@ export default function LoginPage() {
             )}
           </button>
         </form>
-        
+
         {/* Link de rodapé (apenas no passo 1) */}
         {step === 1 && (
-            <div className="mt-8 text-center px-4">
-                <p className="text-xs leading-relaxed text-slate-400">
-                Não possui um usuário?{' '}
-                <span
-                    onClick={() => router.push('/auth/register')}
-                    className="cursor-pointer font-bold text-slate-600 hover:underline"
-                >
-                    Saiba mais
-                </span>
-                {' '}ou entre em contato com o administrador.
-                </p>
-            </div>
+          <div className="mt-8 text-center px-4">
+            <p className="text-xs leading-relaxed text-slate-400">
+              Não possui um usuário?{' '}
+              <span
+                onClick={() => router.push('/auth/register')}
+                className="cursor-pointer font-bold text-slate-600 hover:underline"
+              >
+                Saiba mais
+              </span>{' '}
+              ou entre em contato com o administrador.
+            </p>
+          </div>
         )}
       </div>
     );
@@ -290,13 +298,7 @@ export default function LoginPage() {
       {/* HEADER */}
       <header className="flex w-full items-center justify-center bg-white py-4 shadow-sm">
         <div className="relative h-10 w-40">
-          <Image
-            src="/fayol-id.png"
-            alt="Fayol ID"
-            fill
-            className="object-contain"
-            priority
-          />
+          <Image src="/fayol-id.png" alt="Fayol ID" fill className="object-contain" priority />
         </div>
       </header>
 
@@ -309,7 +311,8 @@ export default function LoginPage() {
 
       {/* FOOTER */}
       <footer className="py-6 text-center text-xs text-slate-400">
-        Copyright © {new Date().getFullYear()} - Fayol Gestão de Negócios. Todos os direitos reservados.
+        Copyright © {new Date().getFullYear()} - Fayol Gestão de Negócios. Todos os direitos
+        reservados.
       </footer>
     </div>
   );

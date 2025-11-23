@@ -25,6 +25,12 @@ export class InvestmentsController {
     return this.investmentsService.findAll(user.id);
   }
 
+  @Get('lookup/:ticker')
+  @ApiOperation({ summary: 'Busca dados automáticos de um ativo pelo ticker (Simulado)' })
+  lookup(@Param('ticker') ticker: string) {
+    return this.investmentsService.lookupTicker(ticker);
+  }
+
   @Get(':id')
   @ApiOperation({ summary: 'Detalhes do ativo' })
   findOne(@CurrentUser() user: User, @Param('id') id: string) {

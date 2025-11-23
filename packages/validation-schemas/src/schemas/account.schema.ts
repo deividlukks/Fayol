@@ -8,7 +8,19 @@ export const createAccountSchema = z.object({
     .min(LIMITS.ACCOUNT.NAME_MIN, `Nome deve ter no mínimo ${LIMITS.ACCOUNT.NAME_MIN} caracteres`)
     .max(LIMITS.ACCOUNT.NAME_MAX, `Nome deve ter no máximo ${LIMITS.ACCOUNT.NAME_MAX} caracteres`),
   type: z.nativeEnum(AccountType, { errorMap: () => ({ message: 'Tipo de conta inválido' }) }),
-  balance: z.number().default(0),
+  
+  // Aceita número ou string que vira número. Se vier vazio, vira 0.
+  balance: z.preprocess(
+    (val) => (val === '' || val === undefined ? 0 : Number(val)),
+    z.number({ invalid_type_error: 'O saldo deve ser um número' })
+  ),
+
+  // Aceita número, string, null ou undefined.
+  creditLimit: z.preprocess(
+    (val) => (val === '' || val === null || val === undefined ? undefined : Number(val)),
+    z.number().min(0).optional()
+  ),
+  
   currency: z.string().default('BRL'),
   color: z.string().optional(),
   icon: z.string().optional(),

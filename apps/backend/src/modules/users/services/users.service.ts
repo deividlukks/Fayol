@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException, ConflictException } from '@nestjs/common';
 import { PrismaService } from '../../../prisma/prisma.service';
 import { User } from '@fayol/database-models';
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcryptjs'; // <--- Alterado aqui
 import { RegisterDto } from '../../auth/dto/auth.dto';
 import { UpdateUserDto } from '../dto/users.dto';
 
@@ -51,18 +51,14 @@ export class UsersService {
     });
   }
 
-  // CORREÇÃO: Busca robusta por E-mail (case insensitive) ou Telefone (limpo)
   async findByIdentifier(identifier: string): Promise<User | null> {
-    // Remove tudo que não é número para tentar buscar por telefone
     const cleanPhone = identifier.replace(/\D/g, ''); 
-    const isPotentialPhone = cleanPhone.length >= 10; // Minimo DDD + 8 digitos
+    const isPotentialPhone = cleanPhone.length >= 10;
 
     return this.prisma.user.findFirst({
       where: {
         OR: [
-          // Busca por E-mail ignorando maiúsculas/minúsculas
           { email: { equals: identifier, mode: 'insensitive' } },
-          // Busca por telefone apenas se parecer um telefone
           ...(isPotentialPhone ? [{ phoneNumber: cleanPhone }] : [])
         ],
       },

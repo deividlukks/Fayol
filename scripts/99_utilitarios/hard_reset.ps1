@@ -1,76 +1,103 @@
 <#
 .SYNOPSIS
-    Limpa todo o ambiente de desenvolvimento (Docker, Dependências, Builds) e reinstala do zero.
+    Hard Reset V3.1 - Reset TOTAL (Ambiente + Histórico de Banco + Dependências Nativas).
 .DESCRIPTION
-    Use este script quando o ambiente estiver instável. Ele remove node_modules, caches,
-    volumes do docker e reinstala tudo. Apenas o código fonte é preservado.
+    1. Mata processos Node.
+    2. Limpa Docker.
+    3. Apaga node_modules, caches E a pasta de migrações do Prisma.
+    4. Reinstala e Recompila dependências (Correção bcrypt).
+    5. Recria o banco com uma única migração limpa.
 #>
 
 $ErrorActionPreference = "Stop"
 
-Write-Host "`n🧹 INICIANDO HARD RESET DO PROJETO FAYOL" -ForegroundColor Cyan
-Write-Host "========================================" -ForegroundColor Cyan
+# Funções renomeadas para usar o verbo aprovado 'Write'
+function Write-LogInfo ($Msg) { Write-Host "`n🔵 $Msg" -ForegroundColor Cyan }
+function Write-LogSuccess ($Msg) { Write-Host "   ✅ $Msg" -ForegroundColor Green }
+function Write-LogWarn ($Msg) { Write-Host "   ⚠️  $Msg" -ForegroundColor Yellow }
+function Write-LogError ($Msg) { Write-Host "   ❌ $Msg" -ForegroundColor Red }
 
-# 1. Limpeza do Docker
-Write-Host "`n🐳 [1/5] Parando containers e removendo volumes..." -ForegroundColor Yellow
+Clear-Host
+Write-Host "========================================" -ForegroundColor Magenta
+Write-Host "   🧹 FAYOL - HARD RESET (V3.1)" -ForegroundColor Magenta
+Write-Host "========================================" -ForegroundColor Magenta
+
+# 1. Matar Processos Node
+Write-LogInfo "[1/7] Encerrando processos Node..."
 try {
-    docker-compose down -v --remove-orphans
-    Write-Host "   ✅ Docker limpo." -ForegroundColor Green
+    Stop-Process -Name "node" -Force -ErrorAction SilentlyContinue
+    Write-LogSuccess "Processos limpos."
 } catch {
-    Write-Host "   ⚠️  Aviso: Não foi possível limpar o Docker (talvez não estivesse rodando)." -ForegroundColor Gray
+    Write-LogWarn "Nenhum processo Node estava rodando."
 }
 
-# 2. Limpeza de Arquivos
-Write-Host "`n🗑️  [2/5] Removendo lixo (node_modules, dist, caches)..." -ForegroundColor Yellow
-$foldersToRemove = @("node_modules", "dist", ".turbo", ".next", "build", "coverage", ".prisma")
-$filesToRemove = @("pnpm-lock.yaml", "yarn.lock", "package-lock.json")
+# 2. Limpeza do Docker
+Write-LogInfo "[2/7] Resetando Docker..."
+if (Get-Command "docker" -ErrorAction SilentlyContinue) {
+    try {
+        docker-compose down -v --remove-orphans
+        Write-LogSuccess "Docker limpo."
+    } catch {
+        Write-LogWarn "Docker inacessível (verifique se o Desktop está rodando)."
+    }
+}
 
-# Remove pastas recursivamente
+# 3. Limpeza de Arquivos e Migrações
+Write-LogInfo "[3/7] Removendo lixo e histórico de migrações..."
+$foldersToRemove = @("node_modules", "dist", ".turbo", ".next", "build", "coverage", ".nyc_output", ".prisma")
+$migrationFolder = "packages/database-models/prisma/migrations"
+
+# Remove pastas padrão
 Get-ChildItem -Path . -Include $foldersToRemove -Recurse -Directory | ForEach-Object {
-    Write-Host "   - Removendo: $($_.FullName)" -ForegroundColor Gray
     Remove-Item $_.FullName -Recurse -Force -ErrorAction SilentlyContinue
 }
 
-# Remove arquivos de lock na raiz
-foreach ($file in $filesToRemove) {
-    if (Test-Path $file) {
-        Write-Host "   - Removendo: $file" -ForegroundColor Gray
-        Remove-Item $file -Force
-    }
+# Remove pasta de migrações especificamente
+if (Test-Path $migrationFolder) {
+    Write-Host "   - Apagando histórico de migrações ($migrationFolder)..." -ForegroundColor DarkGray
+    Remove-Item $migrationFolder -Recurse -Force -ErrorAction SilentlyContinue
 }
-Write-Host "   ✅ Arquivos temporários removidos." -ForegroundColor Green
 
-# 3. Reinstalação
-Write-Host "`n📦 [3/5] Instalando dependências (pnpm install)..." -ForegroundColor Yellow
+# Remove arquivos de lock
+$filesToRemove = @("pnpm-lock.yaml", "yarn.lock", "package-lock.json", ".eslintcache", "*.tsbuildinfo")
+Get-ChildItem -Path . -Include $filesToRemove -Recurse -File | ForEach-Object {
+    Remove-Item $_.FullName -Force -ErrorAction SilentlyContinue
+}
+Write-LogSuccess "Arquivos removidos."
+
+# 4. Reinstalação
+Write-LogInfo "[4/7] Instalando dependências..."
 pnpm install
-if ($LASTEXITCODE -ne 0) { 
-    Write-Host "❌ Erro ao instalar dependências." -ForegroundColor Red
-    exit 1 
-}
-Write-Host "   ✅ Dependências instaladas." -ForegroundColor Green
+if ($LASTEXITCODE -ne 0) { Write-LogError "Falha no install."; exit 1 }
 
-# 4. Infraestrutura
-Write-Host "`n🚀 [4/5] Subindo Banco de Dados e Redis..." -ForegroundColor Yellow
+# 5. Rebuild de Nativos
+Write-LogInfo "[5/7] Recompilando módulos nativos (bcrypt)..."
+pnpm rebuild
+if ($LASTEXITCODE -ne 0) { Write-LogWarn "Aviso: Falha no rebuild, mas vamos tentar prosseguir."; }
+else { Write-LogSuccess "Módulos nativos recompilados." }
+
+# 6. Infraestrutura
+Write-LogInfo "[6/7] Subindo Banco de Dados..."
 docker-compose up -d
-if ($LASTEXITCODE -ne 0) { 
-    Write-Host "❌ Erro ao subir Docker." -ForegroundColor Red
-    exit 1 
-}
+if ($LASTEXITCODE -ne 0) { Write-LogError "Falha no Docker."; exit 1 }
 
-Write-Host "   ⏳ Aguardando banco de dados inicializar (15s)..." -ForegroundColor Gray
+Write-Host "   ⏳ Aguardando DB iniciar (15s)..." -ForegroundColor Gray
 Start-Sleep -Seconds 15
 
-# 5. Prisma (Generate & Migrate)
-Write-Host "`n🗄️  [5/5] Configurando Banco de Dados (Prisma)..." -ForegroundColor Yellow
+# 7. Prisma (Nova Migração Inicial)
+Write-LogInfo "[7/7] Criando nova estrutura do banco (Migrate)..."
 
-Write-Host "   - Gerando Cliente Prisma..."
+Write-Host "   - Gerando Cliente..." -ForegroundColor Gray
 pnpm --filter @fayol/database-models run generate
 
-Write-Host "   - Aplicando Migrations (Resetando DB)..."
-# O comando abaixo força a criação do banco limpo
-pnpm --filter @fayol/database-models exec prisma migrate dev --name init_hard_reset --skip-generate
+Write-Host "   - Criando Schema e Seed..." -ForegroundColor Gray
+pnpm --filter @fayol/database-models exec prisma migrate dev --name hard_reset_init
 
-Write-Host "`n✅ AMBIENTE RESETADO COM SUCESSO!" -ForegroundColor Green
-Write-Host "========================================" -ForegroundColor Cyan
-Write-Host "Agora você pode rodar o backend:"
-Write-Host "   pnpm --filter backend run dev" -ForegroundColor White
+if ($LASTEXITCODE -ne 0) {
+    Write-LogError "Falha na migração."
+    exit 1
+}
+
+Write-Host "`n🎉 AMBIENTE LIMPO E RECONSTRUÍDO!" -ForegroundColor Green
+Write-Host "========================================" -ForegroundColor Magenta
+Write-Host "Pode rodar: pnpm dev" -ForegroundColor Cyan

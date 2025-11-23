@@ -1,5 +1,5 @@
 import { Injectable, NotFoundException, ForbiddenException } from '@nestjs/common';
-import { PrismaService } from '../../../prisma/prisma.service'; // Sobe 3 níveis
+import { PrismaService } from '../../../prisma/prisma.service';
 import { CreateCategoryDto, UpdateCategoryDto } from '../dto/categories.dto';
 
 @Injectable()
@@ -28,13 +28,24 @@ export class CategoriesService {
           { userId },
           { isSystemDefault: true }
         ],
+        // Retorna apenas categorias "Pai" (sem parentId) na raiz,
+        // mas inclui os filhos na propriedade children.
+        parentId: null 
+      },
+      include: {
+        children: {
+          orderBy: { name: 'asc' }
+        }
       },
       orderBy: { name: 'asc' },
     });
   }
 
   async findOne(id: string, userId: string) {
-    const category = await this.prisma.category.findUnique({ where: { id } });
+    const category = await this.prisma.category.findUnique({ 
+      where: { id },
+      include: { children: true }
+    });
 
     if (!category) {
       throw new NotFoundException('Categoria não encontrada.');

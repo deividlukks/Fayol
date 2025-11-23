@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { APP_CONFIG } from '@fayol/shared-constants';
+import ReactQueryProvider from '../providers/react-query-provider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
   },
   description: 'Gestão Financeira Inteligente e Automatizada',
   icons: {
-    icon: '/icon.png', // Certifique-se de adicionar este arquivo em apps/web-app/public/
+    icon: '/icon.png',
   },
 };
 
@@ -23,7 +24,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <ReactQueryProvider>{children}</ReactQueryProvider>
+      </body>
     </html>
   );
 }

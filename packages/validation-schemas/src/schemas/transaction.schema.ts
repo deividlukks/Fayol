@@ -2,7 +2,8 @@ import { z } from 'zod';
 import { LIMITS, ERROR_MESSAGES } from '@fayol/shared-constants';
 import { LaunchType, Recurrence } from '@fayol/shared-types';
 
-export const createTransactionSchema = z.object({
+// 1. Definimos a estrutura base do objeto (ZodObject)
+const baseTransactionSchema = z.object({
   description: z
     .string()
     .min(1, ERROR_MESSAGES.REQUIRED_FIELD)
@@ -13,16 +14,42 @@ export const createTransactionSchema = z.object({
     .max(LIMITS.TRANSACTION.MAX_AMOUNT, 'Valor excede o limite permitido'),
   date: z.coerce.date({ invalid_type_error: ERROR_MESSAGES.INVALID_DATE }),
   type: z.nativeEnum(LaunchType, { errorMap: () => ({ message: 'Tipo de lançamento inválido' }) }),
-  accountId: z.string().uuid(ERROR_MESSAGES.REQUIRED_FIELD),
-  categoryId: z.string().uuid(ERROR_MESSAGES.REQUIRED_FIELD).optional(), // Categoria pode ser opcional
+  accountId: z.string().uuid(ERROR_MESSAGES.REQUIRED_FIELD), // Conta de Origem
+  
+  // Conta de Destino (Apenas para transferências)
+  destinationAccountId: z.string().uuid().optional(),
+
+  categoryId: z.string().uuid(ERROR_MESSAGES.REQUIRED_FIELD),
   isPaid: z.boolean().default(true),
   recurrence: z.nativeEnum(Recurrence).default(Recurrence.NONE),
   notes: z.string().max(LIMITS.TRANSACTION.NOTES_MAX).optional(),
   tags: z.array(z.string()).optional(),
 });
 
-// Schema de atualização (parcial)
-export const updateTransactionSchema = createTransactionSchema.partial();
+// 2. Função de refinamento (regras de negócio)
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const transactionRefinements = (data: any) => {
+  // Validação condicional: Se for TRANSFER, destinationAccountId é obrigatório
+  if (data.type === 'TRANSFER' && !data.destinationAccountId) {
+    return false;
+  }
+  // Validação: Origem e Destino não podem ser iguais
+  if (data.type === 'TRANSFER' && data.accountId === data.destinationAccountId) {
+    return false;
+  }
+  return true;
+};
+
+// 3. Schema de CRIAÇÃO: Base + Refinamentos
+export const createTransactionSchema = baseTransactionSchema.refine(transactionRefinements, {
+  message: "Selecione uma conta de destino válida e diferente da origem",
+  path: ["destinationAccountId"],
+});
+
+// 4. Schema de ATUALIZAÇÃO: Base Parcial + (Opcional: Refinamentos se necessário)
+// Como partial() torna tudo opcional, refinamentos estritos podem falhar se campos faltarem.
+// Para update, geralmente relaxamos as regras ou validamos apenas se os campos estiverem presentes.
+export const updateTransactionSchema = baseTransactionSchema.partial();
 
 export type CreateTransactionInput = z.infer<typeof createTransactionSchema>;
 export type UpdateTransactionInput = z.infer<typeof updateTransactionSchema>;

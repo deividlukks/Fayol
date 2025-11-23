@@ -8,7 +8,6 @@ import { startOfMonth, endOfMonth } from 'date-fns';
 export class ReportsService {
   constructor(private prisma: PrismaService) {}
 
-  // Helper para definir datas padrão (mês atual) se não forem enviadas
   private getDateRange(query: GetReportDto) {
     const now = new Date();
     return {
@@ -20,13 +19,11 @@ export class ReportsService {
   async getDashboardSummary(userId: string, query: GetReportDto) {
     const { startDate, endDate } = this.getDateRange(query);
 
-    // 1. Saldo Total Atual (Soma de todas as contas)
     const accounts = await this.prisma.account.aggregate({
       _sum: { balance: true },
       where: { userId, isArchived: false },
     });
 
-    // 2. Receitas e Despesas do Período
     const transactions = await this.prisma.transaction.groupBy({
       by: ['type'],
       _sum: { amount: true },
@@ -53,6 +50,7 @@ export class ReportsService {
   async getExpensesByCategory(userId: string, query: GetReportDto) {
     const { startDate, endDate } = this.getDateRange(query);
 
+    // 1. Agrupa gastos por categoryId (que pode ser subcategoria ou categoria pai)
     const expenses = await this.prisma.transaction.groupBy({
       by: ['categoryId'],
       _sum: { amount: true },
@@ -61,35 +59,72 @@ export class ReportsService {
         type: LaunchType.EXPENSE,
         isPaid: true,
         date: { gte: startDate, lte: endDate },
-        categoryId: { not: null }, // Ignora sem categoria
+        categoryId: { not: null },
       },
     });
 
-    // Busca nomes das categorias
+    // 2. Busca os dados de todas as categorias encontradas, incluindo o pai
+    const categoryIds = expenses.map((e) => e.categoryId as string);
     const categories = await this.prisma.category.findMany({
-      where: { id: { in: expenses.map(e => e.categoryId as string) } },
-      select: { id: true, name: true, color: true, icon: true },
+      where: { id: { in: categoryIds } },
+      select: {
+        id: true,
+        name: true,
+        color: true,
+        icon: true,
+        parentId: true,
+        parent: { // Busca dados do pai para consolidar
+          select: {
+            id: true,
+            name: true,
+            color: true,
+            icon: true
+          }
+        }
+      },
     });
 
-    // Monta o resultado formatado para gráficos (Pie Chart)
-    return expenses.map(item => {
-      const category = categories.find(c => c.id === item.categoryId);
-      return {
-        id: item.categoryId,
-        name: category?.name || 'Desconhecida',
-        color: category?.color,
-        icon: category?.icon,
-        amount: Number(item._sum.amount || 0),
-      };
-    }).sort((a, b) => b.amount - a.amount); // Ordena do maior gasto para o menor
+    // 3. Consolida os valores por Categoria Pai
+    const consolidatedMap = new Map<string, { name: string; color?: string | null; icon?: string | null; amount: number }>();
+
+    expenses.forEach((item) => {
+      const category = categories.find((c) => c.id === item.categoryId);
+      if (!category) return;
+
+      const amount = Number(item._sum.amount || 0);
+      
+      // Lógica: Se tiver pai, usa o pai. Se não, usa a própria categoria.
+      const parent = category.parent || category;
+      const parentId = parent.id;
+
+      if (!consolidatedMap.has(parentId)) {
+        consolidatedMap.set(parentId, {
+          name: parent.name,
+          color: parent.color,
+          icon: parent.icon,
+          amount: 0,
+        });
+      }
+
+      const entry = consolidatedMap.get(parentId)!;
+      entry.amount += amount;
+    });
+
+    // 4. Formata para o retorno esperado pelo Frontend
+    return Array.from(consolidatedMap.entries())
+      .map(([id, data]) => ({
+        id,
+        name: data.name,
+        color: data.color,
+        icon: data.icon,
+        amount: data.amount,
+      }))
+      .sort((a, b) => b.amount - a.amount);
   }
 
   async getCashFlow(userId: string, query: GetReportDto) {
     const { startDate, endDate } = this.getDateRange(query);
 
-    // Agrupa por data para gráfico de linha/barra
-    // Nota: O Prisma não tem "groupBy date" nativo fácil para todos os bancos, 
-    // então buscamos os dados e agrupamos no código (para volumes normais é ok).
     const transactions = await this.prisma.transaction.findMany({
       where: {
         userId,
@@ -103,7 +138,7 @@ export class ReportsService {
     const dailyMap = new Map<string, { income: number; expense: number }>();
 
     transactions.forEach(t => {
-      const day = t.date.toISOString().split('T')[0]; // YYYY-MM-DD
+      const day = t.date.toISOString().split('T')[0];
       if (!dailyMap.has(day)) {
         dailyMap.set(day, { income: 0, expense: 0 });
       }

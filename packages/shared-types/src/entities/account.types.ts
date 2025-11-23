@@ -6,11 +6,16 @@ export interface Account {
   name: string;
   type: AccountType;
   balance: number;
+  creditLimit?: number; // Novo campo
   currency: string;
   color?: string;
   icon?: string;
   isArchived: boolean;
-  bankConnectionId?: string; // Para Open Banking
+  bankConnectionId?: string;
   createdAt: Date;
   updatedAt: Date;
+  
+  // Campos calculados pelo backend (Opcionais)
+  totalInvested?: number;
+  totalConsolidated?: number;
 }

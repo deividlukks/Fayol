@@ -1,7 +1,7 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { UsersService } from '../../users/services/users.service';
 import { JwtService } from '@nestjs/jwt';
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcryptjs'; // <--- Alterado aqui
 import { LoginDto } from '../dto/auth.dto';
 
 @Injectable()
@@ -23,7 +23,6 @@ export class AuthService {
     return null;
   }
 
-  // ATUALIZADO: Agora retorna o nome completo para o novo layout de login
   async checkUserExistence(identifier: string) {
     const user = await this.usersService.findByIdentifier(identifier);
     
@@ -33,7 +32,7 @@ export class AuthService {
 
     return { 
       exists: true,
-      name: user.name, // <--- Alterado de user.name.split(' ')[0] para user.name
+      name: user.name,
       email: user.email
     };
   }
