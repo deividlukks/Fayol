@@ -1,20 +1,25 @@
-import { Injectable, NotFoundException, ForbiddenException, BadRequestException } from '@nestjs/common';
+import { Injectable, NotFoundException, ForbiddenException, BadRequestException, Logger } from '@nestjs/common';
 import { PrismaService } from '../../../prisma/prisma.service';
 import { CreateTransactionDto, UpdateTransactionDto } from '../dto/transactions.dto';
 import { LaunchType } from '@fayol/shared-types';
+import { AiService } from '../../ai/services/ai.service';
 
 @Injectable()
 export class TransactionsService {
-  constructor(private prisma: PrismaService) {}
+  private readonly logger = new Logger(TransactionsService.name);
+
+  constructor(
+    private prisma: PrismaService,
+    private aiService: AiService,
+  ) {}
 
   private calculateBalanceChange(type: LaunchType, amount: number): number {
     if (type === LaunchType.INCOME) return amount;
     if (type === LaunchType.EXPENSE) return -amount;
-    return 0; // Transferências são tratadas de forma especial
+    return 0;
   }
 
   async create(userId: string, data: CreateTransactionDto) {
-    // Valida a conta de origem
     const account = await this.prisma.account.findUnique({
       where: { id: data.accountId },
     });
@@ -23,7 +28,24 @@ export class TransactionsService {
       throw new NotFoundException('Conta de origem não encontrada.');
     }
 
-    // LÓGICA ESPECIAL PARA TRANSFERÊNCIAS
+    let finalCategoryId = data.categoryId;
+
+    if (!finalCategoryId) {
+      try {
+        this.logger.log(`Tentando categorizar automaticamente: "${data.description}"...`);
+        const prediction = await this.aiService.predictCategory(userId, data.description);
+        
+        if (prediction.found && prediction.category) {
+          finalCategoryId = prediction.category.id;
+          this.logger.log(`✅ Categoria aplicada: ${prediction.category.name}`);
+        } else {
+          this.logger.warn(`⚠️ Nenhuma categoria encontrada para: "${data.description}"`);
+        }
+      } catch (error) {
+        this.logger.error('Erro ao tentar categorizar automaticamente (seguindo sem categoria)', error);
+      }
+    }
+
     if (data.type === LaunchType.TRANSFER) {
       if (!data.destinationAccountId) {
         throw new BadRequestException('Conta de destino é obrigatória para transferências.');
@@ -38,16 +60,15 @@ export class TransactionsService {
       }
 
       return this.prisma.$transaction(async (tx) => {
-        // 1. Saída da Origem (Débito)
         const debitTransaction = await tx.transaction.create({
           data: {
             userId,
             accountId: data.accountId,
-            categoryId: data.categoryId,
+            categoryId: finalCategoryId,
             description: `Transferência para: ${destAccount.name}`,
             amount: data.amount,
             date: data.date,
-            type: LaunchType.EXPENSE, // Registra como despesa na origem para auditoria
+            type: LaunchType.EXPENSE,
             isPaid: true,
             notes: data.notes,
             tags: data.tags,
@@ -59,16 +80,15 @@ export class TransactionsService {
           data: { balance: { decrement: data.amount } },
         });
 
-        // 2. Entrada no Destino (Crédito)
         await tx.transaction.create({
           data: {
             userId,
             accountId: data.destinationAccountId!,
-            categoryId: data.categoryId,
+            categoryId: finalCategoryId,
             description: `Recebido de: ${account.name}`,
             amount: data.amount,
             date: data.date,
-            type: LaunchType.INCOME, // Registra como receita no destino
+            type: LaunchType.INCOME,
             isPaid: true,
             notes: data.notes,
             tags: data.tags,
@@ -80,11 +100,10 @@ export class TransactionsService {
           data: { balance: { increment: data.amount } },
         });
 
-        return debitTransaction; // Retorna a transação de origem como referência
+        return debitTransaction;
       });
     }
 
-    // LÓGICA PADRÃO (RECEITA/DESPESA)
     return this.prisma.$transaction(async (tx) => {
       const transaction = await tx.transaction.create({
         data: {
@@ -98,7 +117,7 @@ export class TransactionsService {
           tags: data.tags || [],
           user: { connect: { id: userId } },
           account: { connect: { id: data.accountId } },
-          category: data.categoryId ? { connect: { id: data.categoryId } } : undefined,
+          category: finalCategoryId ? { connect: { id: finalCategoryId } } : undefined,
         },
       });
 
@@ -140,12 +159,14 @@ export class TransactionsService {
   async update(id: string, userId: string, data: UpdateTransactionDto) {
     const oldTransaction = await this.findOne(id, userId);
 
+    // CORREÇÃO: Separamos os IDs de relacionamento do restante dos dados.
+    // Isso evita o conflito entre passar 'accountId' (string) e estar num contexto
+    // onde o Prisma espera 'account' (relação).
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { accountId, categoryId, destinationAccountId, ...transactionData } = data;
+
     return this.prisma.$transaction(async (tx) => {
-      // Estorna o saldo anterior se foi pago
       if (oldTransaction.isPaid) {
-        // Se era uma despesa, devolve o dinheiro (increment). Se era receita, retira (decrement/negativo do positivo).
-        // Nota: Transferências complexas (dual entry) não são editáveis facilmente nesta versão simples, 
-        // editamos apenas o registro "em foco".
         const reverseChange = -this.calculateBalanceChange(oldTransaction.type as LaunchType, Number(oldTransaction.amount));
         await tx.account.update({
           where: { id: oldTransaction.accountId },
@@ -156,14 +177,24 @@ export class TransactionsService {
       const updatedTransaction = await tx.transaction.update({
         where: { id },
         data: {
-          ...data,
-          categoryId: data.categoryId,
-          accountId: data.accountId,
-          // Nota: Não atualizamos o destinationAccountId aqui no update simples MVP
+          ...transactionData,
+          
+          // Atualiza Categoria (Relacionamento)
+          category: categoryId === null 
+            ? { disconnect: true } 
+            : categoryId 
+              ? { connect: { id: categoryId } } 
+              : undefined,
+
+          // Atualiza Conta (Relacionamento)
+          // Usamos 'connect' aqui para satisfazer a tipagem estrita do Prisma
+          // quando outros relacionamentos (como category) também estão sendo atualizados.
+          account: accountId 
+            ? { connect: { id: accountId } } 
+            : undefined,
         },
       });
 
-      // Aplica o novo saldo
       if (updatedTransaction.isPaid) {
         const newChange = this.calculateBalanceChange(updatedTransaction.type as LaunchType, Number(updatedTransaction.amount));
         await tx.account.update({

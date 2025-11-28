@@ -2,10 +2,7 @@
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import {
-  createInvestmentSchema,
-  CreateInvestmentInput,
-} from '@fayol/validation-schemas';
+import { createInvestmentSchema, CreateInvestmentInput } from '@fayol/validation-schemas';
 import { Account, AccountType } from '@fayol/shared-types'; // Adicionado AccountType
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { api } from '@/lib/api';
@@ -107,9 +104,7 @@ export function InvestmentForm({ onSuccess, onCancel, initialData }: InvestmentF
         ...data,
         quantity: Number(data.quantity),
         averagePrice: Number(data.averagePrice),
-        currentPrice: data.currentPrice
-          ? Number(data.currentPrice)
-          : undefined,
+        currentPrice: data.currentPrice ? Number(data.currentPrice) : undefined,
       };
       return api.post('/investments', payload);
     },
@@ -120,9 +115,7 @@ export function InvestmentForm({ onSuccess, onCancel, initialData }: InvestmentF
       onSuccess();
     },
     onError: (error: AxiosError<{ message: string }>) => {
-      setServerError(
-        error.response?.data?.message || 'Erro ao registrar investimento.'
-      );
+      setServerError(error.response?.data?.message || 'Erro ao registrar investimento.');
     },
   });
 
@@ -133,7 +126,7 @@ export function InvestmentForm({ onSuccess, onCancel, initialData }: InvestmentF
 
   // CORREÇÃO: Filtrar apenas contas do tipo INVESTIMENTO
   const investmentAccounts = accounts
-    .filter(acc => acc.type === AccountType.INVESTMENT)
+    .filter((acc) => acc.type === AccountType.INVESTMENT)
     .map((acc) => ({
       label: acc.name,
       value: acc.id,
@@ -186,7 +179,11 @@ export function InvestmentForm({ onSuccess, onCancel, initialData }: InvestmentF
         <Select
           label="Conta de Custódia"
           id="accountId"
-          placeholder={investmentAccounts.length > 0 ? "Selecione a corretora..." : "Nenhuma conta de investimento encontrada"}
+          placeholder={
+            investmentAccounts.length > 0
+              ? 'Selecione a corretora...'
+              : 'Nenhuma conta de investimento encontrada'
+          }
           options={investmentAccounts}
           {...register('accountId')}
           error={errors.accountId?.message}
@@ -228,12 +225,7 @@ export function InvestmentForm({ onSuccess, onCancel, initialData }: InvestmentF
       )}
 
       <div className="flex justify-end gap-3 pt-4">
-        <Button
-          type="button"
-          variant="outline"
-          onClick={onCancel}
-          disabled={isSubmitting}
-        >
+        <Button type="button" variant="outline" onClick={onCancel} disabled={isSubmitting}>
           Cancelar
         </Button>
         <Button type="submit" disabled={isSubmitting} isLoading={isSubmitting}>

@@ -12,6 +12,8 @@ import { InvestmentsModule } from './modules/investments/investments.module';
 import { ReportsModule } from './modules/reports/reports.module';
 import { TradingModule } from './modules/trading/trading.module';
 import { AiModule } from './modules/ai/ai.module';
+import { NotificationsModule } from './modules/notifications/notifications.module';
+import { IntegrationsModule } from './modules/integrations/integrations.module';
 
 @Module({
   imports: [
@@ -27,6 +29,8 @@ import { AiModule } from './modules/ai/ai.module';
     ReportsModule,
     TradingModule,
     AiModule,
+    NotificationsModule,
+    IntegrationsModule,
   ],
   controllers: [AppController],
   providers: [],

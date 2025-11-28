@@ -5,9 +5,11 @@ module.exports = function (options, webpack) {
     ...options,
     externals: [
       nodeExternals({
-        // Esta linha é o segredo: diz para o Webpack NÃO externalizar
-        // (ou seja, incluir no bundle) qualquer pacote que comece com @fayol
-        allowlist: [/^@fayol/],
+        // CORREÇÃO DE LENTIDÃO:
+        // Removemos o allowlist para que o Webpack trate os pacotes @fayol/*
+        // como dependências externas (buscando em node_modules) em vez de
+        // recompilá-los e bundlá-los a cada alteração.
+        // allowlist: [/^@fayol/], 
       }),
     ],
   };

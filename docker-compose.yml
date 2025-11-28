@@ -1,5 +1,5 @@
 services:
-  # PostgreSQL Database
+  # --- INFRAESTRUTURA ---
   postgres:
     image: postgres:15-alpine
     container_name: fayol_postgres
@@ -20,7 +20,6 @@ services:
       timeout: 5s
       retries: 5
 
-  # Redis Cache
   redis:
     image: redis:7-alpine
     container_name: fayol_redis
@@ -37,7 +36,6 @@ services:
       timeout: 5s
       retries: 5
 
-  # MongoDB for Logs/Analytics (Opcional - Futuro)
   mongodb:
     image: mongo:7
     container_name: fayol_mongodb
@@ -57,7 +55,117 @@ services:
       timeout: 5s
       retries: 5
 
-  # pgAdmin (Interface visual para o Banco - Opcional)
+  # --- SERVIÇOS DA APLICAÇÃO ---
+  
+  # Inteligência Artificial
+  python-ai:
+    build:
+      # CORREÇÃO: Contexto aponta para a pasta da lib, isolando o build do Python
+      context: ./libs/python-ai
+      dockerfile: Dockerfile
+    container_name: fayol_ai_service
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+    networks:
+      - fayol_network
+    develop:
+      watch:
+        - action: sync
+          path: ./libs/python-ai/src
+          target: /app/src
+          ignore:
+            - __pycache__/
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # API Backend
+  backend:
+    build:
+      context: .
+      dockerfile: apps/backend/Dockerfile
+    container_name: fayol_backend
+    ports:
+      - "3333:3333"
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/fayol_dev?schema=public
+      - JWT_SECRET=fayol_secret_dev_key_123
+      - JWT_EXPIRATION=1d
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - AI_SERVICE_URL=http://python-ai:8000
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      python-ai:
+        condition: service_healthy
+    networks:
+      - fayol_network
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/apps/backend/node_modules
+    # CORREÇÃO: Aumentar intervalo e retries, e usar localhost correto
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3333/api/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  # Frontend Web App
+  web-app:
+    build:
+      context: .
+      dockerfile: apps/web-app/Dockerfile
+    container_name: fayol_web
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      # URL da API acessível pelo navegador (cliente)
+      - NEXT_PUBLIC_API_URL=http://localhost:3333/api
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - fayol_network
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/apps/web-app/node_modules
+      - /app/apps/web-app/.next
+
+  # Telegram Bot
+  telegram-bot:
+    build:
+      context: .
+      dockerfile: apps/telegram-bot/Dockerfile
+    container_name: fayol_telegram_bot
+    environment:
+      - NODE_ENV=development
+      # Token deve estar no seu .env local
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      # Comunicação interna via Docker
+      - API_BASE_URL=http://backend:3333/api
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - fayol_network
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/apps/telegram-bot/node_modules
+
+  # --- FERRAMENTAS ADICIONAIS ---
   pgadmin:
     image: dpage/pgadmin4:latest
     container_name: fayol_pgadmin
@@ -71,7 +179,6 @@ services:
     depends_on:
       - postgres
 
-  # Redis Commander (Interface visual para o Redis - Opcional)
   redis-commander:
     image: rediscommander/redis-commander:latest
     container_name: fayol_redis_commander

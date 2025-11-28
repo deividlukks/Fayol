@@ -79,7 +79,9 @@ export default function DashboardPage() {
   });
 
   // 3. Busca Despesas por Categoria (Gráfico de Pizza)
-  const { data: categoryExpenses, isLoading: isLoadingCategories } = useQuery<CategoryExpenseData[]>({
+  const { data: categoryExpenses, isLoading: isLoadingCategories } = useQuery<
+    CategoryExpenseData[]
+  >({
     queryKey: ['dashboard-categories'],
     queryFn: async () => {
       const response = await api.get('/reports/expenses-by-category');
@@ -102,7 +104,8 @@ export default function DashboardPage() {
     },
   });
 
-  const isLoading = isLoadingSummary || isLoadingCashFlow || isLoadingCategories || isLoadingTransactions;
+  const isLoading =
+    isLoadingSummary || isLoadingCashFlow || isLoadingCategories || isLoadingTransactions;
 
   if (isLoading) {
     return (
@@ -161,7 +164,9 @@ export default function DashboardPage() {
               <div>
                 <p className="text-sm font-medium text-slate-500">Despesas</p>
                 <h3 className="text-2xl font-bold text-red-600 mt-1">
-                  {summary ? CurrencyUtils.format(Number(summary.periodSummary.expense)) : 'R$ 0,00'}
+                  {summary
+                    ? CurrencyUtils.format(Number(summary.periodSummary.expense))
+                    : 'R$ 0,00'}
                 </h3>
               </div>
               <div className="h-12 w-12 bg-red-50 rounded-full flex items-center justify-center text-red-600">
@@ -187,21 +192,25 @@ export default function DashboardPage() {
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={cashFlow}>
                     <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                    <XAxis 
-                      dataKey="date" 
-                      tick={{ fontSize: 12 }} 
+                    <XAxis
+                      dataKey="date"
+                      tick={{ fontSize: 12 }}
                       axisLine={false}
                       tickLine={false}
                     />
-                    <YAxis 
-                      tick={{ fontSize: 12 }} 
+                    <YAxis
+                      tick={{ fontSize: 12 }}
                       axisLine={false}
                       tickLine={false}
                       tickFormatter={(value) => `R$ ${value}`}
                     />
-                    <Tooltip 
+                    <Tooltip
                       formatter={(value: number) => CurrencyUtils.format(value)}
-                      contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
+                      contentStyle={{
+                        borderRadius: '8px',
+                        border: 'none',
+                        boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)',
+                      }}
                     />
                     <Legend />
                     <Bar dataKey="income" name="Receita" fill="#10b981" radius={[4, 4, 0, 0]} />
@@ -237,19 +246,19 @@ export default function DashboardPage() {
                       dataKey="value"
                     >
                       {categoryExpenses.map((entry, index) => (
-                        <Cell 
-                          key={`cell-${index}`} 
+                        <Cell
+                          key={`cell-${index}`}
                           // Força o uso da paleta de cores definida no topo
-                          fill={CHART_COLORS[index % CHART_COLORS.length]} 
+                          fill={CHART_COLORS[index % CHART_COLORS.length]}
                         />
                       ))}
                     </Pie>
                     <Tooltip formatter={(value: number) => CurrencyUtils.format(value)} />
-                    <Legend 
-                      layout="horizontal" 
-                      verticalAlign="bottom" 
-                      align="center" 
-                      wrapperStyle={{ fontSize: '12px', paddingTop: '20px' }} 
+                    <Legend
+                      layout="horizontal"
+                      verticalAlign="bottom"
+                      align="center"
+                      wrapperStyle={{ fontSize: '12px', paddingTop: '20px' }}
                     />
                   </PieChart>
                 </ResponsiveContainer>
@@ -277,10 +286,18 @@ export default function DashboardPage() {
                     <tr key={transaction.id} className="group hover:bg-slate-50 transition-colors">
                       <td className="py-4 pl-2">
                         <div className="flex items-center gap-3">
-                          <div className={`p-2 rounded-lg ${
-                            transaction.type === LaunchType.INCOME ? 'bg-emerald-50 text-emerald-600' : 'bg-red-50 text-red-600'
-                          }`}>
-                             {transaction.type === LaunchType.INCOME ? <ArrowUpCircle className="h-5 w-5" /> : <CreditCard className="h-5 w-5" />}
+                          <div
+                            className={`p-2 rounded-lg ${
+                              transaction.type === LaunchType.INCOME
+                                ? 'bg-emerald-50 text-emerald-600'
+                                : 'bg-red-50 text-red-600'
+                            }`}
+                          >
+                            {transaction.type === LaunchType.INCOME ? (
+                              <ArrowUpCircle className="h-5 w-5" />
+                            ) : (
+                              <CreditCard className="h-5 w-5" />
+                            )}
                           </div>
                           <div>
                             <p className="font-medium text-slate-900">{transaction.description}</p>
@@ -295,10 +312,14 @@ export default function DashboardPage() {
                         {DateUtils.formatDate(transaction.date)}
                       </td>
                       <td className="py-4 pr-2 text-right">
-                        <span className={`font-semibold ${
-                          transaction.type === LaunchType.INCOME ? 'text-emerald-600' : 'text-red-600'
-                        }`}>
-                          {transaction.type === LaunchType.INCOME ? '+' : '-'} 
+                        <span
+                          className={`font-semibold ${
+                            transaction.type === LaunchType.INCOME
+                              ? 'text-emerald-600'
+                              : 'text-red-600'
+                          }`}
+                        >
+                          {transaction.type === LaunchType.INCOME ? '+' : '-'}
                           {CurrencyUtils.format(Number(transaction.amount))}
                         </span>
                       </td>

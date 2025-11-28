@@ -32,10 +32,10 @@
     "docker:clean": "docker-compose down -v",
     "docker:validate": "bash scripts/docker-compose-manager.sh validate || cmd.exe /c scripts\\docker-compose-manager.bat validate"
   },
-  "packageManager": "pnpm@10.23.0",
+  "packageManager": "pnpm@9.1.0", 
   "engines": {
     "node": ">=20.0.0",
-    "pnpm": ">=8.0.0"
+    "pnpm": ">=9.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^18.4.3",

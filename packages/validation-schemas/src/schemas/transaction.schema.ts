@@ -19,7 +19,10 @@ const baseTransactionSchema = z.object({
   // Conta de Destino (Apenas para transferências)
   destinationAccountId: z.string().uuid().optional(),
 
-  categoryId: z.string().uuid(ERROR_MESSAGES.REQUIRED_FIELD),
+  // CORREÇÃO: CategoryId agora aceita null ou undefined (opcional)
+  // Isso permite que o Bot envie transações sem categoria para a IA processar depois
+  categoryId: z.string().uuid().optional().nullable(),
+
   isPaid: z.boolean().default(true),
   recurrence: z.nativeEnum(Recurrence).default(Recurrence.NONE),
   notes: z.string().max(LIMITS.TRANSACTION.NOTES_MAX).optional(),
@@ -46,9 +49,7 @@ export const createTransactionSchema = baseTransactionSchema.refine(transactionR
   path: ["destinationAccountId"],
 });
 
-// 4. Schema de ATUALIZAÇÃO: Base Parcial + (Opcional: Refinamentos se necessário)
-// Como partial() torna tudo opcional, refinamentos estritos podem falhar se campos faltarem.
-// Para update, geralmente relaxamos as regras ou validamos apenas se os campos estiverem presentes.
+// 4. Schema de ATUALIZAÇÃO: Base Parcial
 export const updateTransactionSchema = baseTransactionSchema.partial();
 
 export type CreateTransactionInput = z.infer<typeof createTransactionSchema>;

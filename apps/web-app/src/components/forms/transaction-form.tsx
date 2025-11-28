@@ -2,17 +2,8 @@
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import {
-  createTransactionSchema,
-  CreateTransactionInput,
-} from '@fayol/validation-schemas';
-import {
-  Account,
-  Category,
-  LaunchType,
-  Recurrence,
-  Transaction,
-} from '@fayol/shared-types';
+import { createTransactionSchema, CreateTransactionInput } from '@fayol/validation-schemas';
+import { Account, Category, LaunchType, Recurrence, Transaction } from '@fayol/shared-types';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { api } from '@/lib/api';
 import { Button } from '@/components/ui/button';
@@ -32,15 +23,10 @@ interface TransactionFormProps {
   initialData?: Transaction;
 }
 
-export function TransactionForm({
-  onSuccess,
-  onCancel,
-  initialData,
-}: TransactionFormProps) {
+export function TransactionForm({ onSuccess, onCancel, initialData }: TransactionFormProps) {
   const queryClient = useQueryClient();
   const [serverError, setServerError] = useState<string | null>(null);
-  const [selectedParentCategory, setSelectedParentCategory] =
-    useState<string>('');
+  const [selectedParentCategory, setSelectedParentCategory] = useState<string>('');
 
   const launchDateFormatted = initialData
     ? DateUtils.formatDate(initialData.createdAt)
@@ -107,9 +93,7 @@ export function TransactionForm({
   }, [initialData, categories, reset]);
 
   // Filtra Categorias
-  const filteredParentCategories = categories.filter(
-    (cat) => cat.type === selectedType
-  );
+  const filteredParentCategories = categories.filter((cat) => cat.type === selectedType);
   const currentParent = categories.find((c) => c.id === selectedParentCategory);
   const subCategories = currentParent?.children || [];
 
@@ -144,9 +128,7 @@ export function TransactionForm({
       onSuccess();
     },
     onError: (error: AxiosError<{ message: string }>) => {
-      setServerError(
-        error.response?.data?.message || 'Erro ao salvar transação.'
-      );
+      setServerError(error.response?.data?.message || 'Erro ao salvar transação.');
     },
   });
 
@@ -289,11 +271,7 @@ export function TransactionForm({
         <Select
           label="Subcategoria"
           id="categoryId"
-          placeholder={
-            selectedParentCategory
-              ? 'Selecione...'
-              : 'Escolha a principal primeiro'
-          }
+          placeholder={selectedParentCategory ? 'Selecione...' : 'Escolha a principal primeiro'}
           options={subCategoryOptions}
           disabled={!selectedParentCategory || subCategories.length === 0}
           {...register('categoryId')}
@@ -309,9 +287,7 @@ export function TransactionForm({
             {...register('isPaid')}
           />
           <span className="text-sm font-medium text-slate-700">
-            {watch('type') === LaunchType.INCOME
-              ? 'Recebido / Confirmado'
-              : 'Pago / Confirmado'}
+            {watch('type') === LaunchType.INCOME ? 'Recebido / Confirmado' : 'Pago / Confirmado'}
           </span>
         </label>
       </div>
@@ -323,12 +299,7 @@ export function TransactionForm({
       )}
 
       <div className="flex justify-end gap-3 pt-4 border-t border-slate-100">
-        <Button
-          type="button"
-          variant="outline"
-          onClick={onCancel}
-          disabled={isSubmitting}
-        >
+        <Button type="button" variant="outline" onClick={onCancel} disabled={isSubmitting}>
           Cancelar
         </Button>
         <Button type="submit" disabled={isSubmitting} isLoading={isSubmitting}>

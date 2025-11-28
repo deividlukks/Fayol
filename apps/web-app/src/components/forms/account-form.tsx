@@ -2,10 +2,7 @@
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import {
-  createAccountSchema,
-  CreateAccountInput,
-} from '@fayol/validation-schemas';
+import { createAccountSchema, CreateAccountInput } from '@fayol/validation-schemas';
 import { Account, AccountType } from '@fayol/shared-types';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { api } from '@/lib/api';
@@ -21,11 +18,7 @@ interface AccountFormProps {
   initialData?: Account;
 }
 
-export function AccountForm({
-  onSuccess,
-  onCancel,
-  initialData,
-}: AccountFormProps) {
+export function AccountForm({ onSuccess, onCancel, initialData }: AccountFormProps) {
   const queryClient = useQueryClient();
   const [serverError, setServerError] = useState<string | null>(null);
 
@@ -55,9 +48,7 @@ export function AccountForm({
         name: initialData.name,
         type: initialData.type,
         balance: Number(initialData.balance),
-        creditLimit: initialData.creditLimit
-          ? Number(initialData.creditLimit)
-          : 0,
+        creditLimit: initialData.creditLimit ? Number(initialData.creditLimit) : 0,
         currency: initialData.currency,
         color: initialData.color,
         icon: initialData.icon,
@@ -175,12 +166,7 @@ export function AccountForm({
       )}
 
       <div className="flex justify-end gap-3 pt-4">
-        <Button
-          type="button"
-          variant="outline"
-          onClick={onCancel}
-          disabled={isSubmitting}
-        >
+        <Button type="button" variant="outline" onClick={onCancel} disabled={isSubmitting}>
           Cancelar
         </Button>
         <Button type="submit" disabled={isSubmitting} isLoading={isSubmitting}>

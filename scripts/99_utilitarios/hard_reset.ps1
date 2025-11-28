@@ -1,17 +1,17 @@
 <#
 .SYNOPSIS
-    Hard Reset V3.1 - Reset TOTAL (Ambiente + Histórico de Banco + Dependências Nativas).
+    Hard Reset V3.3 - Reset TOTAL (Ambiente + Histórico de Banco + Dependências Nativas + Imagens Docker).
 .DESCRIPTION
     1. Mata processos Node.
-    2. Limpa Docker.
+    2. Limpa Docker (Containers, Volumes, Imagens e Cache de Build).
     3. Apaga node_modules, caches E a pasta de migrações do Prisma.
-    4. Reinstala e Recompila dependências (Correção bcrypt).
-    5. Recria o banco com uma única migração limpa.
+    4. Reinstala e Recompila dependências.
+    5. Reconstrói (Build) e Sobe os containers.
+    6. Recria o banco com migração e seed.
 #>
 
 $ErrorActionPreference = "Stop"
 
-# Funções renomeadas para usar o verbo aprovado 'Write'
 function Write-LogInfo ($Msg) { Write-Host "`n🔵 $Msg" -ForegroundColor Cyan }
 function Write-LogSuccess ($Msg) { Write-Host "   ✅ $Msg" -ForegroundColor Green }
 function Write-LogWarn ($Msg) { Write-Host "   ⚠️  $Msg" -ForegroundColor Yellow }
@@ -19,7 +19,7 @@ function Write-LogError ($Msg) { Write-Host "   ❌ $Msg" -ForegroundColor Red }
 
 Clear-Host
 Write-Host "========================================" -ForegroundColor Magenta
-Write-Host "   🧹 FAYOL - HARD RESET (V3.1)" -ForegroundColor Magenta
+Write-Host "   🧹 FAYOL - HARD RESET (V3.3)" -ForegroundColor Magenta
 Write-Host "========================================" -ForegroundColor Magenta
 
 # 1. Matar Processos Node
@@ -32,11 +32,18 @@ try {
 }
 
 # 2. Limpeza do Docker
-Write-LogInfo "[2/7] Resetando Docker..."
+Write-LogInfo "[2/7] Resetando Docker (Containers, Volumes e Imagens)..."
 if (Get-Command "docker" -ErrorAction SilentlyContinue) {
     try {
-        docker-compose down -v --remove-orphans
-        Write-LogSuccess "Docker limpo."
+        # Down com remoção de volumes (-v) e IMAGENS (--rmi all)
+        # Isso apaga as imagens criadas pelo docker-compose (backend, python-ai, etc)
+        docker-compose down -v --rmi all --remove-orphans
+        
+        Write-Host "   - Limpando cache de build..." -ForegroundColor Gray
+        # Limpa o cache do builder para garantir que o próximo build não use camadas antigas
+        docker builder prune -f | Out-Null
+
+        Write-LogSuccess "Docker totalmente limpo (Imagens e Cache removidos)."
     } catch {
         Write-LogWarn "Docker inacessível (verifique se o Desktop está rodando)."
     }
@@ -77,15 +84,16 @@ if ($LASTEXITCODE -ne 0) { Write-LogWarn "Aviso: Falha no rebuild, mas vamos ten
 else { Write-LogSuccess "Módulos nativos recompilados." }
 
 # 6. Infraestrutura
-Write-LogInfo "[6/7] Subindo Banco de Dados..."
-docker-compose up -d
+Write-LogInfo "[6/7] Construindo e Subindo Ambiente Docker..."
+# --build é essencial aqui pois acabamos de deletar as imagens no passo 2
+docker-compose up -d --build
 if ($LASTEXITCODE -ne 0) { Write-LogError "Falha no Docker."; exit 1 }
 
-Write-Host "   ⏳ Aguardando DB iniciar (15s)..." -ForegroundColor Gray
-Start-Sleep -Seconds 15
+Write-Host "   ⏳ Aguardando DB iniciar (20s)..." -ForegroundColor Gray
+Start-Sleep -Seconds 20
 
 # 7. Prisma (Nova Migração Inicial)
-Write-LogInfo "[7/7] Criando nova estrutura do banco (Migrate)..."
+Write-LogInfo "[7/7] Criando nova estrutura do banco (Migrate + Seed)..."
 
 Write-Host "   - Gerando Cliente..." -ForegroundColor Gray
 pnpm --filter @fayol/database-models run generate
@@ -98,6 +106,6 @@ if ($LASTEXITCODE -ne 0) {
     exit 1
 }
 
-Write-Host "`n🎉 AMBIENTE LIMPO E RECONSTRUÍDO!" -ForegroundColor Green
+Write-Host "`n🎉 AMBIENTE LIMPO, RECONSTRUÍDO E POPULADO!" -ForegroundColor Green
 Write-Host "========================================" -ForegroundColor Magenta
-Write-Host "Pode rodar: pnpm dev" -ForegroundColor Cyan
+Write-Host "Acesse: http://localhost:3000" -ForegroundColor Cyan

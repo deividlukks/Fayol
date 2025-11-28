@@ -3,8 +3,10 @@ import * as dotenv from 'dotenv';
 
 dotenv.config();
 
-// Força IPv4 (127.0.0.1) para evitar problemas de DNS em localhost
+// Configuração da URL base
 const BASE_URL = process.env.API_BASE_URL || 'http://127.0.0.1:3333/api';
+
+console.log(`🔌 [Bot] API Service configurado para: ${BASE_URL}`);
 
 export class ApiService {
   private api: AxiosInstance;
@@ -12,29 +14,24 @@ export class ApiService {
   constructor() {
     this.api = axios.create({
       baseURL: BASE_URL,
-      timeout: 5000,
+      // AUMENTADO: De 5000 para 30000ms (30s) para tolerar lentidão no dev
+      timeout: 30000, 
     });
   }
 
   // Verifica existência do usuário
   async checkUser(identifier: string): Promise<boolean> {
     try {
-      console.log(`📡 [Bot] Consultando usuário: "${identifier}" em ${BASE_URL}/auth/check...`);
+      console.log(`📡 [Bot] Consultando usuário: "${identifier}"...`);
       const response = await this.api.post('/auth/check', { identifier });
-      console.log(`✅ [Bot] Resposta da API:`, JSON.stringify(response.data, null, 2));
       
-      // CORREÇÃO: Acessa response.data.data.exists devido ao Interceptor do NestJS
       const payload = response.data;
       if (payload.data && typeof payload.data.exists === 'boolean') {
         return payload.data.exists;
       }
       return !!payload.exists;
     } catch (error: any) {
-      if (error.code === 'ECONNREFUSED') {
-        console.error(`❌ [Bot] Erro de Conexão: O Backend está offline ou inacessível em ${BASE_URL}`);
-        throw new Error('Backend offline');
-      }
-      console.error('❌ [Bot] Erro na API:', error.response?.data || error.message);
+      this.handleError(error, 'checkUser');
       throw error; 
     }
   }
@@ -46,10 +43,9 @@ export class ApiService {
         email: identifier, 
         password 
       });
-      // CORREÇÃO: Desembrulha a resposta do interceptor para retornar { access_token, user }
       return response.data.data || response.data;
     } catch (error: any) {
-      console.error('❌ [Bot] Erro no login:', error.response?.data || error.message);
+      this.handleError(error, 'login');
       return null;
     }
   }
@@ -57,6 +53,8 @@ export class ApiService {
   // Cria transação
   async createTransaction(token: string, description: string, amount: number) {
     try {
+      const accountId = await this.getFirstAccountId(token);
+      
       const response = await this.api.post(
         '/transactions',
         {
@@ -65,7 +63,8 @@ export class ApiService {
           date: new Date(),
           type: 'EXPENSE',
           isPaid: true,
-          accountId: await this.getFirstAccountId(token),
+          accountId: accountId,
+          categoryId: null // Backend IA irá categorizar
         },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -73,12 +72,12 @@ export class ApiService {
       );
       return response.data.data || response.data;
     } catch (error: any) {
-      console.error('Erro ao criar transação:', error.message);
+      this.handleError(error, 'createTransaction');
       throw new Error(error.response?.data?.message || 'Falha ao criar transação');
     }
   }
 
-  // Busca Resumo Financeiro
+  // Busca Resumo
   async getDashboardSummary(token: string) {
     try {
       const response = await this.api.get('/reports/summary', {
@@ -86,21 +85,21 @@ export class ApiService {
       });
       return response.data.data || response.data;
     } catch (error: any) {
-      console.error('Erro ao buscar resumo:', error.message);
+      this.handleError(error, 'getDashboardSummary');
       throw new Error('Não foi possível buscar o saldo.');
     }
   }
 
-  // Busca últimas transações
+  // Busca Extrato
   async getLastTransactions(token: string, limit: number = 5) {
     try {
       const response = await this.api.get('/transactions', {
         headers: { Authorization: `Bearer ${token}` },
       });
-      const transactions = Array.isArray(response.data) ? response.data : response.data.data;
+      const transactions = Array.isArray(response.data) ? response.data : (response.data.data || []);
       return transactions.slice(0, limit);
     } catch (error: any) {
-      console.error('Erro ao buscar extrato:', error.message);
+      this.handleError(error, 'getLastTransactions');
       throw new Error('Não foi possível buscar o extrato.');
     }
   }
@@ -110,14 +109,26 @@ export class ApiService {
       const response = await this.api.get('/accounts', {
         headers: { Authorization: `Bearer ${token}` },
       });
-      const accounts = Array.isArray(response.data) ? response.data : response.data.data;
+      const accounts = Array.isArray(response.data) ? response.data : (response.data.data || []);
+      
       if (!accounts || accounts.length === 0) {
         throw new Error('Nenhuma conta encontrada.');
       }
       return accounts[0].id;
     } catch (error: any) {
-        console.error('Erro contas:', error.message);
+        this.handleError(error, 'getFirstAccountId');
         throw error;
+    }
+  }
+
+  // Helper centralizado de erro
+  private handleError(error: any, context: string) {
+    if (error.code === 'ECONNREFUSED' || error.code === 'ENOTFOUND') {
+        console.error(`❌ [Bot] ${context}: Backend inacessível ou offline em ${BASE_URL}`);
+    } else if (error.code === 'ECONNABORTED') {
+        console.error(`❌ [Bot] ${context}: Timeout! O Backend demorou mais de 30s para responder.`);
+    } else {
+        console.error(`❌ [Bot] ${context}:`, error.response?.data || error.message);
     }
   }
 }
