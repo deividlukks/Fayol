@@ -2,7 +2,8 @@
 
 ![Fayol Banner](apps/web-app/public/logo.png)
 
-> **Sistema Multiplataforma de Gestão Financeira Pessoal, Investimentos e Trading.** > *Impulsionado por Inteligência Artificial e Arquitetura de Microsserviços.*
+> **Sistema Multiplataforma de Gestão Financeira Pessoal, Investimentos e Trading.**
+> *Impulsionado por Inteligência Artificial e Arquitetura de Microsserviços.*
 
 ---
 
