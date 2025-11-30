@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { LIMITS, REGEX, ERROR_MESSAGES } from '@fayol/shared-constants';
-import { InvestorProfile } from '@fayol/shared-types';
+import { LIMITS, REGEX } from '@fayol/shared-constants';
+import { InvestorProfile, Gender } from '@fayol/shared-types';
 
 export const updateUserSchema = z.object({
   name: z
@@ -13,6 +13,10 @@ export const updateUserSchema = z.object({
     .regex(REGEX.PHONE_BR, 'Telefone inválido')
     .optional()
     .or(z.literal('')),
+  // Novos campos
+  cpf: z.string().optional(), // Adicionar validação de CPF depois se desejar
+  gender: z.nativeEnum(Gender).optional(),
+  profileImage: z.string().optional(), // Base64 da imagem
   investorProfile: z.nativeEnum(InvestorProfile).optional(),
 });
 

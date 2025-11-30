@@ -19,6 +19,9 @@ CREATE TYPE "NotificationType" AS ENUM ('INFO', 'WARNING', 'SUCCESS', 'ERROR');
 -- CreateEnum
 CREATE TYPE "TradeType" AS ENUM ('BUY', 'SELL');
 
+-- CreateEnum
+CREATE TYPE "Gender" AS ENUM ('MALE', 'FEMALE', 'OTHER', 'PREFER_NOT_TO_SAY');
+
 -- CreateTable
 CREATE TABLE "users" (
     "id" TEXT NOT NULL,
@@ -27,8 +30,12 @@ CREATE TABLE "users" (
     "passwordHash" TEXT NOT NULL,
     "roles" "UserRole"[] DEFAULT ARRAY['USER']::"UserRole"[],
     "profileImage" TEXT,
+    "gender" "Gender",
+    "cpf" TEXT,
     "phoneNumber" TEXT,
     "investorProfile" "InvestorProfile" NOT NULL DEFAULT 'UNDEFINED',
+    "onboardingStep" INTEGER NOT NULL DEFAULT 0,
+    "mainCurrency" TEXT NOT NULL DEFAULT 'BRL',
     "isActive" BOOLEAN NOT NULL DEFAULT true,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
@@ -161,8 +168,26 @@ CREATE TABLE "trades" (
     CONSTRAINT "trades_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateTable
+CREATE TABLE "goals" (
+    "id" TEXT NOT NULL,
+    "userId" TEXT NOT NULL,
+    "title" TEXT NOT NULL,
+    "currentAmount" DECIMAL(15,2) NOT NULL DEFAULT 0,
+    "targetAmount" DECIMAL(15,2) NOT NULL,
+    "deadline" TIMESTAMP(3),
+    "color" TEXT DEFAULT 'bg-blue-500',
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "goals_pkey" PRIMARY KEY ("id")
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "users_cpf_key" ON "users"("cpf");
 
 -- CreateIndex
 CREATE INDEX "transactions_userId_date_idx" ON "transactions"("userId", "date");
@@ -214,3 +239,6 @@ ALTER TABLE "trades" ADD CONSTRAINT "trades_investmentId_fkey" FOREIGN KEY ("inv
 
 -- AddForeignKey
 ALTER TABLE "trades" ADD CONSTRAINT "trades_transactionId_fkey" FOREIGN KEY ("transactionId") REFERENCES "transactions"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "goals" ADD CONSTRAINT "goals_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;

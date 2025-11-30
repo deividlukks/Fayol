@@ -5,11 +5,10 @@ module.exports = function (options, webpack) {
     ...options,
     externals: [
       nodeExternals({
-        // CORREÇÃO DE LENTIDÃO:
-        // Removemos o allowlist para que o Webpack trate os pacotes @fayol/*
-        // como dependências externas (buscando em node_modules) em vez de
-        // recompilá-los e bundlá-los a cada alteração.
-        // allowlist: [/^@fayol/], 
+        // ✅ CORREÇÃO APLICADA:
+        // A allowlist DEVE estar ativa para compilar os pacotes do monorepo (@fayol/*)
+        // Se estiver comentada, o backend quebra com "SyntaxError: Unexpected identifier 'as'"
+        allowlist: [/^@fayol/], 
       }),
     ],
   };

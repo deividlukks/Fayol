@@ -13,6 +13,7 @@ import {
   CreditCard,
   TrendingUp,
   Loader2,
+  Target, // <--- Importado o ícone de alvo para Metas
 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -23,20 +24,35 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
   const [isCheckingAuth, setIsCheckingAuth] = useState(true);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
-  const [user, setUser] = useState<{ name: string; email: string } | null>(null);
+  // Tipagem extendida para incluir onboardingStep
+  const [user, setUser] = useState<{
+    name: string;
+    email: string;
+    onboardingStep?: number;
+  } | null>(null);
 
   useEffect(() => {
-    const validateAuth = () => {
+    const validateAuth = async () => {
       try {
         const token = localStorage.getItem('token');
-        const storedUser = localStorage.getItem('user');
+        const storedUserStr = localStorage.getItem('user');
 
-        if (!token || !storedUser) {
+        if (!token || !storedUserStr) {
           router.push('/auth/login');
           return;
         }
 
-        setUser(JSON.parse(storedUser));
+        const userObj = JSON.parse(storedUserStr);
+
+        // --- VERIFICAÇÃO DE ONBOARDING ---
+        // Se o passo for menor que 5 (concluído), redireciona para o wizard
+        if (userObj.onboardingStep !== undefined && userObj.onboardingStep < 5) {
+          router.push('/onboarding');
+          return;
+        }
+        // -------------------------------------
+
+        setUser(userObj);
         setIsCheckingAuth(false);
       } catch (error) {
         console.error('Erro ao recuperar sessão:', error);
@@ -64,6 +80,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     { name: 'Transações', href: '/dashboard/transactions', icon: Wallet },
     { name: 'Orçamentos', href: '/dashboard/budgets', icon: PieChart },
     { name: 'Investimentos', href: '/dashboard/investments', icon: TrendingUp },
+    { name: 'Metas', href: '/dashboard/goals', icon: Target }, // <--- Novo item adicionado
     { name: 'Contas', href: '/dashboard/accounts', icon: CreditCard },
     { name: 'Configurações', href: '/dashboard/settings', icon: Settings },
   ];
@@ -104,7 +121,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         `}
       >
         <div className="h-full flex flex-col">
-          {/* Logo Sidebar - Ajustado para imagem maior e sem texto */}
+          {/* Logo Sidebar */}
           <div className="h-24 flex items-center justify-center border-b border-slate-100 px-6">
             <div className="relative h-48 w-48">
               <Image src="/logo.png" alt="Fayol" fill className="object-contain" priority />
@@ -163,7 +180,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
-        {/* Mobile Header - Ajustado para imagem maior e sem texto */}
+        {/* Mobile Header */}
         <header className="lg:hidden bg-white shadow-sm h-16 flex items-center justify-between px-4">
           <div className="relative h-8 w-32">
             <Image src="/logo.png" alt="Fayol" fill className="object-contain" priority />

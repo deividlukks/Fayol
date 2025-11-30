@@ -1,10 +1,5 @@
 import { forwardRef, HTMLAttributes } from 'react';
-import { clsx, type ClassValue } from 'clsx';
-import { twMerge } from 'tailwind-merge';
-
-function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
+import { cn } from '@/lib/utils';
 
 interface ProgressProps extends HTMLAttributes<HTMLDivElement> {
   value: number; // 0 a 100

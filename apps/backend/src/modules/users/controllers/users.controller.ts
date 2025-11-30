@@ -1,8 +1,11 @@
 import { Controller, Get, Post, Body, Patch, Param, UseGuards } from '@nestjs/common';
-import { UsersService } from '../services/users.service'; // Import ajustado
+import { UsersService } from '../services/users.service';
 import { UpdateUserDto } from '../dto/users.dto';
 import { RegisterDto } from '../../auth/dto/auth.dto';
+import { UpdateOnboardingDto } from '../dto/onboarding.dto';
 import { JwtAuthGuard } from '../../../common/guards/jwt-auth.guard';
+import { CurrentUser } from '../../../common/decorators/current-user.decorator';
+import { User } from '@fayol/database-models';
 import { ApiTags, ApiOperation, ApiBearerAuth } from '@nestjs/swagger';
 
 @ApiTags('Users')
@@ -22,6 +25,22 @@ export class UsersController {
   @ApiOperation({ summary: 'Busca um usuário pelo ID' })
   findOne(@Param('id') id: string) {
     return this.usersService.findOne(id);
+  }
+
+  @Patch('onboarding/step')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Atualiza o progresso do onboarding do usuário' })
+  updateOnboarding(@CurrentUser() user: User, @Body() dto: UpdateOnboardingDto) {
+    // CORREÇÃO: Removemos 'step' do objeto antes de passar para o service/prisma
+    // O Prisma quebraria se recebesse um campo que não existe no banco
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { step, ...dataToUpdate } = dto;
+
+    return this.usersService.update(user.id, {
+      ...dataToUpdate,
+      onboardingStep: dto.step, // Mapeamos para o nome correto da coluna
+    } as any);
   }
 
   @Patch(':id')

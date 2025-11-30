@@ -14,6 +14,7 @@ import { TradingModule } from './modules/trading/trading.module';
 import { AiModule } from './modules/ai/ai.module';
 import { NotificationsModule } from './modules/notifications/notifications.module';
 import { IntegrationsModule } from './modules/integrations/integrations.module';
+import { GoalsModule } from './modules/goals/goals.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { IntegrationsModule } from './modules/integrations/integrations.module';
     AiModule,
     NotificationsModule,
     IntegrationsModule,
+    GoalsModule,
   ],
   controllers: [AppController],
   providers: [],

@@ -7,3 +7,4 @@ export * from './schemas/budget.schema';
 export * from './schemas/investment.schema';
 export * from './schemas/report.schema';
 export * from './schemas/trade.schema';
+export * from './schemas/goal.schema';

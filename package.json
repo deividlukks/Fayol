@@ -12,6 +12,7 @@
   "scripts": {
     "dev": "turbo run dev --parallel",
     "build": "turbo run build",
+    "postinstall": "pnpm --filter @fayol/database-models run generate",
     "generate": "turbo run generate",
     "test": "turbo run test",
     "lint": "turbo run lint",

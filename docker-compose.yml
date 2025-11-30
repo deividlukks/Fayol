@@ -1,104 +1,77 @@
+name: fayol-system
+
 services:
-  # --- INFRAESTRUTURA ---
+  # --- INFRAESTRUTURA DE DADOS ---
   postgres:
     image: postgres:15-alpine
     container_name: fayol_postgres
+    restart: always
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: fayol_dev
-      POSTGRES_INITDB_ARGS: "--encoding=UTF8"
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     ports:
-      - "5432:5432"
+      - "${POSTGRES_PORT}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
-      - fayol_network
+      - fayol_net
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 10s
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
       timeout: 5s
-      retries: 5
+      retries: 10
 
   redis:
     image: redis:7-alpine
     container_name: fayol_redis
+    restart: always
     ports:
-      - "6379:6379"
+      - "${REDIS_PORT}:6379"
     volumes:
       - redis_data:/data
     networks:
-      - fayol_network
+      - fayol_net
     command: redis-server --appendonly yes
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-
-  mongodb:
-    image: mongo:7
-    container_name: fayol_mongodb
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: password
-      MONGO_INITDB_DATABASE: fayol_logs
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongodb_data:/data/db
-    networks:
-      - fayol_network
-    healthcheck:
-      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
-      interval: 10s
+      interval: 5s
       timeout: 5s
       retries: 5
 
   # --- SERVIÇOS DA APLICAÇÃO ---
   
-  # Inteligência Artificial
+  # Serviço de Inteligência Artificial (Python)
   python-ai:
     build:
-      # CORREÇÃO: Contexto aponta para a pasta da lib, isolando o build do Python
       context: ./libs/python-ai
       dockerfile: Dockerfile
-    container_name: fayol_ai_service
+    container_name: fayol_ai
+    restart: unless-stopped
     ports:
-      - "8000:8000"
+      - "${PORT_AI}:8000"
     environment:
       - PYTHONUNBUFFERED=1
     networks:
-      - fayol_network
-    develop:
-      watch:
-        - action: sync
-          path: ./libs/python-ai/src
-          target: /app/src
-          ignore:
-            - __pycache__/
+      - fayol_net
+    volumes:
+      - ./libs/python-ai/src:/app/src
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
-  # API Backend
+  # API Backend (NestJS)
   backend:
     build:
       context: .
       dockerfile: apps/backend/Dockerfile
     container_name: fayol_backend
+    restart: unless-stopped
     ports:
-      - "3333:3333"
-    environment:
-      - NODE_ENV=development
-      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/fayol_dev?schema=public
-      - JWT_SECRET=fayol_secret_dev_key_123
-      - JWT_EXPIRATION=1d
-      - REDIS_HOST=redis
-      - REDIS_PORT=6379
-      - AI_SERVICE_URL=http://python-ai:8000
+      - "${PORT_BACKEND}:3333"
+    env_file: .env
     depends_on:
       postgres:
         condition: service_healthy
@@ -107,65 +80,76 @@ services:
       python-ai:
         condition: service_healthy
     networks:
-      - fayol_network
+      - fayol_net
     volumes:
+      # Monta o código fonte do host para o container (Hot Reload)
       - .:/app
+      # --- PROTEÇÃO DE DEPENDÊNCIAS (Crucial para Windows) ---
+      # Isso impede que o node_modules do Windows sobrescreva o do Linux
       - /app/node_modules
       - /app/apps/backend/node_modules
-    # CORREÇÃO: Aumentar intervalo e retries, e usar localhost correto
+      # Pacotes compartilhados (onde fica o Prisma Client)
+      - /app/packages/database-models/node_modules
+      - /app/packages/shared-types/node_modules
+      - /app/packages/shared-utils/node_modules
+      - /app/packages/shared-constants/node_modules
+      - /app/packages/validation-schemas/node_modules
+      - /app/packages/ai-services/node_modules
+      - /app/packages/api-client/node_modules
+      - /app/packages/ui-components/node_modules
+      - /app/packages/integrations/node_modules
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3333/api/health"]
       interval: 10s
       timeout: 5s
-      retries: 10
-      start_period: 30s
+      retries: 5
 
-  # Frontend Web App
+  # Frontend (Next.js)
   web-app:
     build:
       context: .
       dockerfile: apps/web-app/Dockerfile
     container_name: fayol_web
+    restart: unless-stopped
     ports:
-      - "3000:3000"
-    environment:
-      - NODE_ENV=development
-      # URL da API acessível pelo navegador (cliente)
-      - NEXT_PUBLIC_API_URL=http://localhost:3333/api
+      - "${PORT_WEB}:3000"
+    env_file: .env
     depends_on:
       backend:
         condition: service_healthy
     networks:
-      - fayol_network
+      - fayol_net
     volumes:
       - .:/app
       - /app/node_modules
       - /app/apps/web-app/node_modules
       - /app/apps/web-app/.next
+      # Proteção para os pacotes usados pelo frontend também
+      - /app/packages/shared-types/node_modules
+      - /app/packages/shared-utils/node_modules
+      - /app/packages/ui-components/node_modules
 
-  # Telegram Bot
+  # Bot do Telegram
   telegram-bot:
     build:
       context: .
       dockerfile: apps/telegram-bot/Dockerfile
-    container_name: fayol_telegram_bot
+    container_name: fayol_bot
+    restart: unless-stopped
+    env_file: .env
     environment:
-      - NODE_ENV=development
-      # Token deve estar no seu .env local
-      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
-      # Comunicação interna via Docker
       - API_BASE_URL=http://backend:3333/api
     depends_on:
       backend:
         condition: service_healthy
     networks:
-      - fayol_network
+      - fayol_net
     volumes:
       - .:/app
       - /app/node_modules
       - /app/apps/telegram-bot/node_modules
 
-  # --- FERRAMENTAS ADICIONAIS ---
+  # --- FERRAMENTAS DE ADMINISTRAÇÃO ---
   pgadmin:
     image: dpage/pgadmin4:latest
     container_name: fayol_pgadmin
@@ -175,27 +159,14 @@ services:
     ports:
       - "5050:80"
     networks:
-      - fayol_network
+      - fayol_net
     depends_on:
       - postgres
-
-  redis-commander:
-    image: rediscommander/redis-commander:latest
-    container_name: fayol_redis_commander
-    environment:
-      - REDIS_HOSTS=default:redis:6379
-    ports:
-      - "8081:8081"
-    networks:
-      - fayol_network
-    depends_on:
-      - redis
 
 volumes:
   postgres_data:
   redis_data:
-  mongodb_data:
 
 networks:
-  fayol_network:
+  fayol_net:
     driver: bridge

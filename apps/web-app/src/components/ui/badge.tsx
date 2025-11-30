@@ -1,19 +1,15 @@
 import { HTMLAttributes, forwardRef } from 'react';
-import { clsx, type ClassValue } from 'clsx';
-import { twMerge } from 'tailwind-merge';
-
-function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
+import { cn } from '@/lib/utils';
 
 interface BadgeProps extends HTMLAttributes<HTMLDivElement> {
-  variant?: 'default' | 'success' | 'warning' | 'danger' | 'outline';
+  variant?: 'default' | 'success' | 'warning' | 'danger' | 'outline' | 'secondary';
 }
 
 const Badge = forwardRef<HTMLDivElement, BadgeProps>(
   ({ className, variant = 'default', ...props }, ref) => {
     const variants = {
       default: 'border-transparent bg-slate-900 text-slate-50 hover:bg-slate-900/80',
+      secondary: 'border-transparent bg-slate-100 text-slate-900 hover:bg-slate-200/80',
       success: 'border-transparent bg-emerald-500 text-white hover:bg-emerald-600',
       warning: 'border-transparent bg-amber-500 text-white hover:bg-amber-600',
       danger: 'border-transparent bg-red-500 text-white hover:bg-red-600',

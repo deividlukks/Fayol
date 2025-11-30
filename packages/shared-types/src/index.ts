@@ -9,6 +9,7 @@ export * from './entities/transaction.types';
 export * from './entities/budget.types';
 export * from './entities/investment.types';
 export * from './entities/notification.types';
+export * from './entities/goal.types';
 
 // DTOs
 export * from './dtos/pagination.dto';

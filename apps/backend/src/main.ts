@@ -5,25 +5,26 @@ import { Logger } from '@nestjs/common';
 import { AllExceptionsFilter } from './common/filters/all-exceptions.filter';
 import { ResponseInterceptor } from './common/interceptors/response.interceptor';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { ZodValidationPipe } from 'nestjs-zod'; // <--- Importante: Usar o pipe do Zod
+import { ZodValidationPipe } from 'nestjs-zod';
+import { json, urlencoded } from 'express'; // <--- Importe isso
 
 async function bootstrap() {
   const logger = new Logger('Bootstrap');
   
   const app = await NestFactory.create(AppModule);
   
-  // Configurações Globais
+  // --- CORREÇÃO: Aumentar limite para aceitar imagens Base64 ---
+  app.use(json({ limit: '10mb' }));
+  app.use(urlencoded({ extended: true, limit: '10mb' }));
+  // ------------------------------------------------------------
+
   app.enableCors();
   app.setGlobalPrefix('api');
 
-  // CORREÇÃO: Substituímos ValidationPipe (class-validator) por ZodValidationPipe
   app.useGlobalPipes(new ZodValidationPipe());
-
-  // Filtros e Interceptors
   app.useGlobalFilters(new AllExceptionsFilter());
   app.useGlobalInterceptors(new ResponseInterceptor());
 
-  // Configuração do Swagger
   const config = new DocumentBuilder()
     .setTitle(APP_CONFIG.NAME)
     .setDescription('Documentação da API do Fayol - Gestão Financeira')

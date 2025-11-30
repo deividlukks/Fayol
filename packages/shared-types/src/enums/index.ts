@@ -5,3 +5,4 @@ export * from './movement-type.enum';
 export * from './recurrence.enum';
 export * from './investor-profile.enum';
 export * from './trade-type.enum';
+export * from './gender.enum';

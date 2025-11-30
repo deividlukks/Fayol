@@ -3,7 +3,7 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { createInvestmentSchema, CreateInvestmentInput } from '@fayol/validation-schemas';
-import { Account, AccountType } from '@fayol/shared-types'; // Adicionado AccountType
+import { Account, AccountType, Investment } from '@fayol/shared-types';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { api } from '@/lib/api';
 import { Button } from '@/components/ui/button';
@@ -16,7 +16,7 @@ import { Loader2 } from 'lucide-react';
 interface InvestmentFormProps {
   onSuccess: () => void;
   onCancel: () => void;
-  initialData?: any; // Tipagem relaxada para facilitar a edição
+  initialData?: Partial<Investment>; // Tipagem melhorada
 }
 
 export function InvestmentForm({ onSuccess, onCancel, initialData }: InvestmentFormProps) {
@@ -51,12 +51,12 @@ export function InvestmentForm({ onSuccess, onCancel, initialData }: InvestmentF
     if (initialData) {
       reset({
         name: initialData.name,
-        ticker: initialData.ticker,
+        ticker: initialData.ticker || undefined,
         quantity: Number(initialData.quantity),
         averagePrice: Number(initialData.averagePrice),
         currentPrice: initialData.currentPrice ? Number(initialData.currentPrice) : undefined,
         type: initialData.type,
-        purchaseDate: new Date(initialData.purchaseDate),
+        purchaseDate: initialData.purchaseDate ? new Date(initialData.purchaseDate) : new Date(),
         accountId: initialData.accountId,
       });
     }
