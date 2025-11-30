@@ -41,7 +41,7 @@ export function CategoryManager({ categories, onDelete, onAdd }: CategoryManager
     return null;
   };
 
-  // Filtra apenas as categorias PAI (sem parentId) que pertencem à view atual
+  // Filtra as categorias Pai
   const filteredCategories = categories.filter(
     (cat) => !cat.parentId && getCategoryGroup(cat) === activeView
   );
@@ -135,9 +135,28 @@ export function CategoryManager({ categories, onDelete, onAdd }: CategoryManager
                         {/* @ts-expect-error: children vem do backend */}
                         {category.children && category.children.length > 0 ? (
                           <AccordionTrigger className="hover:no-underline py-2 justify-start gap-3">
-                            <span className="font-semibold text-slate-900 text-base">
-                              {category.name}
-                            </span>
+                            <div className="flex items-center gap-2">
+                                <span className="font-semibold text-slate-900 text-base">
+                                {category.name}
+                                </span>
+                                
+                                {/* --- NOVIDADE: Badge Diferenciador para Investimentos --- */}
+                                {activeView === 'INVESTMENT' && (
+                                    <Badge 
+                                        variant="outline" 
+                                        className={`
+                                            border-0 text-[10px] px-2 h-5 
+                                            ${category.type === LaunchType.INCOME 
+                                                ? 'bg-emerald-100 text-emerald-700' 
+                                                : 'bg-red-100 text-red-700'
+                                            }
+                                        `}
+                                    >
+                                        {category.type === LaunchType.INCOME ? 'Rendimentos (Entrada)' : 'Aportes (Saída)'}
+                                    </Badge>
+                                )}
+                            </div>
+
                             <Badge
                               variant="secondary"
                               className="ml-2 font-normal text-xs"
@@ -147,8 +166,23 @@ export function CategoryManager({ categories, onDelete, onAdd }: CategoryManager
                             </Badge>
                           </AccordionTrigger>
                         ) : (
-                          <div className="py-2 font-semibold text-slate-900 text-base">
-                            {category.name}
+                          <div className="py-2 flex items-center gap-2">
+                            <span className="font-semibold text-slate-900 text-base">{category.name}</span>
+                             {/* Badge para itens sem filhos também */}
+                             {activeView === 'INVESTMENT' && (
+                                    <Badge 
+                                        variant="outline" 
+                                        className={`
+                                            border-0 text-[10px] px-2 h-5 
+                                            ${category.type === LaunchType.INCOME 
+                                                ? 'bg-emerald-100 text-emerald-700' 
+                                                : 'bg-red-100 text-red-700'
+                                            }
+                                        `}
+                                    >
+                                        {category.type === LaunchType.INCOME ? 'Rendimentos' : 'Aportes'}
+                                    </Badge>
+                                )}
                           </div>
                         )}
                       </div>
