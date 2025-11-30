@@ -1,6 +1,6 @@
 # 🚀 Fayol - Gestor Financeiro Inteligente
 
-![Fayol Banner](apps/web-app/public/fayol-id.png)
+![Fayol Banner](apps/web-app/public/logo.png)
 
 > **Sistema Multiplataforma de Gestão Financeira Pessoal, Investimentos e Trading.** > *Impulsionado por Inteligência Artificial e Arquitetura de Microsserviços.*
 
