@@ -1,0 +1,24 @@
+{
+  "name": "@fayol/validation-schemas",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "license": "MIT",
+  "author": "Deivid Lucas",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf dist .turbo node_modules",
+    "lint": "eslint . --max-warnings 0",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "zod": "^3.22.4",
+    "@fayol/shared-constants": "workspace:*",
+    "@fayol/shared-types": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "eslint": "^9.39.1"
+  }
+}
