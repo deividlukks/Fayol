@@ -1,0 +1,39 @@
+# Stage 1: Build
+FROM node:18-alpine AS builder
+
+WORKDIR /app
+
+# Instalar pnpm
+RUN npm install -g pnpm
+
+# Copiar arquivos de workspace (incluindo tsconfig.base.json)
+COPY pnpm-workspace.yaml pnpm-lock.yaml package.json tsconfig.base.json ./
+COPY apps/telegram-bot ./apps/telegram-bot
+COPY packages ./packages
+
+# Instalar dependências
+RUN pnpm install --frozen-lockfile
+
+# Build do telegram-bot
+WORKDIR /app/apps/telegram-bot
+RUN pnpm run build
+
+# Stage 2: Runtime
+FROM node:18-alpine
+
+WORKDIR /app
+
+RUN npm install -g pnpm
+
+# Copiar apenas os arquivos necessários
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/apps/telegram-bot/dist ./dist
+COPY --from=builder /app/apps/telegram-bot/package.json ./
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
+  CMD node -e "require('http').get('http://localhost:3001/health', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})" || exit 1
+
+EXPOSE 3001
+
+CMD ["node", "dist/main.js"]

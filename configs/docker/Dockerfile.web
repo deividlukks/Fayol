@@ -1,0 +1,40 @@
+# Stage 1: Build
+FROM node:18-alpine AS builder
+
+WORKDIR /app
+
+# Instalar pnpm
+RUN npm install -g pnpm
+
+# Copiar arquivos de workspace (incluindo tsconfig.base.json)
+COPY pnpm-workspace.yaml pnpm-lock.yaml package.json tsconfig.base.json ./
+COPY apps/web-app ./apps/web-app
+COPY packages ./packages
+
+# Instalar dependências
+RUN pnpm install --frozen-lockfile
+
+# Build da aplicação Next.js
+WORKDIR /app/apps/web-app
+RUN pnpm run build
+
+# Stage 2: Runtime
+FROM node:18-alpine
+
+WORKDIR /app
+
+RUN npm install -g pnpm
+
+# Copiar apenas os arquivos necessários
+COPY --from=builder /app/apps/web-app/.next ./.next
+COPY --from=builder /app/apps/web-app/public ./public
+COPY --from=builder /app/apps/web-app/package.json ./
+COPY --from=builder /app/node_modules ./node_modules
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
+  CMD node -e "require('http').get('http://localhost:3000', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})"
+
+EXPOSE 3000
+
+CMD ["pnpm", "start"]

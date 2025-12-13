@@ -1,0 +1,91 @@
+name: Deploy Staging
+
+on:
+  push:
+    branches: [develop]
+  workflow_dispatch:
+
+jobs:
+  deploy-staging:
+    name: Deploy to Staging
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    environment:
+      name: staging
+      url: https://staging.fayol.app
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Login to ECR
+        uses: aws-actions/amazon-ecr-login@v1
+        id: login-ecr
+
+      - name: Build and push Docker images
+        run: |
+          for service in backend web telegram-bot python-ai; do
+            docker build -f configs/docker/Dockerfile.${service} -t ${{ steps.login-ecr.outputs.registry }}/fayol-${service}:staging .
+            docker push ${{ steps.login-ecr.outputs.registry }}/fayol-${service}:staging
+          done
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+
+      - name: Update ECS Service
+        run: |
+          aws ecs update-service \
+            --cluster fayol-staging \
+            --service fayol-backend-staging \
+            --force-new-deployment
+          
+          aws ecs update-service \
+            --cluster fayol-staging \
+            --service fayol-web-staging \
+            --force-new-deployment
+          
+          aws ecs update-service \
+            --cluster fayol-staging \
+            --service fayol-telegram-bot-staging \
+            --force-new-deployment
+          
+          aws ecs update-service \
+            --cluster fayol-staging \
+            --service fayol-python-ai-staging \
+            --force-new-deployment
+
+      - name: Wait for deployment
+        run: |
+          aws ecs wait services-stable \
+            --cluster fayol-staging \
+            --services fayol-backend-staging fayol-web-staging
+
+      - name: Run smoke tests
+        run: |
+          curl -f https://api-staging.fayol.app/health || exit 1
+          curl -f https://staging.fayol.app || exit 1
+
+      - name: Slack Notification
+        uses: slackapi/slack-github-action@v1.24.0
+        if: always()
+        with:
+          webhook-url: ${{ secrets.SLACK_WEBHOOK }}
+          payload: |
+            {
+              "text": "Staging deployment ${{ job.status }}",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Staging Deployment* - ${{ job.status }}\n*Branch:* develop\n*Commit:* ${{ github.sha }}\n*Author:* ${{ github.actor }}"
+                  }
+                }
+              ]
+            }

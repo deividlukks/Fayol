@@ -1,0 +1,162 @@
+name: Performance Test
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  schedule:
+    - cron: '0 3 * * *'  # Daily at 3 AM
+
+jobs:
+  lighthouse:
+    name: Lighthouse CI
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build web app
+        run: pnpm run build --filter="./apps/web-app"
+
+      - name: Install Lighthouse CI
+        run: npm install -g @lhci/cli@0.11.x
+
+      - name: Run Lighthouse CI
+        run: lhci autorun
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+
+  performance-metrics:
+    name: Performance Metrics
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    services:
+      postgres:
+        image: postgres:15-alpine
+        env:
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: test_db
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+      redis:
+        image: redis:7-alpine
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 6379:6379
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run performance tests
+        run: pnpm run test:performance
+        env:
+          DATABASE_URL: postgresql://test:test@localhost:5432/test_db
+          REDIS_URL: redis://localhost:6379
+        continue-on-error: true
+
+      - name: Upload performance results
+        uses: actions/upload-artifact@v3
+        with:
+          name: performance-results
+          path: performance-results/
+
+  bundle-analysis:
+    name: Bundle Size Analysis
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build web app
+        run: pnpm run build --filter="./apps/web-app"
+
+      - name: Analyze bundle with webpack-bundle-analyzer
+        run: |
+          pnpm add -D webpack-bundle-analyzer
+          pnpm run analyze --filter="./apps/web-app"
+        continue-on-error: true
+
+      - name: Upload bundle analysis
+        uses: actions/upload-artifact@v3
+        with:
+          name: bundle-analysis
+          path: apps/web-app/.next/analyze/
+
+  load-test:
+    name: Load Testing
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    timeout-minutes: 45
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup k6 testing tool
+        run: |
+          sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
+          echo "deb https://dl.k6.io/deb stable main" | sudo tee /etc/apt/sources.list.d/k6.list
+          sudo apt-get update
+          sudo apt-get install k6
+
+      - name: Run load tests against staging
+        run: k6 run tests/load/api-load-test.js
+        env:
+          API_URL: https://api-staging.fayol.app
+        continue-on-error: true
+
+      - name: Upload load test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: load-test-results
+          path: load-test-results/

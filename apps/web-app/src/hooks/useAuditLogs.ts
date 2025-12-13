@@ -1,0 +1,96 @@
+import { useState, useEffect, useCallback } from 'react';
+import {
+  auditService, // Serviço real
+  AuditLog,
+  AuditLogsFilters,
+} from '@fayol/api-client';
+
+export function useAuditLogs(initialFilters: AuditLogsFilters = {}) {
+  const [logs, setLogs] = useState<AuditLog[]>([]);
+  const [total, setTotal] = useState(0);
+  const [page, setPage] = useState(initialFilters.page || 1);
+  const [pageSize, setPageSize] = useState(initialFilters.pageSize || 50);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [filters, setFilters] = useState<AuditLogsFilters>(initialFilters);
+
+  const fetchLogs = useCallback(async () => {
+    try {
+      setIsLoading(true);
+      setError(null);
+
+      // Chamada real para /api/audit
+      const response = await auditService.list({
+        ...filters,
+        page,
+        pageSize,
+      });
+
+      setLogs(response.data);
+      setTotal(response.total);
+    } catch (err: any) {
+      setError(err.message || 'Erro ao carregar logs de auditoria');
+      console.error('Error fetching audit logs:', err);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [filters, page, pageSize]);
+
+  useEffect(() => {
+    fetchLogs();
+  }, [fetchLogs]);
+
+  const updateFilters = (newFilters: Partial<AuditLogsFilters>) => {
+    setFilters((prev) => ({ ...prev, ...newFilters }));
+    setPage(1);
+  };
+
+  return {
+    logs,
+    total,
+    page,
+    pageSize,
+    isLoading,
+    error,
+    filters,
+    setPage,
+    setPageSize,
+    updateFilters,
+    refresh: fetchLogs,
+  };
+}
+
+export function useEntityAuditLogs(entity: string, entityId: string) {
+  const [logs, setLogs] = useState<AuditLog[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const fetchLogs = useCallback(async () => {
+    if (!entity || !entityId) return;
+
+    try {
+      setIsLoading(true);
+      setError(null);
+
+      // Chamada real para /api/audit/entity
+      const response = await auditService.getByEntity(entity, entityId);
+      setLogs(response);
+    } catch (err: any) {
+      setError(err.message || 'Erro ao carregar logs da entidade');
+      console.error('Error fetching entity audit logs:', err);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [entity, entityId]);
+
+  useEffect(() => {
+    fetchLogs();
+  }, [fetchLogs]);
+
+  return {
+    logs,
+    isLoading,
+    error,
+    refresh: fetchLogs,
+  };
+}

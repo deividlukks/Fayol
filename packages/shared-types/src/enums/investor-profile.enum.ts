@@ -1,0 +1,6 @@
+export enum InvestorProfile {
+  CONSERVATIVE = 'CONSERVATIVE',
+  MODERATE = 'MODERATE',
+  AGGRESSIVE = 'AGGRESSIVE',
+  UNDEFINED = 'UNDEFINED',
+}

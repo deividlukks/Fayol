@@ -1,0 +1,119 @@
+name: Deploy Production
+
+on:
+  push:
+    branches: [main]
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Deployment environment'
+        required: true
+        default: 'canary'
+        type: choice
+        options:
+          - canary
+          - production
+
+jobs:
+  deploy-production:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    environment:
+      name: production
+      url: https://fayol.app
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Login to ECR
+        uses: aws-actions/amazon-ecr-login@v1
+        id: login-ecr
+
+      - name: Build and push Docker images
+        run: |
+          VERSION=$(echo ${{ github.sha }} | cut -c 1-8)
+          for service in backend web telegram-bot python-ai; do
+            docker build -f configs/docker/Dockerfile.${service} -t ${{ steps.login-ecr.outputs.registry }}/fayol-${service}:${VERSION} -t ${{ steps.login-ecr.outputs.registry }}/fayol-${service}:latest .
+            docker push ${{ steps.login-ecr.outputs.registry }}/fayol-${service}:${VERSION}
+            docker push ${{ steps.login-ecr.outputs.registry }}/fayol-${service}:latest
+          done
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+
+      - name: Deploy Canary (10%)
+        if: ${{ github.event.inputs.environment == 'canary' || github.ref == 'refs/heads/main' }}
+        run: |
+          VERSION=$(echo ${{ github.sha }} | cut -c 1-8)
+          aws ecs update-service \
+            --cluster fayol-production \
+            --service fayol-backend-canary \
+            --task-definition fayol-backend:${VERSION} \
+            --force-new-deployment
+
+      - name: Wait for canary deployment
+        if: ${{ github.event.inputs.environment == 'canary' || github.ref == 'refs/heads/main' }}
+        run: |
+          aws ecs wait services-stable \
+            --cluster fayol-production \
+            --services fayol-backend-canary
+
+      - name: Run canary tests
+        if: ${{ github.event.inputs.environment == 'canary' || github.ref == 'refs/heads/main' }}
+        run: |
+          sleep 30
+          curl -f https://api-canary.fayol.app/health || exit 1
+
+      - name: Deploy to production (full)
+        if: ${{ github.event.inputs.environment == 'production' }}
+        run: |
+          VERSION=$(echo ${{ github.sha }} | cut -c 1-8)
+          for service in backend web telegram-bot python-ai; do
+            aws ecs update-service \
+              --cluster fayol-production \
+              --service fayol-${service} \
+              --task-definition fayol-${service}:${VERSION} \
+              --force-new-deployment
+          done
+
+      - name: Wait for full deployment
+        if: ${{ github.event.inputs.environment == 'production' }}
+        run: |
+          aws ecs wait services-stable \
+            --cluster fayol-production \
+            --services fayol-backend fayol-web fayol-telegram-bot fayol-python-ai
+
+      - name: Run smoke tests (production)
+        if: ${{ github.event.inputs.environment == 'production' }}
+        run: |
+          curl -f https://api.fayol.app/health || exit 1
+          curl -f https://fayol.app || exit 1
+
+      - name: Slack Notification
+        uses: slackapi/slack-github-action@v1.24.0
+        if: always()
+        with:
+          webhook-url: ${{ secrets.SLACK_WEBHOOK }}
+          payload: |
+            {
+              "text": "Production deployment ${{ job.status }}",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Production Deployment* - ${{ job.status }}\n*Version:* ${{ github.ref }}\n*Commit:* ${{ github.sha }}\n*Author:* ${{ github.actor }}"
+                  }
+                }
+              ]
+            }
