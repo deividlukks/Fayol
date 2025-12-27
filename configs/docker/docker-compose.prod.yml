@@ -1,0 +1,84 @@
+version: '3.8'
+
+services:
+  backend:
+    image: ghcr.io/deividlukks/fayol/backend:latest
+    restart: always
+    env_file: .env
+    ports:
+      - "${PORT_BACKEND:-3333}:3333"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - fayol-network
+
+  web:
+    image: ghcr.io/deividlukks/fayol/web:latest
+    restart: always
+    env_file: .env
+    ports:
+      - "${PORT_WEB:-3000}:3000"
+    depends_on:
+      - backend
+    networks:
+      - fayol-network
+
+  telegram-bot:
+    image: ghcr.io/deividlukks/fayol/telegram-bot:latest
+    restart: always
+    env_file: .env
+    depends_on:
+      - backend
+    networks:
+      - fayol-network
+
+  python-ai:
+    image: ghcr.io/deividlukks/fayol/python-ai:latest
+    restart: always
+    env_file: .env
+    ports:
+      - "${PORT_AI:-8000}:8000"
+    networks:
+      - fayol-network
+
+  postgres:
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - fayol-network
+
+  redis:
+    image: redis:7-alpine
+    restart: always
+    command: redis-server --requirepass ${REDIS_PASSWORD}
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - fayol-network
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  fayol-network:
+    driver: bridge

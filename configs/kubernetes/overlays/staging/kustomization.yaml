@@ -1,0 +1,32 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: fayol
+
+bases:
+  - ../../base
+
+replicas:
+  - name: backend
+    count: 2
+  - name: web-app
+    count: 1
+  - name: telegram-bot
+    count: 1
+
+namePrefix: staging-
+
+commonLabels:
+  environment: staging
+  app.kubernetes.io/version: staging
+
+patchesStrategicMerge:
+  - patch-backend.yaml
+  - patch-web-app.yaml
+
+configMapGenerator:
+  - name: fayol-config
+    behavior: merge
+    literals:
+      - LOG_LEVEL=debug
+      - NODE_ENV=staging

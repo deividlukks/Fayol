@@ -1,0 +1,46 @@
+# EditorConfig - Fayol Project Configuration
+# https://EditorConfig.org
+
+root = true
+
+# Padrões para todos os arquivos
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# TypeScript/JavaScript
+[*.{ts,tsx,js,jsx}]
+indent_style = space
+indent_size = 2
+max_line_length = 100
+
+# JSON
+[*.json]
+indent_style = space
+indent_size = 2
+
+# YAML
+[*.{yaml,yml}]
+indent_style = space
+indent_size = 2
+
+# Markdown
+[*.md]
+trim_trailing_whitespace = false
+max_line_length = off
+
+# Prisma Schema
+[*.prisma]
+indent_style = space
+indent_size = 2
+
+# Environment files
+[.env*]
+trim_trailing_whitespace = false
+
+# Package files
+[{package.json,pnpm-lock.yaml}]
+indent_style = space
+indent_size = 2

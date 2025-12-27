@@ -1,0 +1,24 @@
+{
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "rootDir": ".",
+  "testEnvironment": "node",
+  "testRegex": ".e2e-spec.ts$",
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "moduleNameMapper": {
+    "^@/(.*)$": "<rootDir>/../src/$1",
+    "^@fayol/database-models$": "<rootDir>/../../packages/database-models/src",
+    "^@fayol/shared-types$": "<rootDir>/../../packages/shared-types/src",
+    "^@fayol/shared-constants$": "<rootDir>/../../packages/shared-constants/src",
+    "^@fayol/shared-utils$": "<rootDir>/../../packages/shared-utils/src",
+    "^@fayol/validation-schemas$": "<rootDir>/../../packages/validation-schemas/src"
+  },
+  "coverageDirectory": "./coverage-e2e",
+  "collectCoverageFrom": [
+    "../src/**/*.(t|j)s",
+    "!../src/main.ts",
+    "!../src/**/*.module.ts",
+    "!../src/**/*.dto.ts"
+  ]
+}
