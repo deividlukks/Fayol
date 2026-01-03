@@ -1,0 +1,124 @@
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: fayol-postgres-dev
+    environment:
+      POSTGRES_USER: ${DB_USER:-fayol}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-fayol_dev_pass}
+      POSTGRES_DB: ${DB_NAME:-fayol_dev}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - fayol-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-fayol}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: fayol-redis-dev
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - fayol-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Backend NestJS
+  backend:
+    build:
+      context: .
+      dockerfile: ./configs/docker/Dockerfile.backend
+    container_name: fayol-backend-dev
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: postgresql://${DB_USER:-fayol}:${DB_PASSWORD:-fayol_dev_pass}@postgres:5432/${DB_NAME:-fayol_dev}
+      REDIS_URL: redis://redis:6379
+      JWT_SECRET: ${JWT_SECRET:-dev-secret-key-change-in-production}
+      JWT_EXPIRATION: ${JWT_EXPIRATION:-24h}
+    ports:
+      - "3000:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - fayol-network
+    volumes:
+      - ./apps/backend/src:/app/src
+    command: sh -c "pnpm run prisma:migrate && pnpm run start:dev"
+
+  # Frontend Next.js
+  web-app:
+    build:
+      context: .
+      dockerfile: ./configs/docker/Dockerfile.web
+    container_name: fayol-web-dev
+    environment:
+      NODE_ENV: development
+      NEXT_PUBLIC_API_URL: http://localhost:3000
+    ports:
+      - "3001:3000"
+    depends_on:
+      - backend
+    networks:
+      - fayol-network
+    volumes:
+      - ./apps/web-app/src:/app/src
+
+  # Telegram Bot
+  telegram-bot:
+    build:
+      context: .
+      dockerfile: ./configs/docker/Dockerfile.telegram-bot
+    container_name: fayol-telegram-bot-dev
+    environment:
+      NODE_ENV: development
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN:-}
+      API_URL: http://backend:3000
+      REDIS_URL: redis://redis:6379
+    depends_on:
+      - backend
+      - redis
+    networks:
+      - fayol-network
+    volumes:
+      - ./apps/telegram-bot/src:/app/src
+
+  # Python AI Service
+  python-ai:
+    build:
+      context: .
+      dockerfile: ./configs/docker/Dockerfile.python-ai
+    container_name: fayol-python-ai-dev
+    environment:
+      ENVIRONMENT: development
+      API_URL: http://backend:3000
+    ports:
+      - "8000:8000"
+    depends_on:
+      - backend
+    networks:
+      - fayol-network
+    volumes:
+      - ./libs/python-ai/src:/app/src
+
+networks:
+  fayol-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  redis_data:

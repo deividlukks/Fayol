@@ -1,0 +1,220 @@
+# ========================================
+# FAYOL - GITIGNORE
+# ========================================
+
+# ----------------------------------------
+# SECRETS E ARQUIVOS SENSIVEIS (CRITICO)
+# ----------------------------------------
+.env
+.env.local
+.env.*.local
+.env.development
+.env.test
+.env.production
+.env.backup
+.env.bak
+*.env
+
+# Arquivos de secrets
+**/secrets/
+**/*.key
+**/*.pem
+**/*.p12
+**/*.pfx
+credentials.json
+service-account*.json
+
+# ----------------------------------------
+# DEPENDENCIAS
+# ----------------------------------------
+node_modules/
+.pnpm-store/
+.yarn/
+.npm/
+bower_components/
+
+# ----------------------------------------
+# BUILD OUTPUTS
+# ----------------------------------------
+dist/
+build/
+out/
+.next/
+.turbo/
+.cache/
+*.tsbuildinfo
+
+# Coverage e reports
+coverage/
+*.lcov
+.nyc_output/
+playwright-report/
+test-results/
+
+# ----------------------------------------
+# PYTHON
+# ----------------------------------------
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Translations
+*.mo
+*.pot
+
+# Environments
+.venv/
+venv/
+ENV/
+env/
+.env.python
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Ruff
+.ruff_cache/
+
+# ----------------------------------------
+# IDE E EDITORES
+# ----------------------------------------
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ----------------------------------------
+# LOGS
+# ----------------------------------------
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+pip-log.txt
+
+# ----------------------------------------
+# DATABASE
+# ----------------------------------------
+*.db
+*.sqlite
+*.sqlite3
+.prisma/
+
+# ----------------------------------------
+# TESTES
+# ----------------------------------------
+.jest-cache/
+*.spec.js.snap
+*.test.js.snap
+
+# ----------------------------------------
+# TEMPORARIOS
+# ----------------------------------------
+*.tmp
+*.temp
+.temp/
+tmp/
+dev-ports.txt
+
+# ----------------------------------------
+# DEPLOY E CI/CD
+# ----------------------------------------
+.vercel/
+.netlify/
+.serverless/
+.terraform/
+
+# ----------------------------------------
+# MOBILE (FUTURO)
+# ----------------------------------------
+*.apk
+*.ipa
+*.app
+.expo/
+.expo-shared/
+
+# ----------------------------------------
+# DEBUG
+# ----------------------------------------
+.vscode-test/
+chrome-profiler-events*.json
+speed-measure-plugin*.json
+
+# ----------------------------------------
+# CACHE E LINT
+# ----------------------------------------
+.eslintcache
+*.tgz
+.webpack-cache/
+
+# ----------------------------------------
+# OUTROS
+# ----------------------------------------
+.husky/_/
+!.husky/.gitignore
+.claude/
+/.claude
+nul

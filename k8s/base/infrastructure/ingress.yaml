@@ -1,0 +1,66 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: fayol-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: 'true'
+    nginx.ingress.kubernetes.io/force-ssl-redirect: 'true'
+    nginx.ingress.kubernetes.io/proxy-body-size: '50m'
+    cert-manager.io/cluster-issuer: 'letsencrypt-prod'
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - fayol.app
+        - www.fayol.app
+        - api.fayol.app
+      secretName: fayol-tls-cert
+  rules:
+    # Frontend (Web App)
+    - host: fayol.app
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: fayol-web-app
+                port:
+                  number: 3000
+    - host: www.fayol.app
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: fayol-web-app
+                port:
+                  number: 3000
+    # Backend API
+    - host: api.fayol.app
+      http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: fayol-backend
+                port:
+                  number: 3333
+          # Python AI Service
+          - path: /ai
+            pathType: Prefix
+            backend:
+              service:
+                name: fayol-python-ai
+                port:
+                  number: 8000
+          # BI Reports Service
+          - path: /reports
+            pathType: Prefix
+            backend:
+              service:
+                name: fayol-bi-reports
+                port:
+                  number: 8001

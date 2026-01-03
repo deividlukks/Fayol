@@ -1,0 +1,48 @@
+# Stage 1: Build
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+
+# Habilitar pnpm via corepack (oficial Node 20+)
+RUN corepack enable && corepack prepare pnpm@9.1.0 --activate
+
+# Copiar arquivos de workspace (incluindo tsconfig.base.json)
+COPY pnpm-workspace.yaml pnpm-lock.yaml package.json tsconfig.base.json ./
+COPY apps/telegram-bot ./apps/telegram-bot
+COPY packages ./packages
+
+# Instalar dependências
+RUN pnpm install --frozen-lockfile
+
+# Gerar Prisma Client para Prisma 7 (necessário antes do build)
+RUN pnpm --filter @fayol/database-models run generate
+
+# Build do telegram-bot
+WORKDIR /app/apps/telegram-bot
+RUN pnpm run build
+
+# Stage 2: Runtime
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Habilitar pnpm via corepack
+RUN corepack enable && corepack prepare pnpm@9.1.0 --activate
+
+# Instalar openssl (necessário para Prisma 7)
+RUN apk add --no-cache openssl
+
+# Copiar apenas os arquivos necessários
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/apps/telegram-bot/dist ./dist
+COPY --from=builder /app/apps/telegram-bot/package.json ./
+# Copiar packages com Prisma Client gerado (necessário para Prisma 7)
+COPY --from=builder /app/packages ./packages
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
+  CMD node -e "require('http').get('http://localhost:3001/health', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})" || exit 1
+
+EXPOSE 3001
+
+CMD ["node", "dist/main.js"]

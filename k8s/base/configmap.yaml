@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fayol-config
+  labels:
+    app.kubernetes.io/part-of: fayol
+data:
+  # API URLs
+  api-url: 'https://api.fayol.app'
+  nextauth-url: 'https://fayol.app'
+
+  # Feature Flags
+  enable-ai: 'true'
+  enable-bi-reports: 'true'
+  enable-telegram-bot: 'true'
+
+  # Application Config
+  log-level: 'info'
+  cors-origins: 'https://fayol.app,https://www.fayol.app'
+
+  # Rate Limiting
+  rate-limit-max: '100'
+  rate-limit-window: '60000'
+
+  # Cache TTL (seconds)
+  cache-ttl-default: '300'
+  cache-ttl-user: '600'
+  cache-ttl-transactions: '60'

@@ -1,0 +1,236 @@
+name: fayol-app
+
+# ==========================================
+# NOTA: PostgreSQL 18.1 roda NATIVO (não Docker)
+# ==========================================
+# O PostgreSQL foi configurado para rodar nativamente no Windows.
+# Localização: C:\Program Files\PostgreSQL\18
+# Serviço: postgresql-x64-18
+# Banco: fayol_db | Usuário: fayol | Porta: 5432
+# ==========================================
+
+services:
+  # --- INFRAESTRUTURA DE DADOS ---
+  redis:
+    image: redis:7-alpine
+    container_name: fayol_redis
+    restart: always
+    ports:
+      - '${REDIS_PORT}:6379'
+    volumes:
+      - redis_data:/data
+    networks:
+      - fayol_net
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}
+    healthcheck:
+      test: ['CMD', 'redis-cli', '-a', '${REDIS_PASSWORD}', 'ping']
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # HashiCorp Vault - Gerenciamento de Secrets
+  vault:
+    image: hashicorp/vault:1.18
+    container_name: fayol_vault
+    restart: unless-stopped
+    ports:
+      - '${VAULT_PORT:-8200}:8200'
+    environment:
+      VAULT_DEV_ROOT_TOKEN_ID: ${VAULT_ROOT_TOKEN:-fayol-dev-root-token}
+      VAULT_DEV_LISTEN_ADDRESS: 0.0.0.0:8200
+      VAULT_ADDR: http://0.0.0.0:8200
+    cap_add:
+      - IPC_LOCK
+    volumes:
+      - vault_data:/vault/data
+      - vault_logs:/vault/logs
+      - ./configs/vault:/vault/config
+    networks:
+      - fayol_net
+    command: server -dev -dev-root-token-id=${VAULT_ROOT_TOKEN:-fayol-dev-root-token}
+    healthcheck:
+      test: ['CMD', 'vault', 'status']
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  # --- SERVIÇOS DA APLICAÇÃO ---
+
+  # Serviço de Inteligência Artificial (Python)
+  python-ai:
+    build:
+      context: ./libs/python-ai
+      dockerfile: Dockerfile
+    container_name: fayol_ai
+    restart: unless-stopped
+    ports:
+      - '${PORT_AI}:8000'
+    environment:
+      - PYTHONUNBUFFERED=1
+    networks:
+      - fayol_net
+    volumes:
+      - ./libs/python-ai/src:/app/src
+      - ai_models:/app/data/models
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:8000/']
+      interval: 15s # AUMENTADO: intervalo maior para checagem
+      timeout: 10s # AUMENTADO: tempo maior de resposta
+      retries: 5
+      start_period: 40s # AUMENTADO: tempo maior para inicialização do modelo ML
+
+  # Serviço de Relatórios (Python)
+  bi-reports:
+    build:
+      context: ./libs/bi-reports
+      dockerfile: Dockerfile
+    container_name: fayol_reports
+    restart: unless-stopped
+    ports:
+      - '8001:8001'
+    environment:
+      - PYTHONUNBUFFERED=1
+    networks:
+      - fayol_net
+    volumes:
+      - ./libs/bi-reports/src:/app/src
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:8001/']
+      interval: 15s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
+
+  # API Backend (NestJS)
+  backend:
+    build:
+      context: .
+      dockerfile: apps/backend/Dockerfile
+      args:
+        NODE_ENV: development
+    container_name: fayol_backend
+    restart: unless-stopped
+    ports:
+      - '${PORT_BACKEND}:3333'
+    env_file: .env
+    environment:
+      - AI_SERVICE_URL=http://python-ai:8000
+      - REPORTS_SERVICE_URL=http://bi-reports:8001
+      # PostgreSQL nativo no host Windows (acessível via host.docker.internal)
+      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@host.docker.internal:${POSTGRES_PORT}/${POSTGRES_DB}?schema=public
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    depends_on:
+      redis:
+        condition: service_healthy
+      python-ai:
+        condition: service_healthy
+      bi-reports:
+        condition: service_healthy
+    networks:
+      - fayol_net
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/apps/backend/node_modules
+      - /app/packages/database-models/node_modules
+      - /app/packages/shared-types/node_modules
+      - /app/packages/shared-utils/node_modules
+      - /app/packages/shared-constants/node_modules
+      - /app/packages/validation-schemas/node_modules
+      - /app/packages/shared-errors/node_modules
+      - /app/packages/integrations/node_modules
+      - /app/packages/ai-services/node_modules
+      - /app/packages/api-client/node_modules
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:3333/api/health']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
+
+  # Frontend (Next.js)
+  web-app:
+    build:
+      context: .
+      dockerfile: apps/web-app/Dockerfile
+      args:
+        NODE_ENV: development
+    container_name: fayol_web
+    restart: unless-stopped
+    ports:
+      - '${PORT_WEB}:3000'
+    env_file: .env
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - fayol_net
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/apps/web-app/node_modules
+      - /app/apps/web-app/.next
+
+  # Admin Panel Frontend (Next.js)
+  admin-panel:
+    build:
+      context: .
+      dockerfile: apps/admin-panel/Dockerfile
+      args:
+        NODE_ENV: development
+    container_name: fayol_admin
+    restart: unless-stopped
+    ports:
+      - '${PORT_ADMIN}:3001'
+    env_file: .env
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:3333/api
+      - NEXT_PUBLIC_SITE_URL=http://admin.localhost:3001
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - fayol_net
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/apps/admin-panel/node_modules
+      - /app/apps/admin-panel/.next
+      - /app/packages/web-shared/node_modules
+
+  # Bot do Telegram
+  telegram-bot:
+    build:
+      context: .
+      dockerfile: apps/telegram-bot/Dockerfile
+    container_name: fayol_bot
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - API_BASE_URL=http://backend:3333/api
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - fayol_net
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/apps/telegram-bot/node_modules
+
+  # --- FERRAMENTAS DE ADMINISTRAÇÃO ---
+  # pgAdmin removido - Use Prisma Studio ou psql nativo
+  # Comando: pnpm db:studio
+  # ou: "C:\Program Files\PostgreSQL\18\bin\psql.exe" -U fayol -d fayol_db
+
+volumes:
+  redis_data:
+  ai_models:
+  vault_data:
+  vault_logs:
+
+networks:
+  fayol_net:
+    driver: bridge

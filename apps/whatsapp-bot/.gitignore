@@ -1,0 +1,34 @@
+# WhatsApp Session Data (CRITICAL - NEVER COMMIT)
+auth_info_baileys/
+*.data.json
+*.creds.json
+
+# Logs
+logs/
+*.log
+
+# Build
+dist/
+build/
+
+# Coverage
+coverage/
+
+# Node modules
+node_modules/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

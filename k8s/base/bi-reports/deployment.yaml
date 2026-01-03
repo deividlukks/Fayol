@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fayol-bi-reports
+  labels:
+    app: fayol-bi-reports
+    tier: bi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fayol-bi-reports
+  template:
+    metadata:
+      labels:
+        app: fayol-bi-reports
+        tier: bi
+    spec:
+      containers:
+      - name: bi-reports
+        image: fayol/bi-reports:latest
+        ports:
+        - containerPort: 8001
+          name: http
+        env:
+        - name: ENVIRONMENT
+          value: "production"
+        resources:
+          requests:
+            cpu: 200m
+            memory: 384Mi
+          limits:
+            cpu: 1000m
+            memory: 768Mi
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8001
+          initialDelaySeconds: 30
+          periodSeconds: 15
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8001
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 3
+          failureThreshold: 3
+      restartPolicy: Always

@@ -1,0 +1,28 @@
+# Aumentar réplicas mínimas em produção
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fayol-backend
+spec:
+  replicas: 3
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fayol-web-app
+spec:
+  replicas: 3
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fayol-python-ai
+spec:
+  replicas: 2
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fayol-bi-reports
+spec:
+  replicas: 2

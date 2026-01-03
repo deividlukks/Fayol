@@ -1,0 +1,23 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-native",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"],
+      "@fayol/shared-types": ["../../packages/shared-types/src"],
+      "@fayol/shared-constants": ["../../packages/shared-constants/src"],
+      "@fayol/shared-utils": ["../../packages/shared-utils/src"],
+      "@fayol/validation-schemas": ["../../packages/validation-schemas/src"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
+}

@@ -1,0 +1,46 @@
+{
+  "name": "whatsapp-bot",
+  "version": "0.1.0",
+  "private": true,
+  "description": "WhatsApp Bot para gestão financeira pessoal com IA",
+  "main": "dist/src/main.js",
+  "scripts": {
+    "dev": "tsx watch src/main.ts",
+    "build": "tsc",
+    "start": "node dist/src/main.js",
+    "lint": "eslint . --max-warnings 0",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:unit": "jest --testPathPattern=tests/unit",
+    "test:integration": "jest --testPathPattern=tests/integration"
+  },
+  "dependencies": {
+    "@whiskeysockets/baileys": "catalog:",
+    "axios": "catalog:",
+    "dotenv": "catalog:",
+    "qrcode-terminal": "catalog:",
+    "pino": "catalog:",
+    "tesseract.js": "catalog:",
+    "redis": "catalog:",
+    "form-data": "catalog:",
+    "@fayol/ai-services": "workspace:*",
+    "@fayol/api-client": "workspace:*",
+    "@fayol/integrations": "workspace:*",
+    "@fayol/shared-constants": "workspace:*",
+    "@fayol/shared-types": "workspace:*",
+    "@fayol/shared-utils": "workspace:*",
+    "@fayol/validation-schemas": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "@types/qrcode-terminal": "catalog:",
+    "tsx": "catalog:",
+    "typescript": "catalog:",
+    "eslint": "catalog:",
+    "@types/jest": "catalog:",
+    "jest": "catalog:",
+    "ts-jest": "catalog:",
+    "axios-mock-adapter": "catalog:"
+  }
+}

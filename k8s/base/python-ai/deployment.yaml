@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fayol-python-ai
+  labels:
+    app: fayol-python-ai
+    tier: ai
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fayol-python-ai
+  template:
+    metadata:
+      labels:
+        app: fayol-python-ai
+        tier: ai
+    spec:
+      containers:
+      - name: python-ai
+        image: fayol/python-ai:latest
+        ports:
+        - containerPort: 8000
+          name: http
+        env:
+        - name: ENVIRONMENT
+          value: "production"
+        - name: MODEL_PATH
+          value: "/app/models"
+        volumeMounts:
+        - name: ai-models
+          mountPath: /app/models
+        resources:
+          requests:
+            cpu: 300m
+            memory: 512Mi
+          limits:
+            cpu: 1500m
+            memory: 1Gi
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 45
+          periodSeconds: 15
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 15
+          periodSeconds: 10
+          timeoutSeconds: 3
+          failureThreshold: 3
+      volumes:
+      - name: ai-models
+        persistentVolumeClaim:
+          claimName: fayol-ai-models-pvc
+      restartPolicy: Always

@@ -1,0 +1,37 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "baseUrl": ".",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./src/*"],
+      "@fayol/shared-types": ["../../packages/shared-types/src/index.ts"],
+      "@fayol/shared-constants": ["../../packages/shared-constants/src/index.ts"],
+      "@fayol/shared-utils": ["../../packages/shared-utils/src/index.ts"],
+      "@fayol/validation-schemas": ["../../packages/validation-schemas/src/index.ts"],
+      "@fayol/web-shared": ["../../packages/web-shared/src/index.ts"],
+      "@fayol/api-client": ["../../packages/api-client/src/index.ts"],
+      "@fayol/api-client-core": ["../../packages/api-client-core/src/index.ts"],
+      "@fayol/ui-components": ["../../packages/ui-components/src/index.ts"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}

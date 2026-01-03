@@ -1,0 +1,25 @@
+{
+  "name": "@fayol/assets",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc && pnpm run copy:assets",
+    "copy:assets": "node scripts/copy-assets.js",
+    "clean": "rimraf dist .turbo node_modules",
+    "lint": "eslint . --max-warnings 0",
+    "type-check": "tsc --noEmit"
+  },
+  "files": [
+    "dist",
+    "src/images"
+  ],
+  "devDependencies": {
+    "typescript": "catalog:",
+    "eslint": "catalog:",
+    "fs-extra": "catalog:",
+    "@types/node": "catalog:"
+  }
+}

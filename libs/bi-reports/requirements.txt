@@ -1,0 +1,21 @@
+# ============================================================
+# DEPENDÊNCIAS PYTHON - GERENCIADAS AUTOMATICAMENTE
+# ============================================================
+# Este arquivo é gerado automaticamente a partir de:
+# python-requirements.yaml
+#
+# NÃO EDITE MANUALMENTE!
+# Para atualizar, edite python-requirements.yaml e execute:
+#   node scripts/sync-python-deps.js
+# ============================================================
+
+fastapi==0.110.0
+httpx==0.26.0
+jinja2==3.1.3
+openpyxl==3.1.2
+pandas==2.2.0
+pydantic==2.6.1
+python-multipart==0.0.9
+requests==2.31.0
+uvicorn==0.27.1
+xhtml2pdf==0.2.11

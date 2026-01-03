@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: Helvetica, sans-serif; color: #333; }
+        .header { text-align: center; margin-bottom: 30px; border-bottom: 2px solid #2563eb; padding-bottom: 10px; }
+        .title { font-size: 24px; color: #2563eb; font-weight: bold; }
+        .subtitle { font-size: 14px; color: #666; }
+        
+        .cards { width: 100%; margin-bottom: 30px; }
+        .card { width: 30%; display: inline-block; padding: 10px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; text-align: center; }
+        .card-label { font-size: 12px; color: #64748b; }
+        .card-value { font-size: 18px; font-weight: bold; margin-top: 5px; }
+        
+        /* Classes utilitárias para cores */
+        .text-income { color: #10b981; }
+        .text-expense { color: #ef4444; }
+        
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 12px; }
+        th { background-color: #f1f5f9; padding: 8px; text-align: left; border-bottom: 1px solid #cbd5e1; }
+        td { padding: 8px; border-bottom: 1px solid #e2e8f0; }
+        .amount-col { text-align: right; }
+        
+        .footer { position: fixed; bottom: 0; width: 100%; text-align: center; font-size: 10px; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 10px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="title">Fayol - Relatório Financeiro</div>
+        <div class="subtitle">Gerado para {{ user_name }} | Período: {{ period }}</div>
+    </div>
+
+    <table class="cards">
+        <tr>
+            <td class="card">
+                <div class="card-label">Receitas</div>
+                <div class="card-value text-income">R$ {{ "%.2f"|format(summary.total_income) }}</div>
+            </td>
+            <td class="card">
+                <div class="card-label">Despesas</div>
+                <div class="card-value text-expense">R$ {{ "%.2f"|format(summary.total_expense) }}</div>
+            </td>
+            <td class="card">
+                <div class="card-label">Saldo</div>
+                <div class="card-value">R$ {{ "%.2f"|format(summary.balance) }}</div>
+            </td>
+        </tr>
+    </table>
+
+    <h3>Detalhamento de Transações</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Descrição</th>
+                <th>Categoria</th>
+                <th>Conta</th>
+                <th class="amount-col">Valor</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in transactions %}
+            <tr>
+                <td>{{ t.date }}</td>
+                <td>{{ t.description }}</td>
+                <td>{{ t.category }}</td>
+                <td>{{ t.account }}</td>
+                <td class="amount-col {{ 'text-expense' if t.type == 'EXPENSE' else 'text-income' }}">
+                    {{ "-" if t.type == 'EXPENSE' else "+" }} R$ {{ "%.2f"|format(t.amount) }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="footer">
+        Gerado automaticamente pelo sistema Fayol Gestor Financeiro.
+    </div>
+</body>
+</html>

@@ -1,0 +1,427 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ==========================================
+// ENUMS (Refletem @fayol/shared-types)
+// ==========================================
+
+enum UserRole {
+  USER
+  ADMIN
+  FINANCEIRO
+  SUPORTE
+  SUPER_ADMIN
+  TEST
+}
+
+enum AccountType {
+  CHECKING
+  SAVINGS
+  INVESTMENT
+  CASH
+  CREDIT_CARD
+  OTHER
+}
+
+enum LaunchType {
+  INCOME
+  EXPENSE
+  TRANSFER
+}
+
+enum Recurrence {
+  NONE
+  DAILY
+  WEEKLY
+  MONTHLY
+  YEARLY
+  CUSTOM
+}
+
+enum InvestorProfile {
+  CONSERVATIVE
+  MODERATE
+  AGGRESSIVE
+  UNDEFINED
+}
+
+enum NotificationType {
+  INFO
+  WARNING
+  SUCCESS
+  ERROR
+}
+
+enum TradeType {
+  BUY
+  SELL
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+  PREFER_NOT_TO_SAY
+}
+
+enum AuditAction {
+  CREATE
+  UPDATE
+  DELETE
+  RESTORE
+  LOGIN
+  LOGOUT
+  ACCESS
+}
+
+enum ConsentType {
+  TERMS_OF_SERVICE
+  PRIVACY_POLICY
+  MARKETING
+  ANALYTICS
+  COOKIES
+  DATA_SHARING
+  PROFILING
+}
+
+enum ConsentStatus {
+  GRANTED
+  DENIED
+  WITHDRAWN
+  EXPIRED
+}
+
+enum DataExportStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+// ==========================================
+// MODELS
+// ==========================================
+
+model User {
+  id              String          @id @default(uuid())
+  name            String
+  email           String          @unique
+  passwordHash    String
+  roles           UserRole[]      @default([USER])
+  
+  // --- PERFIL & AVATAR ---
+  profileImage    String?
+  gender          Gender?
+  cpf             String?         @unique
+  phoneNumber     String?
+  investorProfile InvestorProfile @default(UNDEFINED)
+  
+  // --- ONBOARDING ---
+  onboardingStep  Int             @default(0)
+  mainCurrency    String          @default("BRL")
+
+  // --- RESET DE SENHA ---
+  resetPasswordToken   String?   @unique
+  resetPasswordExpires DateTime?
+
+  // --- TWO-FACTOR AUTHENTICATION ---
+  twoFactorEnabled      Boolean   @default(false)
+  twoFactorSecret       String?   // Encrypted TOTP secret
+  twoFactorBackupCodes  String[]  @default([])
+  twoFactorTempToken    String?   @unique
+  twoFactorTempExpires  DateTime?
+
+  // --- PUSH NOTIFICATIONS ---
+  pushTokens            String[]  @default([])  // Array of Expo Push Tokens (multiple devices)
+
+  isActive        Boolean         @default(true)
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  deletedAt       DateTime?
+
+  accounts      Account[]
+  categories    Category[]
+  transactions  Transaction[]
+  budgets       Budget[]
+  investments   Investment[]
+  notifications Notification[]
+  trades        Trade[]
+  goals         Goal[]
+  consents      UserConsent[]
+  dataExports   DataExportRequest[]
+
+  @@map("users")
+}
+
+model Account {
+  id               String      @id @default(uuid())
+  userId           String
+  name             String
+  type             AccountType
+  balance          Decimal     @default(0.00) @db.Decimal(15, 2)
+  creditLimit      Decimal?    @db.Decimal(15, 2)
+  
+  currency         String      @default("BRL")
+  color            String?
+  icon             String?
+  isArchived       Boolean     @default(false)
+  bankConnectionId String?
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @updatedAt
+  deletedAt        DateTime?
+
+  user         User          @relation(fields: [userId], references: [id], onDelete: Restrict)
+  transactions Transaction[]
+  investments  Investment[]
+  trades       Trade[]
+
+  // OTIMIZAÇÃO: Índice composto único cobre todas as queries comuns
+  // Pode ser usado para: [userId], [userId, type], [userId, type, isArchived]
+  @@index([userId, isArchived, type])
+  // Removido: @@index([userId]) - coberto pelo índice composto acima
+  // Removido: @@index([userId, type]) - coberto pelo índice composto acima
+  @@map("accounts")
+}
+
+model Category {
+  id              String     @id @default(uuid())
+  userId          String?    
+  name            String
+  type            LaunchType
+  icon            String?
+  color           String?
+  parentId        String?
+  isSystemDefault Boolean    @default(false)
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+  deletedAt       DateTime?
+
+  user         User?       @relation(fields: [userId], references: [id], onDelete: Restrict)
+  parent       Category?   @relation("SubCategories", fields: [parentId], references: [id])
+  children     Category[]  @relation("SubCategories")
+  transactions Transaction[]
+  budgets      Budget[]
+
+  @@map("categories")
+}
+
+model Transaction {
+  id            String     @id @default(uuid())
+  userId        String
+  accountId     String
+  categoryId    String?
+  description   String
+  amount        Decimal    @db.Decimal(15, 2)
+  date          DateTime
+  type          LaunchType
+  isPaid        Boolean    @default(true)
+  recurrence    Recurrence @default(NONE)
+  recurrenceId  String?
+  tags          String[]
+  notes         String?
+  attachmentUrl String?
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  deletedAt     DateTime?
+
+  user     User      @relation(fields: [userId], references: [id], onDelete: Restrict)
+  account  Account   @relation(fields: [accountId], references: [id], onDelete: Restrict)
+  category Category? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  trade    Trade?
+
+  // OTIMIZAÇÃO: Índices otimizados para queries mais comuns
+  // Índice composto principal para queries por usuário e data
+  @@index([userId, date(sort: Desc)])
+  // Índice para queries por conta (útil para reconciliação)
+  @@index([accountId, date(sort: Desc)])
+  // Índice composto para filtros por status de pagamento
+  @@index([userId, isPaid, date(sort: Desc)])
+  // Removido: @@index([categoryId, date]) - baixo uso, pode usar query sem índice
+  // Removido: @@index([userId, type, date]) - type tem baixa cardinalidade, não justifica índice
+  @@map("transactions")
+}
+
+model Budget {
+  id              String   @id @default(uuid())
+  userId          String
+  categoryId      String?
+  name            String
+  amount          Decimal  @db.Decimal(15, 2)
+  startDate       DateTime
+  endDate         DateTime
+  notifyThreshold Int?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  deletedAt       DateTime?
+
+  user     User      @relation(fields: [userId], references: [id], onDelete: Restrict)
+  category Category? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+
+  // OTIMIZAÇÃO: Índice composto para queries por período
+  @@index([userId, startDate, endDate])
+  // Índice para queries por categoria (usado em relatórios)
+  @@index([categoryId])
+  // Removido: @@index([userId]) - coberto pelo índice composto acima
+  @@map("budgets")
+}
+
+model Investment {
+  id           String   @id @default(uuid())
+  userId       String
+  accountId    String
+  name         String
+  ticker       String?
+  quantity     Decimal  @db.Decimal(15, 8) 
+  averagePrice Decimal  @db.Decimal(15, 2)
+  currentPrice Decimal? @db.Decimal(15, 2)
+  type         String   
+  purchaseDate DateTime
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  deletedAt    DateTime?
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Restrict)
+  account Account @relation(fields: [accountId], references: [id], onDelete: Restrict)
+  trades  Trade[]
+
+  // OTIMIZAÇÃO: Índice composto para queries de investimentos por tipo
+  @@index([userId, type])
+  // Índice para queries por conta
+  @@index([accountId])
+  // Índice para busca por ticker (útil para cotações em batch)
+  @@index([ticker])
+  // Removido: @@index([userId]) - coberto pelo índice composto acima
+  @@map("investments")
+}
+
+model Notification {
+  id        String           @id @default(uuid())
+  userId    String
+  title     String
+  message   String
+  type      NotificationType @default(INFO)
+  isRead    Boolean          @default(false)
+  actionUrl String?
+  createdAt DateTime         @default(now())
+  deletedAt DateTime?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Restrict)
+
+  // OTIMIZAÇÃO: Índice composto para queries de notificações não lidas
+  // Pode ser usado para: [userId], [userId, isRead]
+  @@index([userId, isRead, createdAt(sort: Desc)])
+  // Removido: @@index([userId]) - coberto pelo índice composto acima
+  // Removido: @@index([userId, createdAt]) - coberto pelo índice composto acima
+  @@map("notifications")
+}
+
+model Trade {
+  id            String    @id @default(uuid())
+  userId        String
+  accountId     String
+  investmentId  String?
+  transactionId String?   @unique 
+  
+  ticker        String    
+  type          TradeType
+  quantity      Decimal   @db.Decimal(15, 8)
+  price         Decimal   @db.Decimal(15, 2)
+  fees          Decimal   @default(0) @db.Decimal(15, 2)
+  totalAmount   Decimal   @db.Decimal(15, 2) 
+  date          DateTime
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  deletedAt     DateTime?
+
+  user          User         @relation(fields: [userId], references: [id], onDelete: Restrict)
+  account       Account      @relation(fields: [accountId], references: [id], onDelete: Restrict)
+  investment    Investment?  @relation(fields: [investmentId], references: [id])
+  transaction   Transaction? @relation(fields: [transactionId], references: [id])
+
+  @@map("trades")
+}
+
+model Goal {
+  id            String   @id @default(uuid())
+  userId        String
+  title         String
+  currentAmount Decimal  @db.Decimal(15, 2) @default(0)
+  targetAmount  Decimal  @db.Decimal(15, 2)
+  deadline      DateTime?
+  color         String?  @default("bg-blue-500")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  deletedAt     DateTime?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Restrict)
+
+  @@map("goals")
+}
+
+model AuditLog {
+  id          String      @id @default(uuid())
+  userId      String?
+  action      AuditAction
+  entity      String
+  entityId    String?
+  changes     Json?
+  metadata    Json?
+  ipAddress   String?
+  userAgent   String?
+  createdAt   DateTime    @default(now())
+
+  @@index([userId])
+  @@index([entity, entityId])
+  @@index([createdAt])
+  @@map("audit_logs")
+}
+
+model UserConsent {
+  id            String        @id @default(uuid())
+  userId        String
+  type          ConsentType
+  status        ConsentStatus @default(GRANTED)
+  purpose       String?
+  legalBasis    String?
+  ipAddress     String?
+  userAgent     String?
+  version       String        @default("1.0")
+  expiresAt     DateTime?
+  withdrawnAt   DateTime?
+  grantedAt     DateTime      @default(now())
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([type, status])
+  @@map("user_consents")
+}
+
+model DataExportRequest {
+  id            String           @id @default(uuid())
+  userId        String
+  status        DataExportStatus @default(PENDING)
+  format        String           @default("JSON")
+  downloadUrl   String?
+  expiresAt     DateTime?
+  requestedAt   DateTime         @default(now())
+  completedAt   DateTime?
+  failedReason  String?
+  ipAddress     String?
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([status])
+  @@map("data_export_requests")
+}

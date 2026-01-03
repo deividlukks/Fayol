@@ -1,0 +1,11 @@
+# Valida se todas as dependências estão usando catalog:
+echo "Validando catalog do pnpm..."
+pnpm run validate-catalog || {
+  echo ""
+  echo "⚠️  Encontradas dependências hardcoded!"
+  echo "Execute 'pnpm run sync-catalog:fix' para corrigir automaticamente"
+  exit 1
+}
+
+# Executa lint-staged para formatar código
+pnpm exec lint-staged

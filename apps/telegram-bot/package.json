@@ -1,0 +1,39 @@
+{
+  "name": "telegram-bot",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "tsx watch src/main.ts",
+    "build": "tsc",
+    "start": "node dist/src/main.js",
+    "lint": "eslint . --max-warnings 0",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:unit": "jest --testPathPattern=tests/unit",
+    "test:integration": "jest --testPathPattern=tests/integration"
+  },
+  "dependencies": {
+    "axios": "catalog:",
+    "dotenv": "catalog:",
+    "telegraf": "catalog:",
+    "telegraf-session-local": "catalog:",
+    "@fayol/ai-services": "workspace:*",
+    "@fayol/api-client": "workspace:*",
+    "@fayol/integrations": "workspace:*",
+    "@fayol/shared-constants": "workspace:*",
+    "@fayol/shared-types": "workspace:*",
+    "@fayol/shared-utils": "workspace:*",
+    "@fayol/validation-schemas": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "tsx": "catalog:",
+    "typescript": "catalog:",
+    "eslint": "catalog:",
+    "@types/jest": "catalog:",
+    "jest": "catalog:",
+    "ts-jest": "catalog:",
+    "axios-mock-adapter": "catalog:"
+  }
+}

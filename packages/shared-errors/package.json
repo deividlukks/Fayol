@@ -1,0 +1,23 @@
+{
+  "name": "@fayol/shared-errors",
+  "version": "0.1.0",
+  "description": "Error handling utilities and custom exceptions for Fayol",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "errors",
+    "exceptions",
+    "fayol"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "typescript": "catalog:"
+  },
+  "dependencies": {}
+}

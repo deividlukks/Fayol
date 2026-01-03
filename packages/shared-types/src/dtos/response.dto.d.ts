@@ -1,0 +1,8 @@
+export interface ApiResponse<T = unknown> {
+  success: boolean;
+  data?: T;
+  message?: string;
+  errors?: string[] | Record<string, string[]>;
+  timestamp: string;
+}
+//# sourceMappingURL=response.dto.d.ts.map

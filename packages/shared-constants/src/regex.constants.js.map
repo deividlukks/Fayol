@@ -1,0 +1,1 @@
+{"version":3,"file":"regex.constants.js","sourceRoot":"","sources":["regex.constants.ts"],"names":[],"mappings":"AAAA,MAAM,CAAC,MAAM,KAAK,GAAG;IACnB,gEAAgE;IAChE,gBAAgB,EAAE,gEAAgE;IAElF,uBAAuB;IACvB,IAAI,EAAE,wEAAwE;IAE9E,iBAAiB;IACjB,YAAY,EAAE,OAAO;IAErB,wDAAwD;IACxD,QAAQ,EAAE,uDAAuD;IAEjE,6BAA6B;IAC7B,QAAQ,EAAE,qBAAqB;CAChC,CAAC"}

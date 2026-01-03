@@ -1,0 +1,48 @@
+{
+  "name": "admin-panel",
+  "version": "0.1.0",
+  "description": "Admin Panel for Fayol Financial Management System",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbo -p 3001",
+    "build": "next build",
+    "start": "next start -p 3001",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit",
+    "clean": "rimraf .next node_modules .turbo"
+  },
+  "dependencies": {
+    "@fayol/api-client": "workspace:*",
+    "@fayol/shared-constants": "workspace:*",
+    "@fayol/shared-types": "workspace:*",
+    "@fayol/shared-utils": "workspace:*",
+    "@fayol/ui-components": "workspace:*",
+    "@fayol/web-shared": "workspace:*",
+    "@fayol/validation-schemas": "workspace:*",
+    "@tanstack/react-query": "catalog:",
+    "axios": "catalog:",
+    "clsx": "catalog:",
+    "date-fns": "catalog:",
+    "lucide-react": "catalog:",
+    "next": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "react-hook-form": "catalog:",
+    "recharts": "catalog:",
+    "tailwind-merge": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@next/bundle-analyzer": "catalog:",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "autoprefixer": "catalog:",
+    "eslint": "catalog:",
+    "eslint-config-next": "catalog:",
+    "postcss": "catalog:",
+    "rimraf": "catalog:",
+    "tailwindcss": "catalog:",
+    "typescript": "catalog:"
+  }
+}

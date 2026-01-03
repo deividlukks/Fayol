@@ -1,0 +1,33 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: fayol-production
+
+bases:
+  - ../../base
+
+commonLabels:
+  environment: production
+
+# Patches para produção
+patchesStrategicMerge:
+  - replicas-patch.yaml
+  - resources-patch.yaml
+
+# Configurações específicas de produção
+configMapGenerator:
+  - name: fayol-config
+    behavior: merge
+    literals:
+      - log-level=warn
+      - rate-limit-max=50
+
+images:
+  - name: fayol/backend
+    newTag: v1.0.0
+  - name: fayol/web-app
+    newTag: v1.0.0
+  - name: fayol/python-ai
+    newTag: v1.0.0
+  - name: fayol/bi-reports
+    newTag: v1.0.0
