@@ -1,5 +1,5 @@
 # Script PowerShell para configurar PostgreSQL para Fayol
-$env:PGPASSWORD = "350614561008ecc5032a25980b317d23"
+$env:PGPASSWORD = "postgres"
 $psqlPath = "C:\Program Files\PostgreSQL\18\bin\psql.exe"
 
 Write-Host "========================================" -ForegroundColor Cyan
@@ -10,7 +10,7 @@ Write-Host ""
 Write-Host "Criando usuário e banco de dados..." -ForegroundColor Yellow
 
 # Executar arquivo SQL para criar usuário e banco
-& $psqlPath -U postgres -f "C:\Users\deivi\Documents\Projetos\Fayol\scripts\create-fayol-db.sql"
+& $psqlPath -U postgres -f "C:\Users\deivi\Documents\Projetos\Fayol\scripts\database\create-fayol-db.sql"
 
 if ($LASTEXITCODE -eq 0) {
     Write-Host ""

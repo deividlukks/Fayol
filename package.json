@@ -1,6 +1,6 @@
 {
   "name": "fayol",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Sistema Multiplataforma de Gestão Financeira Pessoal com IA",
   "private": true,
   "license": "MIT",
@@ -50,10 +50,21 @@
     "db:seed": "pnpm --filter @fayol/database-models run seed",
     "db:studio": "pnpm --filter @fayol/database-models run studio",
     "db:reset": "pnpm --filter @fayol/database-models run migrate:dev -- --name reset",
-    "sync-catalog": "node scripts/sync-catalog.js",
-    "sync-catalog:fix": "node scripts/sync-catalog.js --fix",
-    "sync-catalog:add": "node scripts/sync-catalog.js --add",
-    "validate-catalog": "node scripts/validate-catalog.js"
+    "sync-catalog": "node scripts/sync/sync-catalog.js",
+    "sync-catalog:fix": "node scripts/sync/sync-catalog.js --fix",
+    "sync-catalog:add": "node scripts/sync/sync-catalog.js --add",
+    "validate-catalog": "node scripts/validation/validate-catalog.js",
+    "env:start": "node scripts/environment/start.js",
+    "env:start:fast": "node scripts/environment/start.js --fast",
+    "env:setup": "node scripts/environment/setup-vault-and-backup.js",
+    "vault:init": "node scripts/vault/init-vault.js",
+    "backup:create": "node scripts/backup/backup-postgres.js",
+    "backup:restore": "node scripts/backup/restore-postgres.js",
+    "backup:list": "node scripts/backup/list-backups.js",
+    "prisma:debug": "node scripts/prisma/debug-queries.js",
+    "prisma:analyze": "node scripts/prisma/analyze-queries.js",
+    "prisma:audit": "node scripts/prisma/audit-performance.js",
+    "db:test": "node scripts/database/test-db-connection.js"
   },
   "packageManager": "pnpm@10.26.0",
   "engines": {

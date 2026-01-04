@@ -1,6 +1,6 @@
 {
   "name": "@fayol/web-shared",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Shared contexts, hooks and utilities for Fayol web applications",
   "private": true,
   "main": "./dist/index.js",

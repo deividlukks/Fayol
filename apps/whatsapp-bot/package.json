@@ -1,6 +1,6 @@
 {
   "name": "whatsapp-bot",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "WhatsApp Bot para gestão financeira pessoal com IA",
   "main": "dist/src/main.js",

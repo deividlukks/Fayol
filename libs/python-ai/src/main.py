@@ -24,7 +24,7 @@ from src.models.schemas import AnalysisRequest, InsightResponse, TransactionInpu
 app = FastAPI(
     title="Fayol AI Service",
     description="Microserviço de Inteligência Artificial de Alta Acurácia (95%+)",
-    version="0.1.0",
+    version="0.1.1",
     docs_url="/docs",
     redoc_url="/redoc",
 )

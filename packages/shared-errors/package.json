@@ -1,6 +1,6 @@
 {
   "name": "@fayol/shared-errors",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Error handling utilities and custom exceptions for Fayol",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

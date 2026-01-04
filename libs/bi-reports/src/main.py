@@ -8,7 +8,7 @@ from datetime import datetime
 app = FastAPI(
     title="Fayol BI Reports",
     description="Microserviço de Geração de Relatórios (PDF/Excel)",
-    version="0.1.0"
+    version="0.1.1"
 )
 
 # --- DTOs ---

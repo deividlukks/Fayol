@@ -28,7 +28,8 @@ $ErrorActionPreference = "Continue" # Continua mesmo se falhar ao tentar apagar 
 
 # --- AJUSTE DE DIRETÓRIO ---
 $ScriptLocation = Split-Path -Parent $MyInvocation.MyCommand.Definition
-$ProjectRoot = Split-Path -Parent $ScriptLocation
+$ScriptsRoot = Split-Path -Parent $ScriptLocation
+$ProjectRoot = Split-Path -Parent $ScriptsRoot
 Set-Location $ProjectRoot
 
 Write-Host "`n☢️  PROTOCOLO NUKE - DESTRUIÇÃO TOTAL" -ForegroundColor Red

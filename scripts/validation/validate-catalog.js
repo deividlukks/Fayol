@@ -10,7 +10,7 @@ const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
 
-const rootDir = path.resolve(__dirname, '..');
+const rootDir = path.resolve(__dirname, '../..');
 
 function readWorkspaceYaml() {
   const workspacePath = path.join(rootDir, 'pnpm-workspace.yaml');
